@@ -27,6 +27,11 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   //   final version = ""; //await methodChannel.invokeMethod<String>(NaverLoginSdkConstant.platformVersion);
   //   return version;
   // }
+  /// Neck Through
+  void _onData<T>(T event) async {
+    oauthLoginCallback?.listen(event);
+  }
+
 
   @override
   void initialize({required String clientId, required String clientSecret, String clientName = "Flutter NaverLogin"}) async {
@@ -45,8 +50,16 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.authenticate);
   }
 
-  /// Neck Through
-  void _onData<T>(T event) async {
-    oauthLoginCallback?.listen(event);
+  @override
+  void logout() async {
+    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.logout);
   }
+
+  @override
+  void release({OAuthLoginCallback? callback}) async {
+    oauthLoginCallback = callback;
+    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.release);
+  }
+
+
 }

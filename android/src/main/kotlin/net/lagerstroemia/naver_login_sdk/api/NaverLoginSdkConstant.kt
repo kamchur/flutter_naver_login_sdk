@@ -7,6 +7,8 @@ object NaverLoginSdkConstant {
     object Key {
         const val initialize: String = "initialize"
         const val authenticate: String = "authenticate"
+        const val logout: String = "logout"
+        const val release: String = "release"
 
         object OAuthLoginCallback {
             const val onSuccess: String = "onSuccess"

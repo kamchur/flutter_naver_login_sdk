@@ -38,17 +38,14 @@ object NaverLoginSdkBridge {
     suspend fun authenticate(context: Context, sink: EventChannel.EventSink?) {
         NaverIdLoginSDK.authenticate(context, callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                Log.e("Crape", "onError code:$errorCode, message:$message")
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onError to arrayListOf<Any>(errorCode, message)))
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                Log.w("Crape", "onFailure status:$httpStatus, message:$message")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
             }
 
             override fun onSuccess() {
-                Log.i("Crape", "onSuccess")
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
             }
         })
@@ -59,26 +56,26 @@ object NaverLoginSdkBridge {
     }
 
     /**
-     * 연동해제
+     * Delete TokenAPI
      * */
-    fun release() {
+    suspend fun release(sink: EventChannel.EventSink?) {
+        Log.v("Crape", "release..")
         NidOAuthLogin().callDeleteTokenApi(callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                TODO("Not yet implemented")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onError to arrayListOf<Any>(errorCode, message)))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                TODO("Not yet implemented")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
             }
 
             override fun onSuccess() {
-                TODO("Not yet implemented")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
             }
-
         })
     }
 
-    fun profile() {
+    fun profile(sink: EventChannel.EventSink?) {
         NidOAuthLogin().callProfileApi(callback = object: NidProfileCallback<NidProfileResponse> {
             override fun onError(errorCode: Int, message: String) {
                 TODO("Not yet implemented")
