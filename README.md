@@ -1,4 +1,4 @@
-# naver_login_sdk
+# NaverLoginSDK
 
 Flutter-Naver Login SDK
 
