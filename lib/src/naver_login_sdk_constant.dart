@@ -10,4 +10,6 @@ class NaverLoginSdkConstant {
   // Getter&Setter
   static NaverLoginSdkConstantKey get key => _key;
   static NaverLoginSdkConstantValue get value => _value;
+
+  static const String channelName = 'naver_login_sdk';
 }

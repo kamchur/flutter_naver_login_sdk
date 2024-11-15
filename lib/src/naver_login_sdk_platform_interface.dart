@@ -1,8 +1,9 @@
+import 'package:naver_login_sdk/src/naver_login_sdk_protocol.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'naver_login_sdk_method_channel.dart';
 
-abstract class NaverLoginSdkPlatform extends PlatformInterface {
+abstract class NaverLoginSdkPlatform extends PlatformInterface implements NaverLoginSdkProtocol {
   /// Constructs a NaverLoginSdkPlatform.
   NaverLoginSdkPlatform() : super(token: _token);
 
@@ -23,7 +24,8 @@ abstract class NaverLoginSdkPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
-  }
+  // 2024-11-15-Fri, Sample test function
+  // Future<String?> getPlatformVersion() {
+  //   throw UnimplementedError('platformVersion() has not been implemented.');
+  // }
 }

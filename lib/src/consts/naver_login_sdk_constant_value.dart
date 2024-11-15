@@ -1,9 +1,9 @@
 class NaverLoginSdkConstantValue {
-  final Authenticate authenticate = Authenticate._();
+  final Initialize initialize = Initialize._();
 }
 
-class Authenticate {
-  Authenticate._();
+class Initialize {
+  Initialize._();
 
   final String clientId = "clientId";
   final String clientSecret = "clientSecret";

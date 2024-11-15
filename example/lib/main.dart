@@ -20,6 +20,8 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  // MethodChannel methodChannel = MethodChannel(NaverLoginSdkConstant.channelName);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,13 +33,21 @@ class _MyAppState extends State<MyApp> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    final clientId = 'KH4kCq8piNCS57oematF';
+                    final clientSecret = 'dn5kOT07i7';
+                    final clientName = "Flutter NaverLogin";
 
+                    NaverLoginSDK.initialize(
+                      clientId: clientId,
+                      clientSecret: clientSecret,
+                      clientName: clientName
+                    );
                   },
                   child: Text("Login"),
                 ),
                 ElevatedButton(
                   onPressed: () {
-
+                    NaverLoginSDK.authenticate();
                   },
                   child: Text("GetProfile"),
                 )
