@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-
-import 'package:flutter/services.dart';
+import 'package:flutter_logcat/flutter_logcat.dart';
 import 'package:naver_login_sdk/naver_login_sdk.dart';
+
+const clientId = 'KH4kCq8piNCS57oematF';
+const clientSecret = 'dn5kOT07i7';
+const clientName = "Flutter NaverLogin";
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-
+  // Init
+  NaverLoginSDK.initialize(clientId: clientId, clientSecret: clientSecret);
 
   runApp(const MyApp());
 }
@@ -33,21 +36,23 @@ class _MyAppState extends State<MyApp> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    final clientId = 'KH4kCq8piNCS57oematF';
-                    final clientSecret = 'dn5kOT07i7';
-                    final clientName = "Flutter NaverLogin";
-
-                    NaverLoginSDK.initialize(
-                      clientId: clientId,
-                      clientSecret: clientSecret,
-                      clientName: clientName
-                    );
+                    NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
+                      onSuccess: () {
+                        Log.d("onSuccess..");
+                      },
+                      onFailure: (httpStatus, message) {
+                        Log.w("onFailure..");
+                      },
+                      onError: (errorCode, message) {
+                        Log.e("onError..");
+                      },
+                    ));
                   },
                   child: Text("Login"),
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    NaverLoginSDK.authenticate();
+
                   },
                   child: Text("GetProfile"),
                 )

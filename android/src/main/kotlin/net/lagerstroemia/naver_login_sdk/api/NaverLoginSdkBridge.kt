@@ -8,6 +8,8 @@ import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 
+import io.flutter.plugin.common.EventChannel
+
 object NaverLoginSdkBridge {
     fun initialize(context: Context, args: Any) {
         Log.d("Crape", "NaverLoginSdkBridge.. initialize..")
@@ -29,12 +31,16 @@ object NaverLoginSdkBridge {
      * Access Token
      *
      * User Cancel result message:
+     *
+     * Log)
      * E/Crape   (27017): onError code:-1, message:user_cancel
      * */
-    suspend fun authenticate(context: Context) {
+    suspend fun authenticate(context: Context, sink: EventChannel.EventSink?) {
         NaverIdLoginSDK.authenticate(context, callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
                 Log.e("Crape", "onError code:$errorCode, message:$message")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
@@ -43,6 +49,7 @@ object NaverLoginSdkBridge {
 
             override fun onSuccess() {
                 Log.i("Crape", "onSuccess")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
             }
         })
     }
