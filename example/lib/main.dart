@@ -41,10 +41,10 @@ class _MyAppState extends State<MyApp> {
                         Log.d("onSuccess..");
                       },
                       onFailure: (httpStatus, message) {
-                        Log.w("onFailure..");
+                        Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
                       },
                       onError: (errorCode, message) {
-                        Log.e("onError..");
+                        Log.e("onError.. errorCode:$errorCode, message:$message");
                       },
                     ));
                   },
@@ -54,7 +54,17 @@ class _MyAppState extends State<MyApp> {
                   onPressed: () {
 
                   },
-                  child: Text("GetProfile"),
+                  child: Text("Logout"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    NaverLoginSDK.release(callback: OAuthLoginCallback(
+                      onError: (errorCode, message) {
+                        Log.e("onError.. errorCode:$errorCode, message:$message");
+                      },
+                    ));
+                  },
+                  child: Text("Release"),
                 )
               ],
             ),

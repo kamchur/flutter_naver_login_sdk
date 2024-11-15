@@ -2,6 +2,8 @@ import 'package:naver_login_sdk/src/events/naver_login_sdk_callback.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
 
+const String _requestInitializeMessage = 'Please execute NaverLoginSDK.initialize() function at first.';
+
 /// Singleton
 class NaverLoginSDK {
   NaverLoginSDK._internal();    // ._()
@@ -10,6 +12,17 @@ class NaverLoginSDK {
 
   static bool _isInitialize = false;
 
+  /// #### Usage
+  ///
+  /// ```dart
+  /// void main() async {
+  ///   WidgetsFlutterBinding.ensureInitialized();
+  ///
+  ///   NaverLoginSDK.initialize([ClientId], [ClientSecret], [ClientName])
+  ///   ...
+  /// }
+  /// ```
+  ///
   static void initialize({
     required String clientId,
     required String clientSecret,
@@ -24,9 +37,22 @@ class NaverLoginSDK {
     _isInitialize = true;
   }
 
+
   static void authenticate({OAuthLoginCallback? callback}) {
-    assert(_isInitialize, "Please execute NaverLoginSDK.initialize() function at first.");
+    assert(_isInitialize, _requestInitializeMessage);
 
     _instance.authenticate(callback: callback);
+  }
+
+  static void logout() {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    _instance.logout();
+  }
+
+  static void release({OAuthLoginCallback? callback}) {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    _instance.release(callback: callback);
   }
 }
