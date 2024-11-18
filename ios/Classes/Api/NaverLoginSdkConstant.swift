@@ -14,4 +14,10 @@ struct NaverLoginSdkConstant {
     struct Key {
         static let initialize: String  = "initialize"
     }
+    
+    struct Value {
+        static let clientId: String = "clientId"
+        static let clientSecret: String = "clientSecret"
+        static let clientName: String = "clientName"
+    }
 }

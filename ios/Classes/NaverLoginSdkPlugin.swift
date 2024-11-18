@@ -1,5 +1,6 @@
 import Flutter
 import UIKit
+import NaverThirdPartyLogin
 
 public class NaverLoginSdkPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
@@ -15,7 +16,11 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin {
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
     switch call.method {
     case NaverLoginSdkConstant.Key.initialize:
-        print("test...")
+        if let params = call.arguments as? [String: String] {
+            print("params:\(params)")
+            self.initialize(args: params)
+        }
+        
     // case "getPlatformVersion":
     //  result("iOS " + UIDevice.current.systemVersion)
     default:

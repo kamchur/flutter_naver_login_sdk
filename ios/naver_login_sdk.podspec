@@ -9,13 +9,16 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 Flutter-Naver Login SDK
                        DESC
-  s.homepage         = 'http://example.com'
+  s.homepage         = 'http://lagerstroemia.net'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Your Company' => 'email@example.com' }
+  s.author           = { 'Your Company' => 'b3xlon9@gmail.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
   s.platform = :ios, '12.0'
+
+  # NaverLogin iOS SDK
+  s.dependency 'naveridlogin-sdk-ios', '~> 4.2.3'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
