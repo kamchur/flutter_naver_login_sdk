@@ -1,4 +1,4 @@
-import 'package:naver_login_sdk/src/events/naver_login_sdk_callback.dart';
+import '/src/events/naver_login_sdk_callback.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
 
@@ -48,11 +48,46 @@ class NaverLoginSDK {
     assert(_isInitialize, _requestInitializeMessage);
 
     _instance.logout();
+    // _isInitialize = false;
   }
 
+  /// Break Off, remove token client and server.
   static void release({OAuthLoginCallback? callback}) {
     assert(_isInitialize, _requestInitializeMessage);
 
     _instance.release(callback: callback);
+    // _isInitialize = false;
+  }
+
+  /// This function possible after execute [authenticate] function.
+  ///
+  /// If you don't have 'AccessToken' then will show you Exception Error message.
+  /// ```dart
+  /// NidProfileResponse(
+  ///   resultCode=00,
+  ///   message=success,
+  ///   profile=NidProfile(id=yLstnezLnHh8qDr3PsgpsE6k8gxmqUQqIRCoDAmd8s4, nickname=null,
+  ///     name=null, email=null, gender=null, age=null, birthday=null, profileImage=null,
+  ///     birthYear=null, mobile=null, ci=null, encId=null)
+  /// )
+  /// ```
+  static void profile({required ProfileCallback callback}) {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    _instance.profile(callback: callback);
+  }
+
+  static Future<String> getAccessToken() async {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    return await _instance.getAccessToken();
+  }
+
+  static Future<String> getRefreshToken() async {
+    return "";
+  }
+
+  static Future<String> getState() async {
+    return "";
   }
 }

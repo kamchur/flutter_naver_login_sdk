@@ -62,6 +62,11 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
             NaverLoginSdkBridge.release(sink = sink)
           }
         }
+        NaverLoginSdkConstant.Key.profile -> {
+          CoroutineScope(Dispatchers.Main).launch {
+            NaverLoginSdkBridge.profile(sink = sink)
+          }
+        }
         else -> result.notImplemented()
       }
     } ?: result.error("No Activity", "Activity is not attached", null)

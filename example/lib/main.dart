@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_logcat/flutter_logcat.dart';
 import 'package:naver_login_sdk/naver_login_sdk.dart';
@@ -52,7 +54,25 @@ class _MyAppState extends State<MyApp> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-
+                    NaverLoginSDK.profile(callback: ProfileCallback(
+                      onError: (errorCode, message) {
+                        Log.e("onError.. message:$message");
+                      },
+                      onFailure: (httpStatus, message) {
+                        Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
+                      },
+                      onSuccess: (resultCode, message, response) {
+                        Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
+                        final profile = NaverLoginProfile.fromJson(response: response);
+                        Log.i("profile:$profile");
+                      },
+                    ));
+                  },
+                  child: Text("Profile"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    NaverLoginSDK.logout();
                   },
                   child: Text("Logout"),
                 ),

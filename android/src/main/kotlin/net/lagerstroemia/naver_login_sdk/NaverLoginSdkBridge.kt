@@ -2,12 +2,12 @@ package net.lagerstroemia.naver_login_sdk
 
 import android.content.Context
 import android.util.Log
+import com.google.gson.Gson
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthLogin
 import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
-
 import io.flutter.plugin.common.EventChannel
 
 object NaverLoginSdkBridge {
@@ -38,15 +38,15 @@ object NaverLoginSdkBridge {
     suspend fun authenticate(context: Context, sink: EventChannel.EventSink?) {
         NaverIdLoginSDK.authenticate(context, callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
             }
 
             override fun onSuccess() {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
             }
         })
     }
@@ -62,33 +62,42 @@ object NaverLoginSdkBridge {
         Log.v("Crape", "release..")
         NidOAuthLogin().callDeleteTokenApi(callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
             }
 
             override fun onSuccess() {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.OAuthLoginCallback.onSuccess to null))
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
             }
         })
     }
 
+    /**
+     * Getting User Profile
+     * */
     fun profile(sink: EventChannel.EventSink?) {
+        Log.v("Crape", "profile..")
         NidOAuthLogin().callProfileApi(callback = object: NidProfileCallback<NidProfileResponse> {
             override fun onError(errorCode: Int, message: String) {
-                TODO("Not yet implemented")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                TODO("Not yet implemented")
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
             }
 
             override fun onSuccess(result: NidProfileResponse) {
-                TODO("Not yet implemented")
-            }
+                val gson = Gson()
 
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to arrayListOf<Any>(
+                    result.resultCode.toString(),
+                    result.message.toString(),
+                    gson.toJson(result.profile!!)
+                )))
+            }
         })
     }
 }

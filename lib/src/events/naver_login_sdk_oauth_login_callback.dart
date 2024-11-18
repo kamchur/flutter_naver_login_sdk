@@ -6,7 +6,7 @@ import '/src/protocols/naver_login_sdk_oauth_login_callback_protocol.dart';
 class OAuthLoginCallback extends NaverLoginSdkBaseCallback implements OAuthLoginCallbackProtocol {
   /// onSuccess.. - LoginScreen > Click ID > OK(Agree)
   @override
-  FunctionSuccess? onSuccess;
+  FunctionEmptySuccess? onSuccess;
 
   @override
   FunctionFailure? onFailure;
@@ -21,7 +21,7 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback implements OAuthLogin
     this.onFailure,
     this.onError
   }) {
-    functionEvents.clear();
+    // functionEvents.clear();
 
     functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onSuccess] = onSuccess;
     functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onFailure] = onFailure;

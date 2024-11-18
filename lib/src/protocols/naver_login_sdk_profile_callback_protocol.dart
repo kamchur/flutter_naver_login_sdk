@@ -1,7 +1,7 @@
 import '/src/naver_login_sdk_typedef.dart';
 
-interface class OAuthLoginCallbackProtocol {
-  FunctionEmptySuccess? onSuccess = throw UnimplementedError('onSuccess() has not been implemented');
+interface class NaverLoginSdkProfileCallbackProtocol {
+  FunctionProfileSuccess? onSuccess = throw UnimplementedError('onSuccess() has not been implemented');
   /// onFailure parameters
   /// (httpStatus: Int, message: String)
   FunctionFailure? onFailure = throw UnimplementedError('onFailure() has not been implemented');

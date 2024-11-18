@@ -9,8 +9,9 @@ object NaverLoginSdkConstant {
         const val authenticate: String = "authenticate"
         const val logout: String = "logout"
         const val release: String = "release"
+        const val profile: String = "profile"
 
-        object OAuthLoginCallback {
+        object NaverLoginEventCallback {
             const val onSuccess: String = "onSuccess"
             const val onFailure: String = "onFailure"
             const val onError: String = "onError"
