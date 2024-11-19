@@ -10,7 +10,7 @@ void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
 
   // Init
-  NaverLoginSDK.initialize(urlScheme: "flutter-naver-login", clientId: clientId, clientSecret: clientSecret);
+  NaverLoginSDK.initialize(urlScheme: "flutterNaverLogin", clientId: clientId, clientSecret: clientSecret);
 
   runApp(const MyApp());
 }

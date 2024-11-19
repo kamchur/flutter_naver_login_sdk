@@ -15,6 +15,7 @@ struct NaverLoginSdkConstant {
         static let initialize: String  = "initialize"
         static let authenticate: String = "authenticate"
         static let logout: String = "logout"
+        static let release: String = "release"
         static let profile: String = "profile"
     }
     
