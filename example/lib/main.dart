@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_logcat/flutter_logcat.dart';
 import 'package:naver_login_sdk/naver_login_sdk.dart';
@@ -9,10 +7,10 @@ const clientSecret = 'dn5kOT07i7';
 const clientName = "Flutter NaverLogin";
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  await WidgetsFlutterBinding.ensureInitialized();
 
   // Init
-  NaverLoginSDK.initialize(clientId: clientId, clientSecret: clientSecret);
+  NaverLoginSDK.initialize(urlScheme: "flutter-naver-login", clientId: clientId, clientSecret: clientSecret);
 
   runApp(const MyApp());
 }

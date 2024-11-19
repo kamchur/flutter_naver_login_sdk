@@ -6,15 +6,49 @@
 //
 
 import Foundation
+import NaverThirdPartyLogin
 
 extension NaverLoginSdkPlugin {
-    /// Login Success after [authenticate]
-    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        <#code#>
+    /// 2024-11-19-Tue.
+    /// Login State
+    ///
+    /// SUCCESS
+    /// PARAMETERNOTSET: Not setting parameters.
+    /// CANCELBYUSER
+    /// NAVERRAPPNOTINSTALLED: SafariViewController disable and Not Installed Naver App
+    /// NAVERAPPVERSIONINVALID: SafariViewController disable and Installed Naver App but bad version.
+    /// OAUTHMETHODNOTSET: ALL NOT ACCESS
+    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        print("NaverLoginSdkDelegate.. application.. openUrl:\(url)")
+        return NaverThirdPartyLoginConnection.getSharedInstance().application(application, open: url, options: options)
     }
     
-    /// Login Failure after [authenticate]
+    
+    /// Login 'Success' after [authenticate] function.
+    public func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("NaverLoginSdkDelegate.. oauth20ConnectionDidFinishRequestACTokenWithAuthCode..")
+    }
+    
+    /// Login 'Failure' after [authenticate] function.
+    /// Refresh Token 'Failure' after [requestAccessTokenWithRefreshToken] function.
     public func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: (any Error)!) {
-        <#code#>
+        print("NaverLoginSdkDelegate.. oauthConnection.. didFatilWithError:\(error)")
+    }
+    
+    /// Refresh Token 'Success' after [requestAccessTokenWithRefreshToken] function.
+    public func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+        print("NaverLoginSdkDelegate.. oauth20ConnectionDidFinishRequestACTokenWithRefreshToken...")
+    }
+    
+    public func oauth20ConnectionDidFinishDeleteToken() {
+        print("")
+    }
+    
+    public func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailAuthorizationWithReceive receiveType: THIRDPARTYLOGIN_RECEIVE_TYPE) {
+        print("NaverLoginSdkDelegate.. oauth20Connection.. didFailAuthorizationWithReceive..:\(receiveType.rawValue)")
+    }
+    
+    public func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFinishAuthorizationWithResult receiveType: THIRDPARTYLOGIN_RECEIVE_TYPE) {
+        print("NaverLoginSdkDelegate.. oauth20Connection.. didFinishAuthorizationWithResult..")
     }
 }

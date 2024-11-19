@@ -1,7 +1,9 @@
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 import 'package:flutter_logcat/flutter_logcat.dart';
+
 import '/src/events/naver_login_sdk_callback.dart';
 import '/src/naver_login_sdk_constant.dart';
 import 'naver_login_sdk_platform_interface.dart';
@@ -35,9 +37,10 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
 
   @override
-  void initialize({required String clientId, required String clientSecret, String clientName = "Flutter NaverLogin"}) async {
+  void initialize({String? urlScheme, required String clientId, required String clientSecret, String clientName = "Flutter NaverLogin"}) async {
     Log.v("initialize..");
     final Map<String, String> params = {
+      if (Platform.isIOS && urlScheme != null) NaverLoginSdkConstant.value.initialize.urlScheme: urlScheme,
       NaverLoginSdkConstant.value.initialize.clientId: clientId,
       NaverLoginSdkConstant.value.initialize.clientSecret: clientSecret,
       NaverLoginSdkConstant.value.initialize.clientName: clientName

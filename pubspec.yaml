@@ -1,7 +1,7 @@
 name: naver_login_sdk
 description: "Flutter-Naver Login SDK"
 version: 0.0.1
-homepage:
+repository: https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk
 
 environment:
   sdk: ^3.5.3

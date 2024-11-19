@@ -2,6 +2,7 @@ import '/src/events/naver_login_sdk_callback.dart';
 
 interface class NaverLoginSdkProtocol {
   void initialize({
+    String? urlScheme,
     required String clientId,
     required String clientSecret,
     String clientName = "Flutter NaverLogin"

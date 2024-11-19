@@ -19,9 +19,11 @@ extension NaverLoginSdkPlugin: NaverThirdPartyLoginConnectionDelegate {
                 naverConnection.isInAppOauthEnable = true
                 // NaverLogin screen direction - default: Portrait
                 naverConnection.setOnlyPortraitSupportInIphone(true)
+            
                 
                 /// Login Default Setting
                 // naverConnection.serviceUrlScheme = arguments[NaverLoginSdkConstant.Value.UrlScheme]
+                naverConnection.serviceUrlScheme = arguments![NaverLoginSdkConstant.Value.urlScheme]
                 naverConnection.consumerKey = arguments![NaverLoginSdkConstant.Value.clientId]
                 naverConnection.consumerSecret = arguments![NaverLoginSdkConstant.Value.clientSecret]
                 naverConnection.appName = arguments![NaverLoginSdkConstant.Value.clientName]
@@ -36,4 +38,23 @@ extension NaverLoginSdkPlugin: NaverThirdPartyLoginConnectionDelegate {
             naverConnection.requestThirdPartyLogin()
         }
     }
+    
+    func logout() {
+        if let naverConnection = NaverThirdPartyLoginConnection.getSharedInstance() {
+            naverConnection.requestDeleteToken()
+        }
+    }
+    
+    func profile() {
+        
+    }
+    
+    func getRefreshToken() {
+        if let naverConnection = NaverThirdPartyLoginConnection.getSharedInstance() {
+            naverConnection.delegate = self
+            naverConnection.requestAccessTokenWithRefreshToken()
+        }
+    }
+    
+    
 }
