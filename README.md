@@ -16,7 +16,7 @@ samples, guidance on mobile development, and a full API reference.
 ## iOS
 #### Info.plist
 ```xml
-  <!--Url Scheme Setting-->
+    <!--Url Scheme Setting-->
     <key>CFBundleURLTypes</key>
     <array>
         <dict>
@@ -28,14 +28,14 @@ samples, guidance on mobile development, and a full API reference.
             </array>
         </dict>
     </array>
-  <!--Query Scheme Setting-->
+    <!--Query Scheme Setting-->
     <key>LSApplicationQueriesSchemes</key>
     <array>
         <string>naversearchapp</string>
         <string>naversearchthirdlogin</string>
     </array>
 
-  <!--Always IPhone Device(Not used MAC)-->
+    <!--Always IPhone Device(Not used MAC)-->
     <key>LSRequiresIPhoneOS</key>
     <true/>
 ```

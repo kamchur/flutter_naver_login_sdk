@@ -36,9 +36,11 @@ extension NaverLoginSdkPlugin {
     ///
     /// BackButton Pressed  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     /// > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=2
+    /// > NaverLoginSdkDelegate.. oauthConnection 'didFailAuthorizationWithReceive' receiveType:THIRDPARTYLOGIN_RECEIVE_TYPE(rawValue: 2)
     ///
     /// UserCancel  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     /// > open Url flutterNaverLogin://thirdPartyLoginResult?version=2&code=10
+    /// > NaverLoginSdkDelegate.. oauthConnection 'didFailAuthorizationWithReceive' receiveType:THIRDPARTYLOGIN_RECEIVE_TYPE(rawValue: 10)
     ///
     /// Success --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
     /// > url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=0&authCode=rhEdoFKee0o5zlSpH3

@@ -17,6 +17,12 @@ struct NaverLoginSdkConstant {
         static let logout: String = "logout"
         static let release: String = "release"
         static let profile: String = "profile"
+        
+        struct NaverLoginEventCallback {
+            static let onSuccess: String = "onSuccess"
+            static let onFailure: String = "onFailure"
+            static let onError: String = "onError"
+        }
     }
     
     struct Value {
