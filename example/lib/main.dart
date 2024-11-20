@@ -6,6 +6,8 @@ const clientId = 'KH4kCq8piNCS57oematF';
 const clientSecret = 'dn5kOT07i7';
 const clientName = "Flutter NaverLogin";
 
+/// e-mail: b3xlon9@gmail.com
+/// Call me whenever
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
 
@@ -30,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: FittedBox(child: Text("JuHwan Flutter-NaverLogin Demo")),
+          title: FittedBox(child: Text("Flutter-NaverLogin Demo")),
         ),
         body: SafeArea(
           child: Center(

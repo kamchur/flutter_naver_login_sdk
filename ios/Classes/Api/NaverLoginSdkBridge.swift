@@ -9,7 +9,7 @@ import Foundation
 import NaverThirdPartyLogin
 import Alamofire
 
-extension NaverLoginSdkPlugin {
+extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
     func initialize(args arguments: [String: String]?) {
         if arguments != nil {
             // print("NaverLoginSdkBridge.. arguments:\(arguments)")
@@ -136,9 +136,23 @@ extension NaverLoginSdkPlugin {
         }
     }
     
-    func getRefreshToken() {
-        // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
-            // naverConnection.delegate = self
-        self.naverConnection?.requestAccessTokenWithRefreshToken()
+    func getVersion() -> String {
+        return naverConnection?.getVersion() ?? "0"
+    }
+    
+    func getTokenType() -> String? {
+        return naverConnection?.tokenType
+    }
+    
+    func getAccessToken() -> String? {
+        return naverConnection?.accessToken
+    }
+    
+    func getRefreshToken() -> String? {
+        return naverConnection?.refreshToken
+    }
+    
+    func getExpireAt() -> Date? {
+        return naverConnection!.accessTokenExpireDate
     }
 }
