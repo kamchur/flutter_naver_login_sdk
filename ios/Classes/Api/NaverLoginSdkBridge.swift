@@ -34,9 +34,19 @@ extension NaverLoginSdkPlugin {
     
     /// Login and get AccessToken
     ///
-    /// BackButton Pressed > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=2
-    /// UserCancel > open Url flutterNaverLogin://thirdPartyLoginResult?version=2&code=10
-    /// Success > oauth DidFinishRequest ACTokenAuthCode
+    /// BackButton Pressed  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    /// > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=2
+    ///
+    /// UserCancel  --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    /// > open Url flutterNaverLogin://thirdPartyLoginResult?version=2&code=10
+    ///
+    /// Success --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+    /// > url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=0&authCode=rhEdoFKee0o5zlSpH3
+    /// > NaverLoginSdkDelegate.. oauthConnection 'didFinishAuthorizationWithResult' receiveType:THIRDPARTYLOGIN_RECEIVE_TYPE(rawValue: 0)
+    /// > NaverLoginSdkDelegate.. oauth20Connection 'DidFinishRequest' ACTokenWithAuthCode
+    ///
+    /// ReCall [authenticate] function when is Login State,
+    /// > NaverLoginSdkDelegate.. oauth20Connection 'DidFinishRequest' ACTokenWithAuthCode
     func authenticate() {
         // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
         if self.naverConnection != nil && self.naverConnection!.isPossibleToOpenNaverApp() {
@@ -58,6 +68,13 @@ extension NaverLoginSdkPlugin {
     /// Remove Token client and server. (All of)
     ///
     /// Called 'release' when is not login > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=1
+    ///
+    /// Called [release] function when is login state
+    /// > NaverLoginSdkDelegate.. oauth20Connection 'DidFinish' DeleteToken
+    ///
+    /// Recalled [release] function when is not login state
+    /// > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=1
+    /// > NaverLoginSdkDelegate.. oauthConnection 'didFailAuthorizationWithReceive' receiveType:THIRDPARTYLOGIN_RECEIVE_TYPE(rawValue: 1)
     func release () {
         // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
         self.naverConnection?.requestDeleteToken()
