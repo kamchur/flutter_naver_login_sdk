@@ -79,7 +79,7 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     /**
      * Getting User Profile
      * */
-    fun profile(sink: EventChannel.EventSink?) {
+    suspend fun profile(sink: EventChannel.EventSink?) {
         Log.v("Crape", "profile..")
         NidOAuthLogin().callProfileApi(callback = object: NidProfileCallback<NidProfileResponse> {
             override fun onError(errorCode: Int, message: String) {
@@ -98,6 +98,25 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
                     result.message.toString(),
                     gson.toJson(result.profile!!)
                 )))
+            }
+        })
+    }
+
+    /**
+     * when is not login -> httpStatus:200, message:OK
+     * */
+    suspend fun refresh(sink: EventChannel.EventSink?) {
+        NidOAuthLogin().callRefreshAccessTokenApi(callback = object: OAuthLoginCallback {
+            override fun onError(errorCode: Int, message: String) {
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
+            }
+
+            override fun onFailure(httpStatus: Int, message: String) {
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+            }
+
+            override fun onSuccess() {
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
             }
         })
     }

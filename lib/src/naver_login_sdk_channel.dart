@@ -57,6 +57,14 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
+  void refresh({OAuthLoginCallback? callback}) async {
+    oauthLoginCallback = callback;
+    profileCallback = null;
+
+    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.refresh);
+  }
+
+  @override
   void profile({required ProfileCallback callback}) async {
     profileCallback = callback;
     oauthLoginCallback = null;
@@ -110,5 +118,4 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   Future<String> getRefreshToken() async {
     return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.refreshToken) ?? "";
   }
-
 }

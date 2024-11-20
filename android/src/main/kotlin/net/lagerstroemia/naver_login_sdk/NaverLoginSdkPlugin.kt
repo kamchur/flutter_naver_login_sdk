@@ -68,6 +68,11 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
             NaverLoginSdkBridge.profile(sink = sink)
           }
         }
+        NaverLoginSdkConstant.Key.refresh -> {
+          CoroutineScope(Dispatchers.Main).launch {
+            NaverLoginSdkBridge.refresh(sink = sink)
+          }
+        }
         NaverLoginSdkConstant.Key.version -> {
           result.success(NaverLoginSdkBridge.getVersion())
         }

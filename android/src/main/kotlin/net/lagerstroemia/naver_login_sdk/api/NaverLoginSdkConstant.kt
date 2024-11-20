@@ -10,6 +10,7 @@ object NaverLoginSdkConstant {
         const val logout: String = "logout"
         const val release: String = "release"
         const val profile: String = "profile"
+        const val refresh: String = "refresh"
 
         const val version: String = "version"
         const val tokenType: String = "tokenType"

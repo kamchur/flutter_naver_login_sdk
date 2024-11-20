@@ -29,103 +29,126 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        appBar: AppBar(
+          title: FittedBox(child: Text("JuHwan Flutter-NaverLogin Demo")),
+        ),
         body: SafeArea(
           child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
-                      onSuccess: () {
-                        Log.d("onSuccess..");
-                      },
-                      onFailure: (httpStatus, message) {
-                        Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
-                      },
-                      onError: (errorCode, message) {
-                        Log.e("onError.. errorCode:$errorCode, message:$message");
-                      },
-                    ));
-                  },
-                  child: Text("Login"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    NaverLoginSDK.profile(callback: ProfileCallback(
-                      onError: (errorCode, message) {
-                        Log.e("onError.. message:$message");
-                      },
-                      onFailure: (httpStatus, message) {
-                        Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
-                      },
-                      onSuccess: (resultCode, message, response) {
-                        Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
-                        final profile = NaverLoginProfile.fromJson(response: response);
-                        Log.i("profile:$profile");
-                      },
-                    ));
-                  },
-                  child: Text("Profile"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    NaverLoginSDK.logout();
-                  },
-                  child: Text("Logout"),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    NaverLoginSDK.release(callback: OAuthLoginCallback(
-                      onError: (errorCode, message) {
-                        Log.e("onError.. errorCode:$errorCode, message:$message");
-                      },
-                      onFailure: (httpStatus, message) {
-                        Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
-                      },
-                      onSuccess: () {
-                        Log.d("onSuccess..");
-                      },
-                    ));
-                  },
-                  child: Text("Release"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final String version = await NaverLoginSDK.getVersion();
-                    Log.i("getVersion():$version");
-                  },
-                  child: Text("Version"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final tokenType = await NaverLoginSDK.getTokenType();
-                    Log.i("tokenType:$tokenType");
-                  },
-                  child: Text("TokenType"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final expireAt = await NaverLoginSDK.getExpireAt();
-                    Log.i("expireAt:$expireAt");
-                  },
-                  child: Text("ExpireAt(Time)"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final accessToken = await NaverLoginSDK.getAccessToken();
-                    Log.i("accessToken:$accessToken");
-                  },
-                  child: Text("AccessToken"),
-                ),
-                ElevatedButton(
-                  onPressed: () async {
-                    final refreshToken = await NaverLoginSDK.getRefreshToken();
-                    Log.i("refreshToken:$refreshToken");
-                  },
-                  child: Text("RefreshToken"),
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 24.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
+                        onSuccess: () {
+                          Log.d("onSuccess..");
+                        },
+                        onFailure: (httpStatus, message) {
+                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+                        },
+                        onError: (errorCode, message) {
+                          Log.e("onError.. errorCode:$errorCode, message:$message");
+                        },
+                      ));
+                    },
+                    child: Text("Login"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      NaverLoginSDK.refresh(callback: OAuthLoginCallback(
+                        onSuccess: () {
+                          Log.d("onSuccess..");
+                        },
+                        onFailure: (httpStatus, message) {
+                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+                        },
+                        onError: (errorCode, message) {
+                          Log.e("onError.. errorCode:$errorCode, message:$message");
+                        },
+                      ));
+                    },
+                    child: Text("Refresh"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      NaverLoginSDK.profile(callback: ProfileCallback(
+                        onError: (errorCode, message) {
+                          Log.e("onError.. message:$message");
+                        },
+                        onFailure: (httpStatus, message) {
+                          Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
+                        },
+                        onSuccess: (resultCode, message, response) {
+                          Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
+                          final profile = NaverLoginProfile.fromJson(response: response);
+                          Log.i("profile:$profile");
+                        },
+                      ));
+                    },
+                    child: Text("Profile"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      NaverLoginSDK.logout();
+                    },
+                    child: Text("Logout"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      NaverLoginSDK.release(callback: OAuthLoginCallback(
+                        onError: (errorCode, message) {
+                          Log.e("onError.. errorCode:$errorCode, message:$message");
+                        },
+                        onFailure: (httpStatus, message) {
+                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+                        },
+                        onSuccess: () {
+                          Log.d("onSuccess..");
+                        },
+                      ));
+                    },
+                    child: Text("Release"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final String version = await NaverLoginSDK.getVersion();
+                      Log.i("getVersion():$version");
+                    },
+                    child: Text("Version"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final tokenType = await NaverLoginSDK.getTokenType();
+                      Log.i("tokenType:$tokenType");
+                    },
+                    child: Text("TokenType"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final expireAt = await NaverLoginSDK.getExpireAt();
+                      Log.i("expireAt:$expireAt");
+                    },
+                    child: Text("ExpireAt(Time)"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final accessToken = await NaverLoginSDK.getAccessToken();
+                      Log.i("accessToken:$accessToken");
+                    },
+                    child: Text("AccessToken"),
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final refreshToken = await NaverLoginSDK.getRefreshToken();
+                      Log.i("refreshToken:$refreshToken");
+                    },
+                    child: Text("RefreshToken"),
+                  ),
+                ],
+              ),
             ),
           ),
         ),

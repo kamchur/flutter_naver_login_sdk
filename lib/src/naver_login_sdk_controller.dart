@@ -59,6 +59,12 @@ class NaverLoginSDK {
     _instance.authenticate(callback: callback);
   }
 
+  static void refresh({OAuthLoginCallback? callback}) {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    _instance.refresh(callback: callback);
+  }
+
   static void logout() {
     assert(_isInitialize, _requestInitializeMessage);
 
@@ -106,7 +112,7 @@ class NaverLoginSDK {
 
   static Future<dynamic> getExpireAt() async {
     assert(_isInitialize, _requestInitializeMessage);
-    
+
     return await _instance.getExpireAt();
   }
 
