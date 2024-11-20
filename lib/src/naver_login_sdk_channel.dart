@@ -72,6 +72,10 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.logout);
   }
 
+  /// [release] function click continue.
+  ///
+  /// Android -> onFailure.. httpStatus:200, message:OK
+  /// iOS -> onError.. errorCode:1, message:PARAMETERNOTSET
   @override
   void release({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;

@@ -80,6 +80,12 @@ class _MyAppState extends State<MyApp> {
                       onError: (errorCode, message) {
                         Log.e("onError.. errorCode:$errorCode, message:$message");
                       },
+                      onFailure: (httpStatus, message) {
+                        Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+                      },
+                      onSuccess: () {
+                        Log.d("onSuccess..");
+                      },
                     ));
                   },
                   child: Text("Release"),

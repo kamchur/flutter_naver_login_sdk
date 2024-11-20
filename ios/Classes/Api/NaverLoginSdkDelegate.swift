@@ -5,9 +5,9 @@
 //  Created by Lagerstroemia-Indica on 11/20/24.
 //
 
+import Flutter
 import Foundation
 import NaverThirdPartyLogin
-import Flutter
 
 extension NaverLoginSdkPlugin {
     /// Login Success after [authenticate] function
@@ -25,8 +25,15 @@ extension NaverLoginSdkPlugin {
     /// Get RefreshToken after [getRefreshToken] function
     ///
     /// Refresh Success
+    ///
+    /// [authenticate] when is login state.
     public func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
         print("NaverLoginSdkDelegate.. oauth20Connection 'DidFinishRequest' ACTokenWithRefreshToken")
+        if self.sink != nil {
+            if lastCallMethod == NaverLoginSdkConstant.Key.authenticate {
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+            }
+        }
     }
     
     /// Remove Token only after [release] function

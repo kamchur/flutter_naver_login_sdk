@@ -7,6 +7,7 @@
 
 import Foundation
 import NaverThirdPartyLogin
+import Alamofire
 
 extension NaverLoginSdkPlugin {
     func initialize(args arguments: [String: String]?) {
@@ -82,11 +83,56 @@ extension NaverLoginSdkPlugin {
         self.naverConnection?.requestDeleteToken()
     }
     
+    /// resultCode, message, response
     func profile() {
-        if self.naverConnection != nil {
-            let tokenType = naverConnection!.tokenType
-            let accessToken = naverConnection!.accessToken
-            let url = "https://openapi.naver.com/v1/nid/me"
+        if self.naverConnection != nil && self.naverConnection!.isValidAccessTokenExpireTimeNow(){
+            guard let tokenType: String = naverConnection!.tokenType,
+                  let accessToken: String = naverConnection!.accessToken else { return }
+            guard let url = URL(string: "https://openapi.naver.com/v1/nid/me") else { return }
+            
+            let authroization = "\(tokenType) \(accessToken)"
+            
+            let request = AF.request(
+                url,
+                method: .get,
+                parameters: nil,
+                encoding: JSONEncoding.default,
+                headers: ["Authorization": authroization]
+            )
+            
+            request.responseDecodable(of: NaverUserProfile.self) { response in
+                // guard let result = response.value as? [String: Any] else { return }
+                // print("response:\(response)")
+                // print("response.result:\(response.result)")
+                switch response.result {
+                case .success(let profile):
+                    // print("success.. profile:\(profile)")
+                    let resultCode = profile.resultcode
+                    let message = profile.message
+                    let response = profile.response
+                    
+                    do {
+                        let encoder = JSONEncoder()
+                        encoder.keyEncodingStrategy = .convertToSnakeCase       // keys
+                        encoder.outputFormatting = .prettyPrinted       // JSON Formatting
+                        
+                        let jsonData = try encoder.encode(response)
+                        // print("jsonData:\(jsonData)")
+                        if let jsonString = String(data: jsonData, encoding: .utf8) {
+                            self.sink?([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: [resultCode, message, jsonString]])
+                        }
+                    } catch {
+                        self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [error.asAFError?.responseCode ?? 201, "\(error.localizedDescription)"]])
+                    }
+                case .failure(let error) :
+                    self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [error.responseCode ?? 201, "\(error.localizedDescription)"]])
+                }
+            }
+            
+        } else {
+            if self.sink != nil {
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [401, "Unauthorized"]])
+            }
         }
     }
     

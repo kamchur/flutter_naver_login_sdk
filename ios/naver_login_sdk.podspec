@@ -19,6 +19,9 @@ Flutter-Naver Login SDK
 
   # NaverLogin iOS SDK
   s.dependency 'naveridlogin-sdk-ios', '~> 4.2.3'
+  
+  # AlamoFire
+  s.dependency 'Alamofire', '~> 5.10.1'
 
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
