@@ -5,5 +5,9 @@ class NaverLoginSdkConstantKey {
   final String logout = "logout";
   final String release = "release";
 
-  final String getAccessToken = "getAccessToken";
+  final String version = "version";
+  final String tokenType = "tokenType";
+  final String expireAt = "expireAt";
+  final String accessToken = "accessToken";
+  final String refreshToken = "refreshToken";
 }

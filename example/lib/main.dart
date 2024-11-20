@@ -89,7 +89,42 @@ class _MyAppState extends State<MyApp> {
                     ));
                   },
                   child: Text("Release"),
-                )
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final String version = await NaverLoginSDK.getVersion();
+                    Log.i("getVersion():$version");
+                  },
+                  child: Text("Version"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final tokenType = await NaverLoginSDK.getTokenType();
+                    Log.i("tokenType:$tokenType");
+                  },
+                  child: Text("TokenType"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final expireAt = await NaverLoginSDK.getExpireAt();
+                    Log.i("expireAt:$expireAt");
+                  },
+                  child: Text("ExpireAt(Time)"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final accessToken = await NaverLoginSDK.getAccessToken();
+                    Log.i("accessToken:$accessToken");
+                  },
+                  child: Text("AccessToken"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    final refreshToken = await NaverLoginSDK.getRefreshToken();
+                    Log.i("refreshToken:$refreshToken");
+                  },
+                  child: Text("RefreshToken"),
+                ),
               ],
             ),
           ),

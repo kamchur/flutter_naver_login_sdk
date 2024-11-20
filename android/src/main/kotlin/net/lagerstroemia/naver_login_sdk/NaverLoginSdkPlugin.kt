@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.util.Log
 import androidx.annotation.NonNull
+import com.navercorp.nid.NaverIdLoginSDK
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
@@ -66,6 +67,21 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
           CoroutineScope(Dispatchers.Main).launch {
             NaverLoginSdkBridge.profile(sink = sink)
           }
+        }
+        NaverLoginSdkConstant.Key.version -> {
+          result.success(NaverLoginSdkBridge.getVersion())
+        }
+        NaverLoginSdkConstant.Key.tokenType -> {
+          result.success(NaverLoginSdkBridge.getTokenType())
+        }
+        NaverLoginSdkConstant.Key.expireAt -> {
+          result.success(NaverLoginSdkBridge.getExpireAt())
+        }
+        NaverLoginSdkConstant.Key.accessToken -> {
+          result.success(NaverLoginSdkBridge.getAccessToken())
+        }
+        NaverLoginSdkConstant.Key.refreshToken -> {
+          result.success(NaverLoginSdkBridge.getRefreshToken())
         }
         else -> result.notImplemented()
       }

@@ -11,6 +11,12 @@ object NaverLoginSdkConstant {
         const val release: String = "release"
         const val profile: String = "profile"
 
+        const val version: String = "version"
+        const val tokenType: String = "tokenType"
+        const val accessToken: String = "accessToken"
+        const val refreshToken: String = "refreshToken"
+        const val expireAt = "expireAt"     // accessTokenExpireDate
+
         object NaverLoginEventCallback {
             const val onSuccess: String = "onSuccess"
             const val onFailure: String = "onFailure"

@@ -9,8 +9,9 @@ import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 import io.flutter.plugin.common.EventChannel
+import net.lagerstroemia.naver_login_sdk.api.NaverLoginSdkProtocol
 
-object NaverLoginSdkBridge {
+object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     fun initialize(context: Context, args: Any) {
         Log.d("Crape", "NaverLoginSdkBridge.. initialize..")
         val params: Map<String, String>? = (args as? Map<*, *>?)?.entries
@@ -99,5 +100,25 @@ object NaverLoginSdkBridge {
                 )))
             }
         })
+    }
+
+    override fun getVersion(): String {
+        return NaverIdLoginSDK.getVersion()
+    }
+
+    override fun getTokenType(): String? {
+        return NaverIdLoginSDK.getTokenType()
+    }
+
+    override fun getExpireAt(): Any {
+        return NaverIdLoginSDK.getExpiresAt()
+    }
+
+    override fun getAccessToken(): String? {
+        return NaverIdLoginSDK.getAccessToken()
+    }
+
+    override fun getRefreshToken(): String? {
+        return NaverIdLoginSDK.getRefreshToken()
     }
 }

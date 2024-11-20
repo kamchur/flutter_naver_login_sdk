@@ -85,8 +85,30 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
+  Future<String> getVersion() async {
+    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.version) ?? "0";
+  }
+
+
+  @override
+  Future<String> getTokenType() async {
+    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.tokenType) ?? "";
+  }
+
+  @override
+  Future<dynamic> getExpireAt() async {
+    return await _methodChannel.invokeMethod(NaverLoginSdkConstant.key.expireAt);
+  }
+
+  @override
   Future<String> getAccessToken() async {
     // throw UnimplementedError();
-    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.getAccessToken) ?? "";
+    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.accessToken) ?? "";
   }
+
+  @override
+  Future<String> getRefreshToken() async {
+    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.refreshToken) ?? "";
+  }
+
 }

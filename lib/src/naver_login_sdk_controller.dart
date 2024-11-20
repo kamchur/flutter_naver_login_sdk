@@ -92,6 +92,24 @@ class NaverLoginSDK {
     _instance.profile(callback: callback);
   }
 
+  static Future<String> getVersion() async {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    return await _instance.getVersion();
+  }
+
+  static Future<String> getTokenType() async {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    return await _instance.getTokenType();
+  }
+
+  static Future<dynamic> getExpireAt() async {
+    assert(_isInitialize, _requestInitializeMessage);
+    
+    return await _instance.getExpireAt();
+  }
+
   static Future<String> getAccessToken() async {
     assert(_isInitialize, _requestInitializeMessage);
 
@@ -99,10 +117,8 @@ class NaverLoginSDK {
   }
 
   static Future<String> getRefreshToken() async {
-    return "";
-  }
+    assert(_isInitialize, _requestInitializeMessage);
 
-  static Future<String> getState() async {
-    return "";
+    return await _instance.getRefreshToken();
   }
 }
