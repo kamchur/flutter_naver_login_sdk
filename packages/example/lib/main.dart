@@ -30,7 +30,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: FittedBox(child: Text("Flutter-NaverLogin Demo")),
+          title: FittedBox(child: Text("Flutter-NaverLoginSDK Demo")),
         ),
         body: SafeArea(
           child: Center(
