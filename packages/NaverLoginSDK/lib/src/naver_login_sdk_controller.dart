@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter_logcat/flutter_logcat.dart';
 import 'package:naver_login_sdk/naver_login_sdk.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
@@ -50,24 +49,20 @@ class NaverLoginSDK {
   /// }
   /// ```
   ///
-  static Future<void> initialize(
+  static void initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,
-      String clientName = "Flutter NaverLogin"}) async {
+      String clientName = "Flutter NaverLogin"}) {
     assert(Platform.isAndroid || (Platform.isIOS && urlScheme != null),
         _requestUrlSchemeMessage);
-    try {
-      await _instance.initialize(
-          urlScheme: urlScheme,
-          clientId: clientId,
-          clientSecret: clientSecret,
-          clientName: clientName);
+    _instance.initialize(
+        urlScheme: urlScheme,
+        clientId: clientId,
+        clientSecret: clientSecret,
+        clientName: clientName);
 
-      _isInitialize = true;
-    } catch (error, stackTrace){
-      Log.e("\n$stackTrace");
-    }
+    _isInitialize = true;
   }
 
   /// Request 'Login'

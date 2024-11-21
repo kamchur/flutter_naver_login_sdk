@@ -33,8 +33,8 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
     /// Connect Delegate
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         // print("NaverLoginSdkPlugin.. open url:\(url)")
-        
-        if naverConnection != nil && url.absoluteString.contains(naverConnection!.serviceUrlScheme){
+   
+        if naverConnection != nil && (url.scheme == naverConnection!.serviceUrlScheme) {
             return naverConnection!.application(application, open: url, options: options)
         } else {
             return false

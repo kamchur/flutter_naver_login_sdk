@@ -1,7 +1,7 @@
 import '../events/naver_login_sdk_callback.dart';
 
 interface class NaverLoginSdkProtocol {
-  Future<void> initialize(
+  void initialize(
           {String? urlScheme,
           required String clientId,
           required String clientSecret,

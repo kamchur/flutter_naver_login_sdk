@@ -1,3 +1,6 @@
+## 0.0.4
+* Debugging execute other iOS app. 
+
 ## 0.0.3
 * Debugging iOS authenticate.
 
