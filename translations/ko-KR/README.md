@@ -1,4 +1,4 @@
-| [한국어](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/edit/main/translations/ko-KR/README.md) | [English](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/tree/main/packages/NaverLoginSDK) | [日本語](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/edit/main/translations/ja-JP/README.md) | <br/>
+| [한국어](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/translations/ko-KR/README.md) | [English](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/packages/NaverLoginSDK/README.md) | [日本語](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/translations/ja-JP/README.md) | <br/>
 
 [![Pub Version](https://img.shields.io/pub/v/naver_login_sdk?color=blue)](https://pub.dev/packages/naver_login_sdk)
 ![Static Badge](https://img.shields.io/badge/ios-v4.2.3-darkorange)
