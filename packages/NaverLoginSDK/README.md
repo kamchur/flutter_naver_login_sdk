@@ -201,5 +201,5 @@ Thank you for using the NaverLoginSDK package. <br/>
 I was genuinely happy while making this. Lastly, I will leave a few links to my humble activities.<br/><br/>
 [Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
-[Inflearn(Courses)](https://inflearn.com/users/@lagerstroemia)  <br/>
+[Inflearn(Courses)](https://inf.run/Bx58a)  <br/>
 [Youtube](https://www.youtube.com/@Lagerstroemia-Video)  <br/><br/>

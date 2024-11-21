@@ -212,5 +212,5 @@ NaverLoginSDKパッケージをご利用いただきありがとうございま�
 開発中、とても楽しかったです。さらに、私の少しばかりの活動リンクを記載して、締めくくろうと思います。<br/><br/>
 [Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
-[Inflearn(Courses)](https://inflearn.com/users/@lagerstroemia)  <br/>
+[Inflearn(Courses)](https://inf.run/Bx58a)  <br/>
 [Youtube](https://www.youtube.com/@Lagerstroemia-Video)  <br/><br/>
