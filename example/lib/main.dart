@@ -7,7 +7,7 @@ const clientSecret = 'dn5kOT07i7';
 const clientName = "Flutter NaverLogin";
 
 /// e-mail: b3xlon9@gmail.com
-/// Call me whenever
+/// Call me whenever Naver Team
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
 

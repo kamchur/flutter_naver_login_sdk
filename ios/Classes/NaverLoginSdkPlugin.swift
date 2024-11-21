@@ -32,8 +32,9 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
     
     /// Connect Delegate
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        print("NaverLoginSdkPlugin.. open url:\(url)")
-        if naverConnection != nil {
+        // print("NaverLoginSdkPlugin.. open url:\(url)")
+        
+        if naverConnection != nil && url.absoluteString.contains(naverConnection!.serviceUrlScheme){
             return naverConnection!.application(application, open: url, options: options)
         } else {
             return true
@@ -47,7 +48,7 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
         switch self.lastCallMethod {
         case NaverLoginSdkConstant.Key.initialize:
             if let params = call.arguments as? [String: String] {
-                print("NaverLoginSdkPlugin handle.. params:\(params)")
+                // print("NaverLoginSdkPlugin handle.. params:\(params)")
                 self.initialize(args: params)
             }
             
@@ -64,6 +65,29 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             break
         case NaverLoginSdkConstant.Key.profile:
             self.profile()
+            break
+        case NaverLoginSdkConstant.Key.refresh:
+            self.refresh()
+            break
+        case NaverLoginSdkConstant.Key.version:
+            result(self.getVersion())
+            break
+        case NaverLoginSdkConstant.Key.tokenType:
+            result(self.getTokenType())
+            break
+        case NaverLoginSdkConstant.Key.expireAt:
+            let seconds = if self.getExpireAt() != nil {
+                Int(self.getExpireAt()!.timeIntervalSince1970)
+            } else {
+                0
+            }
+            result(seconds)
+            break
+        case NaverLoginSdkConstant.Key.acessToken:
+            result(self.getAccessToken())
+            break
+        case NaverLoginSdkConstant.Key.refreshToken:
+            result(self.getRefreshToken())
             break
         default:
           result(FlutterMethodNotImplemented)

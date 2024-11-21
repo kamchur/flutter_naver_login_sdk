@@ -4,8 +4,8 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:flutter_logcat/flutter_logcat.dart';
 
-import '/src/events/naver_login_sdk_callback.dart';
-import '/src/naver_login_sdk_constant.dart';
+import 'events/naver_login_sdk_callback.dart';
+import 'naver_login_sdk_constant.dart';
 import 'naver_login_sdk_platform_interface.dart';
 
 /// An implementation of [NaverLoginSdkPlatform] that uses method channels.

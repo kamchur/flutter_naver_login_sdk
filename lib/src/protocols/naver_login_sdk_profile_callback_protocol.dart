@@ -1,4 +1,4 @@
-import '/src/naver_login_sdk_typedef.dart';
+import '../naver_login_sdk_typedef.dart';
 
 interface class NaverLoginSdkProfileCallbackProtocol {
   FunctionProfileSuccess? onSuccess = throw UnimplementedError('onSuccess() has not been implemented');

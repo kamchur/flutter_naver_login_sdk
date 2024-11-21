@@ -21,7 +21,7 @@ abstract class NaverLoginSdkBaseCallback {
           Function.apply(functionEvent, arguments);
         }
       } catch (e, stackTrace) {
-        Log.w("$stackTrace");
+        Log.w("\n$stackTrace");
       }
     }
   }

@@ -1,4 +1,4 @@
-import '/src/events/naver_login_sdk_callback.dart';
+import '../events/naver_login_sdk_callback.dart';
 
 interface class NaverLoginSdkProtocol {
   void initialize({

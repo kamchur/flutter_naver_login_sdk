@@ -60,6 +60,20 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
         }
     }
     
+    /// Success
+    /// > oauth20ConnectionDidFinishRequestACTokenWithRefreshToken
+    /// > NaverLoginSdkDelegate.. oauth20Connection 'DidFinishRequest' ACTokenWithRefreshToken
+    ///
+    /// Failure
+    /// > didFailWithError
+    /// > NaverLoginSdkDelegate.. oauth20Connection 'didFailWithError' : Optional(Error Domain=https://nid.naver.com Code=3 "invalid_request" UserInfo={NSLocalizedDescription=invalid_request})
+    /// 
+    /// When is not Login state.
+    /// > NaverLoginSdkDelegate.. oauthConnection 'didFailAuthorizationWithReceive' receiveType:THIRDPARTYLOGIN_RECEIVE_TYPE(rawValue: 1)
+    func refresh() {
+        self.naverConnection?.requestAccessTokenWithRefreshToken()
+    }
+    
     /// Remove Token client. (Some of)
     ///
     /// Called 'logout' when is not login > open url:flutterNaverLogin://thirdPartyLoginResult?version=2&code=1
