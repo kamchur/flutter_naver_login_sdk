@@ -2,7 +2,6 @@ package net.lagerstroemia.naver_login_sdk
 
 import android.app.Activity
 import android.content.Context
-import android.util.Log
 import androidx.annotation.NonNull
 import com.navercorp.nid.NaverIdLoginSDK
 
@@ -95,13 +94,14 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
 
   // EventChannel
   override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-    Log.v("Crape", "NaverLoginSDK.. onListen..")
+    // Log.v("Crape", "NaverLoginSDK.. onListen..")
     sink = events
   }
 
   // EventChannel
   override fun onCancel(arguments: Any?) {
-    Log.v("Crape", "NaverLoginSDK.. onCancel..")
+    // Log.v("Crape", "NaverLoginSDK.. onCancel..")
+    sink = null
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {

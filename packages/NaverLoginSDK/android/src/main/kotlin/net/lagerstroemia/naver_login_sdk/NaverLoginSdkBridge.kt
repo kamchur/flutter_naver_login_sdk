@@ -1,7 +1,6 @@
 package net.lagerstroemia.naver_login_sdk
 
 import android.content.Context
-import android.util.Log
 import com.google.gson.Gson
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthLogin
@@ -13,7 +12,7 @@ import net.lagerstroemia.naver_login_sdk.api.NaverLoginSdkProtocol
 
 object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     fun initialize(context: Context, args: Any) {
-        Log.d("Crape", "NaverLoginSdkBridge.. initialize..")
+        // Log.d("Crape", "NaverLoginSdkBridge.. initialize..")
         val params: Map<String, String>? = (args as? Map<*, *>?)?.entries
             ?.associate { element -> element.key.toString() to element.value.toString() }
             ?.toMutableMap()
@@ -60,7 +59,7 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
      * Delete TokenAPI
      * */
     suspend fun release(sink: EventChannel.EventSink?) {
-        Log.v("Crape", "release..")
+        // Log.v("Crape", "release..")
         NidOAuthLogin().callDeleteTokenApi(callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
@@ -80,7 +79,7 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
      * Getting User Profile
      * */
     suspend fun profile(sink: EventChannel.EventSink?) {
-        Log.v("Crape", "profile..")
+        // Log.v("Crape", "profile..")
         NidOAuthLogin().callProfileApi(callback = object: NidProfileCallback<NidProfileResponse> {
             override fun onError(errorCode: Int, message: String) {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))

@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_logcat/flutter_logcat.dart';
 import 'package:naver_login_sdk/naver_login_sdk.dart';
 
-const clientId = 'KH4kCq8piNCS57oematF';
-const clientSecret = 'dn5kOT07i7';
-const clientName = "Flutter NaverLogin";
+const urlScheme = 'flutterNaverLogin';      // Only iOS, Android was not used.
+const clientId = 'KH4kCq8piNCS57oematF';    // iOS - consumerKey
+const clientSecret = 'dn5kOT07i7';          // iOS - consumerSecret
+const clientName = "Flutter NaverLogin";    // iOS - appName
 
 /// e-mail: b3xlon9@gmail.com
 /// Call me whenever Naver Team
 void main() async {
   await WidgetsFlutterBinding.ensureInitialized();
 
-  // Init
-  NaverLoginSDK.initialize(urlScheme: "flutterNaverLogin", clientId: clientId, clientSecret: clientSecret);
+  // Init - Change your API Key.
+  NaverLoginSDK.initialize(urlScheme: urlScheme, clientId: clientId, clientSecret: clientSecret);
 
   runApp(const MyApp());
 }
