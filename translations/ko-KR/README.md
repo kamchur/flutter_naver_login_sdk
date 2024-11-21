@@ -90,7 +90,16 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 | API 21🔼  | 11🔼 |
 
 [Android개발가이드](https://developers.naver.com/docs/login/android/android.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다.<br/>
-Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠?
+Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br></br>
+만약에 proguard-rules.pro를 사용하신다면 다음과 같이 설정해주세요.
+```shell
+-keep public class com.nhn.android.naverlogin.** {
+public protected *;
+}
+-keep public class com.navercorp.nid.** {
+public *;
+}
+```
 
 <br/>
 
@@ -203,5 +212,5 @@ NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 만들면서 정말 행복했습니다. 추가적으로 저의 소소한 활동 링크를 남기고 마무리 하려고 합니다.<br/><br/>
 [Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
-[Inflearn(인프런강의)](https://inf.run/Bx58a)  <br/>
-[Youtube](https://www.youtube.com/@Lagerstroemia-Video)  <br/><br/>
+[Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
+[Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>

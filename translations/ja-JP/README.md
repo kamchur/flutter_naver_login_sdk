@@ -97,7 +97,16 @@ Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios
 | API 21🔼  | 11🔼 |
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
-Androidは特別な設定が必要ありません。本当に助かりますよね？ 😊
+Androidは特別な設定が必要ありません。本当に助かりますよね？ 😊 </br></br>
+もし proguard-rules.pro を使用する場合は、次のように設定してください。
+```shell
+-keep public class com.nhn.android.naverlogin.** {
+public protected *;
+}
+-keep public class com.navercorp.nid.** {
+public *;
+}
+```
 
 <br/>
 
@@ -212,5 +221,5 @@ NaverLoginSDKパッケージをご利用いただきありがとうございま�
 開発中、とても楽しかったです。さらに、私の少しばかりの活動リンクを記載して、締めくくろうと思います。<br/><br/>
 [Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
-[Inflearn(Courses)](https://inf.run/Bx58a)  <br/>
-[Youtube](https://www.youtube.com/@Lagerstroemia-Video)  <br/><br/>
+[Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
+[Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
