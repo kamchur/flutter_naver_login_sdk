@@ -5,8 +5,10 @@ import 'package:naver_login_sdk/naver_login_sdk.dart';
 import '/src/events/naver_login_sdk_callback.dart';
 import 'naver_login_sdk_platform_interface.dart';
 
-const String _requestInitializeMessage = 'Please execute NaverLoginSDK.initialize() function at first.';
-const String _requestUrlSchemeMessage = 'iOS Platform required \'urlScheme\' parameter.';
+const String _requestInitializeMessage =
+    'Please execute NaverLoginSDK.initialize() function at first.';
+const String _requestUrlSchemeMessage =
+    'iOS Platform required \'urlScheme\' parameter.';
 
 /// Singleton
 ///
@@ -23,7 +25,7 @@ const String _requestUrlSchemeMessage = 'iOS Platform required \'urlScheme\' par
 ///
 /// Thanks!
 class NaverLoginSDK {
-  NaverLoginSDK._internal();    // ._()
+  NaverLoginSDK._internal(); // ._()
 
   static final NaverLoginSdkPlatform _instance = NaverLoginSdkPlatform.instance;
 
@@ -48,25 +50,21 @@ class NaverLoginSDK {
   /// }
   /// ```
   ///
-  static void initialize({
-    String? urlScheme,
-    required String clientId,
-    required String clientSecret,
-    String clientName = "Flutter NaverLogin"
-  }) {
+  static void initialize(
+      {String? urlScheme,
+      required String clientId,
+      required String clientSecret,
+      String clientName = "Flutter NaverLogin"}) {
     assert(Platform.isAndroid || (Platform.isIOS && urlScheme != null),
-      _requestUrlSchemeMessage
-    );
+        _requestUrlSchemeMessage);
     _instance.initialize(
-      urlScheme: urlScheme,
-      clientId: clientId,
-      clientSecret: clientSecret,
-      clientName: clientName
-    );
+        urlScheme: urlScheme,
+        clientId: clientId,
+        clientSecret: clientSecret,
+        clientName: clientName);
 
     _isInitialize = true;
   }
-
 
   /// Request 'Login'
   ///

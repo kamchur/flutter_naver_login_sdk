@@ -17,26 +17,38 @@ class NaverLoginProfile {
   final String? _ci;
   final String? _encId;
 
-  NaverLoginProfile._(this._id, this._nickName, this._name, this._email, this._gender, this._age, this._birthDay, this._profileImage, this._birthYear, this._mobile, this._ci, this._encId);
+  NaverLoginProfile._(
+      this._id,
+      this._nickName,
+      this._name,
+      this._email,
+      this._gender,
+      this._age,
+      this._birthDay,
+      this._profileImage,
+      this._birthYear,
+      this._mobile,
+      this._ci,
+      this._encId);
 
   /// [response] : Android= NidProfile
   factory NaverLoginProfile.fromJson({required dynamic response}) {
-      final json = jsonDecode(response);
+    final json = jsonDecode(response);
 
-      return NaverLoginProfile._(
-          json[NaverLoginSdkConstantProfile.id],
-          json[NaverLoginSdkConstantProfile.nickName],
-          json[NaverLoginSdkConstantProfile.name],
-          json[NaverLoginSdkConstantProfile.email],
-          json[NaverLoginSdkConstantProfile.gender],
-          json[NaverLoginSdkConstantProfile.age],
-          json[NaverLoginSdkConstantProfile.birthDay],
-          json[NaverLoginSdkConstantProfile.profileImage],
-          json[NaverLoginSdkConstantProfile.birthYear],
-          json[NaverLoginSdkConstantProfile.mobile],
-          json[NaverLoginSdkConstantProfile.ci],
-          json[NaverLoginSdkConstantProfile.encId],
-      );
+    return NaverLoginProfile._(
+      json[NaverLoginSdkConstantProfile.id],
+      json[NaverLoginSdkConstantProfile.nickName],
+      json[NaverLoginSdkConstantProfile.name],
+      json[NaverLoginSdkConstantProfile.email],
+      json[NaverLoginSdkConstantProfile.gender],
+      json[NaverLoginSdkConstantProfile.age],
+      json[NaverLoginSdkConstantProfile.birthDay],
+      json[NaverLoginSdkConstantProfile.profileImage],
+      json[NaverLoginSdkConstantProfile.birthYear],
+      json[NaverLoginSdkConstantProfile.mobile],
+      json[NaverLoginSdkConstantProfile.ci],
+      json[NaverLoginSdkConstantProfile.encId],
+    );
   }
 
   // Getter

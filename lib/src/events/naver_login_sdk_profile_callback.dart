@@ -3,7 +3,8 @@ import '/src/events/naver_login_sdk_base_callback.dart';
 import '/src/naver_login_sdk_typedef.dart';
 import '/src/protocols/naver_login_sdk_profile_callback_protocol.dart';
 
-class ProfileCallback extends NaverLoginSdkBaseCallback implements NaverLoginSdkProfileCallbackProtocol {
+class ProfileCallback extends NaverLoginSdkBaseCallback
+    implements NaverLoginSdkProfileCallbackProtocol {
   @override
   FunctionError? onError;
 
@@ -13,11 +14,10 @@ class ProfileCallback extends NaverLoginSdkBaseCallback implements NaverLoginSdk
   @override
   FunctionProfileSuccess? onSuccess;
 
-  ProfileCallback({
-    required this.onError,
-    required this.onFailure,
-    required this.onSuccess
-  }) {
+  ProfileCallback(
+      {required this.onError,
+      required this.onFailure,
+      required this.onSuccess}) {
     // functionEvents.clear();
 
     functionEvents[NaverLoginSdkConstantProfileCallback.onError] = onError;

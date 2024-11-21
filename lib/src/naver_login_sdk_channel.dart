@@ -2,8 +2,6 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
-import 'package:flutter_logcat/flutter_logcat.dart';
-
 import 'events/naver_login_sdk_callback.dart';
 import 'naver_login_sdk_constant.dart';
 import 'naver_login_sdk_platform_interface.dart';
@@ -16,8 +14,10 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
   /// The method channel used to interact with the native platform.
   // @visibleForTesting
-  final MethodChannel _methodChannel = const MethodChannel(NaverLoginSdkConstant.channelNameMethod);
-  final EventChannel _eventChannel = const EventChannel(NaverLoginSdkConstant.channelNameEvent);
+  final MethodChannel _methodChannel =
+      const MethodChannel(NaverLoginSdkConstant.channelNameMethod);
+  final EventChannel _eventChannel =
+      const EventChannel(NaverLoginSdkConstant.channelNameEvent);
 
   /// Constructor
   NaverLoginSdkChannel() {
@@ -35,17 +35,22 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     profileCallback?.listen(event);
   }
 
-
   @override
-  void initialize({String? urlScheme, required String clientId, required String clientSecret, String clientName = "Flutter NaverLogin"}) async {
-    Log.v("initialize..");
+  void initialize(
+      {String? urlScheme,
+      required String clientId,
+      required String clientSecret,
+      String clientName = "Flutter NaverLogin"}) async {
+    // Log.v("initialize..");
     final Map<String, String> params = {
-      if (Platform.isIOS && urlScheme != null) NaverLoginSdkConstant.value.initialize.urlScheme: urlScheme,
+      if (Platform.isIOS && urlScheme != null)
+        NaverLoginSdkConstant.value.initialize.urlScheme: urlScheme,
       NaverLoginSdkConstant.value.initialize.clientId: clientId,
       NaverLoginSdkConstant.value.initialize.clientSecret: clientSecret,
       NaverLoginSdkConstant.value.initialize.clientName: clientName
     };
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.initialize, params);
+    await _methodChannel.invokeMethod<Void>(
+        NaverLoginSdkConstant.key.initialize, params);
   }
 
   @override
@@ -53,7 +58,8 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.authenticate);
+    await _methodChannel
+        .invokeMethod<Void>(NaverLoginSdkConstant.key.authenticate);
   }
 
   @override
@@ -94,28 +100,36 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
   @override
   Future<String> getVersion() async {
-    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.version) ?? "0";
+    return await _methodChannel
+            .invokeMethod<String>(NaverLoginSdkConstant.key.version) ??
+        "0";
   }
-
 
   @override
   Future<String> getTokenType() async {
-    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.tokenType) ?? "";
+    return await _methodChannel
+            .invokeMethod<String>(NaverLoginSdkConstant.key.tokenType) ??
+        "";
   }
 
   @override
   Future<dynamic> getExpireAt() async {
-    return await _methodChannel.invokeMethod(NaverLoginSdkConstant.key.expireAt);
+    return await _methodChannel
+        .invokeMethod(NaverLoginSdkConstant.key.expireAt);
   }
 
   @override
   Future<String> getAccessToken() async {
     // throw UnimplementedError();
-    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.accessToken) ?? "";
+    return await _methodChannel
+            .invokeMethod<String>(NaverLoginSdkConstant.key.accessToken) ??
+        "";
   }
 
   @override
   Future<String> getRefreshToken() async {
-    return await _methodChannel.invokeMethod<String>(NaverLoginSdkConstant.key.refreshToken) ?? "";
+    return await _methodChannel
+            .invokeMethod<String>(NaverLoginSdkConstant.key.refreshToken) ??
+        "";
   }
 }

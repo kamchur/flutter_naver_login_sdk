@@ -3,7 +3,8 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 import 'naver_login_sdk_channel.dart';
 
-abstract class NaverLoginSdkPlatform extends PlatformInterface implements NaverLoginSdkProtocol {
+abstract class NaverLoginSdkPlatform extends PlatformInterface
+    implements NaverLoginSdkProtocol {
   /// Constructs a NaverLoginSdkPlatform.
   NaverLoginSdkPlatform() : super(token: _token);
 
