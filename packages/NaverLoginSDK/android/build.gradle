@@ -1,0 +1,80 @@
+group = "net.lagerstroemia.naver_login_sdk"
+version = "1.0-SNAPSHOT"
+
+buildscript {
+    ext.kotlin_version = "1.8.22"
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("com.android.tools.build:gradle:8.1.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace = "net.lagerstroemia.naver_login_sdk"
+    }
+
+    compileSdk = 34
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main.java.srcDirs += "src/main/kotlin"
+        // test.java.srcDirs += "src/test/kotlin"
+    }
+
+    defaultConfig {
+        minSdk = 21
+    }
+
+    dependencies {
+        // testImplementation("org.jetbrains.kotlin:kotlin-test")
+        // testImplementation("org.mockito:mockito-core:5.0.0")
+        implementation("com.navercorp.nid:oauth:5.10.0")
+
+        // Coroutine
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.9.0")
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+
+        // Gson (Json is leak)
+        implementation("com.google.code.gson:gson:2.10.1")
+        // implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+    }
+
+    packagingOptions {
+        resources.excludes += "DebugProbesKt.bin"
+    }
+//    testOptions {
+//        unitTests.all {
+//            useJUnitPlatform()
+//
+//            testLogging {
+//               events "passed", "skipped", "failed", "standardOut", "standardError"
+//               outputs.upToDateWhen {false}
+//               showStandardStreams = true
+//            }
+//        }
+//    }
+}
