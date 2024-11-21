@@ -200,7 +200,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 
 ## About
 NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
-만들면서 정말 행복했습니다. 추가적으로 저의 약소한 활동 링크를 기입하고 마무리 하려고 합니다.<br/><br/>
+만들면서 정말 행복했습니다. 추가적으로 저의 소소한 활동 링크를 남기고 마무리 하려고 합니다.<br/><br/>
 [Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(인프런강의)](https://inflearn.com/users/@lagerstroemia)  <br/>
