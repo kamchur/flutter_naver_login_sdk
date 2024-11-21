@@ -36,7 +36,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void initialize(
+  Future<void> initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,

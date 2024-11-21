@@ -37,7 +37,7 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
         if naverConnection != nil && url.absoluteString.contains(naverConnection!.serviceUrlScheme){
             return naverConnection!.application(application, open: url, options: options)
         } else {
-            return true
+            return false
         }
     }
     
