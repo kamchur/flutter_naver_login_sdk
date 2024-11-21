@@ -98,7 +98,7 @@ Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 Androidは特別な設定が必要ありません。本当に助かりますよね？ 😊 </br></br>
-もし proguard-rules.pro を使用する場合は、次のように設定してください。
+もし `proguard-rules.pro` を使用する場合は、次のように設定してください。
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
 public protected *;

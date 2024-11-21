@@ -39,7 +39,7 @@ Select your application and find the Client ID and Client Secret in the "Overvie
 <img src="https://github.com/user-attachments/assets/3ccfb285-d2c4-4030-b635-922297fd8806" alt="img" width="300"> <br/><br/>
 Next, click on the API Settings tab and add environments under the "Login Open API Service Environment" section. Add both iOS and Android.
 For iOS, you must include a URL Scheme. <br/>
-(Snake or camel case is recommended. If unfamiliar, lowercase text will suffice.)
+(Snake or camel case is recommended. If unfamiliar, lowercase text will suffice)
 For the Download URL, you can enter anything if there is no specific website.<br/>
 <img src="https://github.com/user-attachments/assets/74f70f9f-1f24-4dec-ac02-474b39bcc34f" alt="iOS URL Scheme img" width="300">
 
@@ -89,7 +89,7 @@ The [URL Scheme] value should match the URL Scheme you added earlier.
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 For Android, no additional settings are required. Isn't that great? </br></br>
-If you are using proguard-rules.pro, please configure it as follows.
+If you are using `proguard-rules.pro`, please configure it as follows.
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
 public protected *;

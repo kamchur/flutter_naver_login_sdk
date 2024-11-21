@@ -41,7 +41,7 @@ flutter pub add naver_login_sdk
 <img src="https://github.com/user-attachments/assets/3ccfb285-d2c4-4030-b635-922297fd8806" alt="img" width="300"> <br/><br/>
 그리고, 'API설정'을 클릭한 뒤 로그인 오픈 API서비스 환경탭의 '환경추가'를 하시고 iOS와 Android를 추가해주세요. <br/>
 iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 합니다. <br/>
-(Snake또는 Camel기법을 권장합니다. 처음 들어보신다면 소문자로만 작성하셔도 무방합니다.)<br/>
+(Snake또는 Camel기법을 권장합니다. 처음 들어보신다면 소문자로만 작성하셔도 무방합니다)<br/>
 다운로드 URL은 특정사이트가 없다면 아무렇게나 입력하셔도 괜찮습니다. <br/>
 <img src="https://github.com/user-attachments/assets/74f70f9f-1f24-4dec-ac02-474b39bcc34f" alt="iOS URL Scheme img" width="300">
 
@@ -91,7 +91,7 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 
 [Android개발가이드](https://developers.naver.com/docs/login/android/android.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다.<br/>
 Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br></br>
-만약에 proguard-rules.pro를 사용하신다면 다음과 같이 설정해주세요.
+만약에 `proguard-rules.pro`를 사용하신다면 다음과 같이 설정해주세요.
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
 public protected *;

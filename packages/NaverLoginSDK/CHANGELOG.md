@@ -1,3 +1,7 @@
+## 0.0.5
+* Added describe proguard-rule.
+* Added Youtube describe video link.
+
 ## 0.0.4
 * Debugging execute other iOS app. 
 
