@@ -1,3 +1,5 @@
+import 'package:flutter_logcat/flutter_logcat.dart';
+
 abstract class NaverLoginSdkBaseCallback {
   /// Managing Functions.
   Map<String, Function?> functionEvents = {};
@@ -19,7 +21,7 @@ abstract class NaverLoginSdkBaseCallback {
           Function.apply(functionEvent, arguments);
         }
       } catch (e, stackTrace) {
-        // Log.w("\n$stackTrace");
+        Log.w("\n$stackTrace");
       }
     }
   }

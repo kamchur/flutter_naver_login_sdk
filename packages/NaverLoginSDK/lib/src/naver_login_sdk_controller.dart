@@ -138,6 +138,24 @@ class NaverLoginSDK {
   ///     Log.i("profile:$profile");
   ///   },
   /// ```
+  ///
+  /// -
+  ///
+  /// If you used [profile] function in [authenticate] function's [onSuccess] parameter.
+  /// You should define delay([Duration]) before [profile] function.
+  ///
+  /// ```dart
+  /// NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
+  ///    onSuccess: () {
+  ///       Future.delayed(Duration(seconds:1), () {
+  ///         NaverLoginSDK.profile(callback: ProfileCallback(
+  ///           ...
+  ///         ));
+  ///       })
+  ///     },)
+  ///     ...
+  ///     ..
+  /// ```
   static void profile({required ProfileCallback callback}) {
     assert(_isInitialize, _requestInitializeMessage);
 

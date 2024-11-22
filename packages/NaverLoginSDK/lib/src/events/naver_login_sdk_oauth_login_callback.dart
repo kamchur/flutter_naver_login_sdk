@@ -17,7 +17,10 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback
   @override
   FunctionError? onError;
 
-  OAuthLoginCallback({this.onSuccess, this.onFailure, this.onError}) {
+  OAuthLoginCallback(
+      {required this.onSuccess,
+      required this.onFailure,
+      required this.onError}) {
     // functionEvents.clear();
 
     functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onSuccess] =

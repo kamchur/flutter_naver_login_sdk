@@ -1,3 +1,6 @@
+## 0.0.7
+* Mod OAuthCallback parameters changed `required`.
+
 ## 0.0.6
 * Added describe for iOS AppDelegate's open-url override function.
 
