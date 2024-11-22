@@ -50,7 +50,7 @@ For the Download URL, you can enter anything if there is no specific website.<br
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0🔼 | Xcode 9.0🔼 |
+| 9.0 🔼 | Xcode 9.0 🔼 |
 
 Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios/ios.md) for better understanding. <br/><br/>
 Add the following code to the Info.plist file of your iOS project. <br/>
@@ -82,10 +82,30 @@ The [URL Scheme] value should match the URL Scheme you added earlier.
 ```
 <br/>
 
+If you are using the overridden function `func application(_ app: UIApplication, open url: URL, options:...)` in your AppDelegate, <br/>
+you can check the URL Scheme or return it as follows. <br/>
+
+If there are no special conditions, simply return with `super.application(...)` without checking the URL Scheme.
+
+#### AppDelegate.swift
+```swift
+    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
+        if url.scheme == "[URL Scheme]" {
+            return super.application(app, open: url, options: options)
+        }
+        
+        ...
+
+        return true
+    }
+```
+
+<br/>
+
 ## Android
 | Target SDK | JDK |
 |------------|-----|
-| API 21🔼  | 11🔼 |
+| API 21 🔼  | 11 🔼 |
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 For Android, no additional settings are required. Isn't that great? </br></br>
@@ -113,8 +133,13 @@ To use the NaverLoginSDK package, you must first run the `initialize()` function
 The `urlScheme` parameter should be entered if developing for iOS.
 ```dart
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
-  NaverLoginSDK.initialize(urlScheme: urlScheme, clientId: clientId, clientSecret: clientSecret);
+  WidgetsFlutterBinding.ensureInitialized();
+  NaverLoginSDK.initialize(
+    urlScheme: urlScheme, 
+    clientId: clientId, 
+    clientSecret: clientSecret,
+    clientName: clientName
+  );
 
   runApp(const MyApp());
 }
@@ -212,3 +237,5 @@ I was genuinely happy while making this. Lastly, I will leave a few links to my 
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
+
+Thanks🩵💙

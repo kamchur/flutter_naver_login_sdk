@@ -1,6 +1,6 @@
 name: naver_login_sdk
 description: "Flutter-Naver Login SDK. Naver is a leading web service in South Korea."
-version: 0.0.5
+version: 0.0.6
 repository: https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/tree/main/packages/NaverLoginSDK
 
 environment:

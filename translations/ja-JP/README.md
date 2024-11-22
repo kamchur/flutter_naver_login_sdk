@@ -59,7 +59,7 @@ iOSの場合は、Androidとは異なり**「URLスキーム」** を必ず追�
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0🔼 | Xcode 9.0🔼 |
+| 9.0 🔼 | Xcode 9.0 🔼 |
 
 Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios/ios.md) for better understanding. <br/><br/>
 作業するiOSのInfo.plistファイルに、以下のように追記してください。<br/>
@@ -91,10 +91,30 @@ Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios
 ```
 <br/>
 
+AppDelegateで `func application(_ app: UIApplication, open url: URL, options:...)` をオーバーライド関数として使用している場合、 <br/>
+URL Schemeを確認するか、次のようにreturnしてください。  <br/>
+
+特別な理由がない限り、URL Schemeを確認せずに `super.application(...)` でreturnすれば問題ありません。
+
+#### AppDelegate.swift
+```swift
+    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
+        if url.scheme == "[URL Scheme]" {
+            return super.application(app, open: url, options: options)
+        }
+        
+        ...
+
+        return true
+    }
+```
+
+<br/>
+
 ## Android
 | Target SDK | JDK |
 |------------|-----|
-| API 21🔼  | 11🔼 |
+| API 21 🔼  | 11 🔼 |
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 Androidは特別な設定が必要ありません。本当に助かりますよね？ 😊 </br></br>
@@ -122,8 +142,13 @@ NaverLoginSDKパッケージを使用するには、まず`main()`関数内で�
 `urlScheme`パラメーターは、iOSを開発する場合に記入してください。
 ```dart
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
-  NaverLoginSDK.initialize(urlScheme: urlScheme, clientId: clientId, clientSecret: clientSecret);
+  WidgetsFlutterBinding.ensureInitialized();
+  NaverLoginSDK.initialize(
+    urlScheme: urlScheme, 
+    clientId: clientId, 
+    clientSecret: clientSecret,
+    clientName: clientName
+  );
 
   runApp(const MyApp());
 }
@@ -223,3 +248,5 @@ NaverLoginSDKパッケージをご利用いただきありがとうございま�
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
+
+ありがとな🩵💙

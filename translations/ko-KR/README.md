@@ -52,7 +52,7 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0🔼 | Xcode 9.0🔼 |
+| 9.0 🔼 | Xcode 9.0 🔼 |
 
 [iOS개발가이드](https://developers.naver.com/docs/login/ios/ios.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다. <br/><br/>
 작업하시려는 ios의 Info.plist파일에 아래와 같이 추가해주세요. <br/>
@@ -84,10 +84,29 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 ```
 <br/>
 
+AppDelegate에서 `func application(_ app: UIApplication, open url: URL, options:...)`오버라이드 함수를 사용하고 있다면 <br/>
+URL Scheme를 확인하거나 다음과 같이 return해주세요. <br/>
+특별한 일이 없다면 URL Scheme을 확인하지 않고 `super.application(...)`으로 return하면 되겠습니다.
+
+#### AppDelegate.swift
+```swift
+    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
+        if url.scheme == "[URL Scheme]" {
+            return super.application(app, open: url, options: options)
+        }
+        
+        ...
+
+        return true
+    }
+```
+
+<br/>
+
 ## Android
 | Target SDK | JDK |
 |------------|-----|
-| API 21🔼  | 11🔼 |
+| API 21 🔼  | 11 🔼 |
 
 [Android개발가이드](https://developers.naver.com/docs/login/android/android.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다.<br/>
 Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br></br>
@@ -115,8 +134,13 @@ NaverLoginSDK패키지를 사용하기 위해서 가장 먼저 `main()`함수에
 `urlScheme`파라메터는 iOS를 개발한다면 기입해주시면 되겠습니다.
 ```dart
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
-  NaverLoginSDK.initialize(urlScheme: urlScheme, clientId: clientId, clientSecret: clientSecret);
+  WidgetsFlutterBinding.ensureInitialized();
+  NaverLoginSDK.initialize(
+    urlScheme: urlScheme, 
+    clientId: clientId, 
+    clientSecret: clientSecret,
+    clientName: clientName
+  );
 
   runApp(const MyApp());
 }
@@ -186,6 +210,9 @@ NaverLoginSDK.profile(callback: ProfileCallback(
     Log.i("profile:$profile");
   },
 ));
+
+<br/>
+
 ```
 
 <br/>
@@ -214,3 +241,5 @@ NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
+
+감사합니다🩵💙

@@ -10,10 +10,15 @@ const clientName = "Flutter NaverLogin";    // iOS - appName
 /// e-mail: b3xlon9@gmail.com
 /// Call me whenever Naver Team
 void main() async {
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
 
   // Init - Change your API Key.
-  NaverLoginSDK.initialize(urlScheme: urlScheme, clientId: clientId, clientSecret: clientSecret);
+  NaverLoginSDK.initialize(
+    urlScheme: urlScheme,
+    clientId: clientId,
+    clientSecret: clientSecret,
+    clientName: clientName
+  );
 
   runApp(const MyApp());
 }
