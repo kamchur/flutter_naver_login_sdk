@@ -59,28 +59,28 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 [URL Scheme]값은 위에서 추가한 URL Scheme과 동일하게 입력하면 되겠습니다.
 #### Info.plist
 ```xml
-    <!--Url Scheme Setting-->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>[URL Scheme]</string>
-            </array>
-        </dict>
-    </array>
-    <!--Query Scheme Setting-->
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>naversearchapp</string>
-        <string>naversearchthirdlogin</string>
-    </array>
+  <!--Url Scheme Setting-->
+  <key>CFBundleURLTypes</key>
+  <array>
+      <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+              <string>[URL Scheme]</string>
+          </array>
+      </dict>
+  </array>
+  <!--Query Scheme Setting-->
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+      <string>naversearchapp</string>
+      <string>naversearchthirdlogin</string>
+  </array>
 
-    <!--Always IPhone Device(Not used MAC)-->
-    <key>LSRequiresIPhoneOS</key>
-    <true/>
+  <!--Always IPhone Device(Not used MAC)-->
+  <key>LSRequiresIPhoneOS</key>
+  <true/>
 ```
 <br/>
 
@@ -90,15 +90,15 @@ URL Scheme를 확인하거나 다음과 같이 return해주세요. <br/>
 
 #### AppDelegate.swift
 ```swift
-    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
-        if url.scheme == "[URL Scheme]" {
-            return super.application(app, open: url, options: options)
-        }
-        
-        ...
+  override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
+      if url.scheme == "[URL Scheme]" {
+          return super.application(app, open: url, options: options)
+      }
+      
+      ...
 
-        return true
-    }
+      return true
+  }
 ```
 
 <br/>
@@ -160,7 +160,7 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   },
   onError: (errorCode, message) {
     Log.e("onError.. errorCode:$errorCode, message:$message");
-  },
+  }
 ));
 ```
 <br/>
@@ -178,15 +178,15 @@ NaverLoginSDK.logout();
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(
-  onError: (errorCode, message) {
-    Log.e("onError.. errorCode:$errorCode, message:$message");
+  onSuccess: () {
+    Log.d("onSuccess..");
   },
   onFailure: (httpStatus, message) {
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
-  onSuccess: () {
-    Log.d("onSuccess..");
-  },
+  onError: (errorCode, message) {
+    Log.e("onError.. errorCode:$errorCode, message:$message");
+  }
 ));
 ```
 
@@ -198,21 +198,18 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 획득은 `NaverLoginProfile.fromJson(response: )`형태로 받으시면 자동으로 파싱되어 유저 데이터를 활용할 수 있도록 하였습니다. <br/>
 ```dart
 NaverLoginSDK.profile(callback: ProfileCallback(
-  onError: (errorCode, message) {
-    Log.e("onError.. message:$message");
-  },
-  onFailure: (httpStatus, message) {
-    Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
-  },
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
     final profile = NaverLoginProfile.fromJson(response: response);
     Log.i("profile:$profile");
   },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
+  },
+  onError: (errorCode, message) {
+    Log.e("onError.. message:$message");
+  }
 ));
-
-<br/>
-
 ```
 
 <br/>
@@ -242,4 +239,4 @@ NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 [Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
 
-감사합니다🩵💙
+감사합니다💙

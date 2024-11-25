@@ -57,28 +57,28 @@ Add the following code to the Info.plist file of your iOS project. <br/>
 The [URL Scheme] value should match the URL Scheme you added earlier.
 #### Info.plist
 ```xml
-    <!--Url Scheme Setting-->
-    <key>CFBundleURLTypes</key>
-    <array>
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
-                <string>[URL Scheme]</string>
-            </array>
-        </dict>
-    </array>
-    <!--Query Scheme Setting-->
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-        <string>naversearchapp</string>
-        <string>naversearchthirdlogin</string>
-    </array>
+  <!--Url Scheme Setting-->
+  <key>CFBundleURLTypes</key>
+  <array>
+      <dict>
+          <key>CFBundleTypeRole</key>
+          <string>Editor</string>
+          <key>CFBundleURLSchemes</key>
+          <array>
+              <string>[URL Scheme]</string>
+          </array>
+      </dict>
+  </array>
+  <!--Query Scheme Setting-->
+  <key>LSApplicationQueriesSchemes</key>
+  <array>
+      <string>naversearchapp</string>
+      <string>naversearchthirdlogin</string>
+  </array>
 
-    <!--Always IPhone Device(Not used MAC)-->
-    <key>LSRequiresIPhoneOS</key>
-    <true/>
+  <!--Always IPhone Device(Not used MAC)-->
+  <key>LSRequiresIPhoneOS</key>
+  <true/>
 ```
 <br/>
 
@@ -89,15 +89,15 @@ If there are no special conditions, simply return with `super.application(...)` 
 
 #### AppDelegate.swift
 ```swift
-    override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
-        if url.scheme == "[URL Scheme]" {
-            return super.application(app, open: url, options: options)
-        }
-        
-        ...
+  override func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {        
+      if url.scheme == "[URL Scheme]" {
+          return super.application(app, open: url, options: options)
+      }
+      
+      ...
 
-        return true
-    }
+      return true
+  }
 ```
 
 <br/>
@@ -159,7 +159,7 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   },
   onError: (errorCode, message) {
     Log.e("onError.. errorCode:$errorCode, message:$message");
-  },
+  }
 ));
 ```
 <br/>
@@ -177,15 +177,15 @@ NaverLoginSDK.logout();
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(
-  onError: (errorCode, message) {
-    Log.e("onError.. errorCode:$errorCode, message:$message");
+  onSuccess: () {
+    Log.d("onSuccess..");
   },
   onFailure: (httpStatus, message) {
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
-  onSuccess: () {
-    Log.d("onSuccess..");
-  },
+  onError: (errorCode, message) {
+    Log.e("onError.. errorCode:$errorCode, message:$message");
+  }
 ));
 ```
 
@@ -197,17 +197,17 @@ User information is delivered via the `ProfileCallback` listener, and you can us
 Use `NaverLoginProfile.fromJson(response:)` to automatically parse and utilize user data.
 ```dart
 NaverLoginSDK.profile(callback: ProfileCallback(
-  onError: (errorCode, message) {
-    Log.e("onError.. message:$message");
-  },
-  onFailure: (httpStatus, message) {
-    Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
-  },
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
     final profile = NaverLoginProfile.fromJson(response: response);
     Log.i("profile:$profile");
   },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpsStatus:$httpStatus, message:$message");
+  },
+  onError: (errorCode, message) {
+    Log.e("onError.. message:$message");
+  }
 ));
 ```
 
@@ -238,4 +238,4 @@ I was genuinely happy while making this. Lastly, I will leave a few links to my 
 [Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
 
-Thanks🩵💙
+Thanks💙

@@ -1,3 +1,6 @@
+## 0.0.8
+* Mod Changed CallbackEvents only `onSuccess` function had `required` among parameters.
+
 ## 0.0.7
 * Mod OAuthCallback parameters changed `required`.
 

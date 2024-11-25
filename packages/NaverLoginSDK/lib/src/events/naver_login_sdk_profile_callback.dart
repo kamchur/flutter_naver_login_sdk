@@ -14,14 +14,12 @@ class ProfileCallback extends NaverLoginSdkBaseCallback
   @override
   FunctionProfileSuccess? onSuccess;
 
-  ProfileCallback(
-      {required this.onError,
-      required this.onFailure,
-      required this.onSuccess}) {
+  /// required
+  ProfileCallback({required this.onSuccess, this.onFailure, this.onError}) {
     // functionEvents.clear();
 
-    functionEvents[NaverLoginSdkConstantProfileCallback.onError] = onError;
-    functionEvents[NaverLoginSdkConstantProfileCallback.onFailure] = onFailure;
     functionEvents[NaverLoginSdkConstantProfileCallback.onSuccess] = onSuccess;
+    functionEvents[NaverLoginSdkConstantProfileCallback.onFailure] = onFailure;
+    functionEvents[NaverLoginSdkConstantProfileCallback.onError] = onError;
   }
 }
