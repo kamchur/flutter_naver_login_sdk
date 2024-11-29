@@ -36,7 +36,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void initialize(
+  Future<void> initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,
@@ -54,7 +54,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void authenticate({OAuthLoginCallback? callback}) async {
+  Future<void> authenticate({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 
@@ -63,7 +63,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void refresh({OAuthLoginCallback? callback}) async {
+  Future<void> refresh({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 
@@ -71,7 +71,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void profile({required ProfileCallback callback}) async {
+  Future<void> profile({required ProfileCallback callback}) async {
     profileCallback = callback;
     oauthLoginCallback = null;
 
@@ -79,7 +79,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  void logout() async {
+  Future<void> logout() async {
     oauthLoginCallback = null;
     profileCallback = null;
 
@@ -91,7 +91,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   /// Android -> onFailure.. httpStatus:200, message:OK
   /// iOS -> onError.. errorCode:1, message:PARAMETERNOTSET
   @override
-  void release({OAuthLoginCallback? callback}) async {
+  Future<void> release({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 

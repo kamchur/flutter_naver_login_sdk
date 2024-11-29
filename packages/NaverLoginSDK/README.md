@@ -112,10 +112,10 @@ For Android, no additional settings are required. Isn't that great? </br></br>
 If you are using `proguard-rules.pro`, please configure it as follows.
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
-public protected *;
+  public protected *;
 }
 -keep public class com.navercorp.nid.** {
-public *;
+  public *;
 }
 ```
 
@@ -233,7 +233,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ## About
 Thank you for using the NaverLoginSDK package. <br/>
 I was genuinely happy while making this. Lastly, I will leave a few links to my humble activities.<br/><br/>
-[Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
+[Repository(GitHub)](https://github.com/hamhoney)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>

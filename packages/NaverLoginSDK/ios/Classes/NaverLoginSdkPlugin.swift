@@ -50,24 +50,30 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             if let params = call.arguments as? [String: String] {
                 // print("NaverLoginSdkPlugin handle.. params:\(params)")
                 self.initialize(args: params)
+                result(nil)
             }
             
         case NaverLoginSdkConstant.Key.authenticate:
             self.authenticate()
+            result(nil)
             break
         // case "getPlatformVersion":
         //  result("iOS " + UIDevice.current.systemVersion)
         case NaverLoginSdkConstant.Key.logout:
             self.logout()
+            result(nil)
             break
         case NaverLoginSdkConstant.Key.release:
             self.release()
+            result(nil)
             break
         case NaverLoginSdkConstant.Key.profile:
             self.profile()
+            result(nil)
             break
         case NaverLoginSdkConstant.Key.refresh:
             self.refresh()
+            result(nil)         // Future<void>
             break
         case NaverLoginSdkConstant.Key.version:
             result(self.getVersion())

@@ -49,14 +49,14 @@ class NaverLoginSDK {
   /// }
   /// ```
   ///
-  static void initialize(
+  static Future<void> initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,
-      String clientName = "Flutter NaverLogin"}) {
+      String clientName = "Flutter NaverLogin"}) async {
     assert(Platform.isAndroid || (Platform.isIOS && urlScheme != null),
         _requestUrlSchemeMessage);
-    _instance.initialize(
+    await _instance.initialize(
         urlScheme: urlScheme,
         clientId: clientId,
         clientSecret: clientSecret,
@@ -72,36 +72,36 @@ class NaverLoginSDK {
   /// -
   ///
   /// Required execute after [initialize] function.
-  static void authenticate({OAuthLoginCallback? callback}) {
+  static Future<void> authenticate({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    _instance.authenticate(callback: callback);
+    await _instance.authenticate(callback: callback);
   }
 
   /// Refresh your accessToken
   ///
   /// expireAt default 3600(s).
-  static void refresh({OAuthLoginCallback? callback}) {
+  static Future<void> refresh({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    _instance.refresh(callback: callback);
+    await _instance.refresh(callback: callback);
   }
 
   /// Logout your local account.
   ///
   /// If you want more clear access that you have to use [release] function.
-  static void logout() {
+  static Future<void> logout() async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    _instance.logout();
+    await _instance.logout();
     // _isInitialize = false;
   }
 
   /// Break Off, remove token client and server.
-  static void release({OAuthLoginCallback? callback}) {
+  static Future<void> release({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    _instance.release(callback: callback);
+    await _instance.release(callback: callback);
     // _isInitialize = false;
   }
 
@@ -156,10 +156,10 @@ class NaverLoginSDK {
   ///     ...
   ///     ..
   /// ```
-  static void profile({required ProfileCallback callback}) {
+  static Future<void> profile({required ProfileCallback callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    _instance.profile(callback: callback);
+    await _instance.profile(callback: callback);
   }
 
   /// Library Version
@@ -200,5 +200,12 @@ class NaverLoginSDK {
     assert(_isInitialize, _requestInitializeMessage);
 
     return await _instance.getRefreshToken();
+  }
+
+  /// 2024-11-29-Fri, Login Check
+  ///
+  /// First, Checked AccessToken and text state.
+  static Future<bool> get isLogin async {
+    return (await getAccessToken()).isNotEmpty;
   }
 }

@@ -113,10 +113,10 @@ Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br
 만약에 `proguard-rules.pro`를 사용하신다면 다음과 같이 설정해주세요.
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
-public protected *;
+  public protected *;
 }
 -keep public class com.navercorp.nid.** {
-public *;
+  public *;
 }
 ```
 
@@ -234,7 +234,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ## About
 NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 만들면서 정말 행복했습니다. 추가적으로 저의 소소한 활동 링크를 남기고 마무리 하려고 합니다.<br/><br/>
-[Repository(GitHub)](https://github.com/Lagerstroemia-Indica)  <br/>
+[Repository(GitHub)](https://github.com/hamhoney)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
 [Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
