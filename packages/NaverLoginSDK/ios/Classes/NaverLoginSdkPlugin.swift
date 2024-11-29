@@ -54,8 +54,10 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             }
             
         case NaverLoginSdkConstant.Key.authenticate:
-            self.authenticate()
-            result(nil)
+            DispatchQueue.global().async {
+                self.authenticate()
+                result(nil)
+            }
             break
         // case "getPlatformVersion":
         //  result("iOS " + UIDevice.current.systemVersion)
@@ -64,16 +66,22 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             result(nil)
             break
         case NaverLoginSdkConstant.Key.release:
-            self.release()
-            result(nil)
+            DispatchQueue.global().async {
+                self.release()
+                result(nil)
+            }
             break
         case NaverLoginSdkConstant.Key.profile:
-            self.profile()
-            result(nil)
+            DispatchQueue.global().async {
+                self.profile()
+                result(nil)
+            }
             break
         case NaverLoginSdkConstant.Key.refresh:
-            self.refresh()
-            result(nil)         // Future<void>
+            DispatchQueue.global().async {
+                self.refresh()
+                result(nil)         // Future<void>
+            }
             break
         case NaverLoginSdkConstant.Key.version:
             result(self.getVersion())

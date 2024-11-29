@@ -48,28 +48,34 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
       when (call.method) {
         NaverLoginSdkConstant.Key.initialize -> {
           NaverLoginSdkBridge.initialize(otherActivity, call.arguments)
+          result.success(null)
         }
         NaverLoginSdkConstant.Key.authenticate -> {
             CoroutineScope(Dispatchers.Main).launch {
               NaverLoginSdkBridge.authenticate(otherActivity, sink = sink)
+              result.success(null)
             }
         }
         NaverLoginSdkConstant.Key.logout -> {
           NaverLoginSdkBridge.logout()
+          result.success(null)
         }
         NaverLoginSdkConstant.Key.release -> {
           CoroutineScope(Dispatchers.Main).launch {
             NaverLoginSdkBridge.release(sink = sink)
+            result.success(null)
           }
         }
         NaverLoginSdkConstant.Key.profile -> {
           CoroutineScope(Dispatchers.Main).launch {
             NaverLoginSdkBridge.profile(sink = sink)
+            result.success(null)
           }
         }
         NaverLoginSdkConstant.Key.refresh -> {
           CoroutineScope(Dispatchers.Main).launch {
             NaverLoginSdkBridge.refresh(sink = sink)
+            result.success(null)
           }
         }
         NaverLoginSdkConstant.Key.version -> {

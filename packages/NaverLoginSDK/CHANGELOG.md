@@ -1,3 +1,6 @@
+## 0.0.9
+* Mod Wrapped Future to void functions.
+
 ## 0.0.8
 * Mod Changed CallbackEvents only `onSuccess` function had `required` among parameters.
 
