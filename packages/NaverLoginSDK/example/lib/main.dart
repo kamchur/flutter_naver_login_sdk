@@ -153,21 +153,6 @@ class _MyAppState extends State<MyApp> {
                     },
                     child: Text("RefreshToken"),
                   ),
-
-                  NaverLoginButton(
-                    onPressed: () {
-
-                    },
-                    style: NaverButtonStyle(
-                      mode: NaverButtonMode.green,
-                    ),
-                    height: 80,
-                    fit: BoxFit.contain,
-                    splashColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    useBubbleEffect: true,
-                    bubbleEffect: PictureBubbleEffect.shrink,
-                  )
                 ],
               ),
             ),

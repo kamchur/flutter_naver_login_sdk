@@ -11,8 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  flutter_logcat: ^1.2.6
-  picture_button: ^0.0.10
+  flutter_logcat: ^1.2.8
+  picture_button: ^0.1.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -20,9 +20,13 @@ dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/en/
-    - assets/kr/bar/
-    - assets/kr/icon/
+    - assets/en/dark/
+    - assets/en/green/
+    - assets/en/logout/
+    - assets/en/white/
+    - assets/kr/dark/
+    - assets/kr/green/
+    - assets/kr/white/
     - assets/kr/logout/
 
 
