@@ -1,7 +1,7 @@
 name: naver_login_sdk
 description: "Flutter-Naver Login SDK. Naver is a leading web service in South Korea."
 version: 0.0.9
-repository: https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/tree/main/packages/NaverLoginSDK
+repository: https://github.com/hamhoney/flutter_naver_login_sdk/tree/main/packages/NaverLoginSDK
 
 environment:
   sdk: ^3.5.3
@@ -16,6 +16,9 @@ dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
+screenshots:
+  - description: Naver Open Resource
+    path: assets/kr/btn_rectangle_icon.png
 
 # The following section is specific to Flutter packages.
 flutter:
