@@ -1,8 +1,8 @@
 | [한국어](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/translations/ko-KR/README.md) | [English](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/packages/NaverLoginSDK/README.md) | [日本語](https://github.com/Lagerstroemia-Indica/flutter_naver_login_sdk/blob/main/translations/ja-JP/README.md) | <br/>
 
 [![Pub Version](https://img.shields.io/pub/v/naver_login_sdk?color=blue)](https://pub.dev/packages/naver_login_sdk)
-![Static Badge](https://img.shields.io/badge/ios-v4.2.3-darkorange)
-![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)
+[![Static Badge](https://img.shields.io/badge/ios-v4.2.3-darkorange)](https://github.com/naver/naveridlogin-sdk-ios)
+[![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)
 
 
 # NaverLoginSDK
@@ -233,7 +233,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 
 ## Widgets
 <a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**Naver Login Button Guide**</a> Ref. <br/>
-`NaverLoginButton` & `NaverLogoutButton` Widgets extended by <a href="" target="_blank">**PictureButton**</a>Widget. <br/>
+`NaverLoginButton` & `NaverLogoutButton` Widgets extended by <a href="https://pub.dev/packages/picture_button" target="_blank">**PictureButton**</a>Widget. <br/>
 (`PictureButton` was very smart widget. It could calculate image size)
 
 ### NaverLoginButton

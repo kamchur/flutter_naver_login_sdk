@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import '/src/consts/naver_login_sdk_constant_profile.dart';
 
-/// for Android.
+/// User Profile
+///
+/// Maybe you will come here to get [id].
+///
 class NaverLoginProfile {
   final String? _id;
   final String? _nickName;
