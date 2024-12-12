@@ -1,3 +1,7 @@
+## 1.0.1
+* Added Login/Logout Button Widgets.
+* Stable.
+
 ## 0.0.9
 * Mod Wrapped Future to void functions.
 

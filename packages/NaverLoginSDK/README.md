@@ -232,7 +232,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 <br/>
 
 ## Widgets
-<a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**Naver Login Button Guide**</a>Ref. <br/>
+<a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**Naver Login Button Guide**</a> Ref. <br/>
 `NaverLoginButton` & `NaverLogoutButton` Widgets extended by <a href="" target="_blank">**PictureButton**</a>Widget. <br/>
 (`PictureButton` was very smart widget. It could calculate image size)
 
