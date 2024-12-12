@@ -1,4 +1,4 @@
-import 'package:naver_login_sdk/src/widgets/naver_login_sdk_button_asset.dart';
+import 'naver_login_sdk_button_asset.dart';
 import 'naver_login_sdk_button_login_style.dart';
 import 'package:picture_button/picture_button.dart';
 

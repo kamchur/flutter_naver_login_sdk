@@ -18,7 +18,7 @@ dependencies:
 # following page: https://dart.dev/tools/pub/pubspec
 screenshots:
   - description: Naver Open Resource
-    path: assets/kr/btn_rectangle_icon.png
+    path: screenshots/naver_rectangle_icon.png
 
 # The following section is specific to Flutter packages.
 flutter:
