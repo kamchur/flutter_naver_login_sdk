@@ -250,6 +250,7 @@ If you want `naverColor` try it.
 ```dart
   backgroundColor: Theme.of(context).naverColor,
 ```
+<br/>
 
 ### NaverLoginButton
 <img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" height="60" />

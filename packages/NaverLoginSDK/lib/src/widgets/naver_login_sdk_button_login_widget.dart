@@ -43,7 +43,6 @@ class NaverLoginButton extends PictureButton {
       super.bubbleEffect,
       super.child})
       : super(
-          image: NaverLoginButtonAsset(style: style),
-          borderRadiusInk: borderRadiusInk ?? BorderRadius.circular(9.0)
-        );
+            image: NaverLoginButtonAsset(style: style),
+            borderRadiusInk: borderRadiusInk ?? BorderRadius.circular(9.0));
 }

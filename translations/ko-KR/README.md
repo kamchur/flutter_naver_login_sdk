@@ -242,7 +242,14 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ## Widgets
 <a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**네이버 로그인 버튼 사용가이드**</a>를 참고해주세요. <br/>
 `NaverLoginButton`과 `NaverLogoutButton`위젯은 <a href="https://pub.dev/packages/picture_button" target="_blank">**PictureButton**</a>위젯을 상속하여 만들어졌습니다. <br/>
-(`PictureButton`은 이미지 크기를 자동으로 계산하여 화면에 표출하는 아주 똑똑한 위젯입니다)
+(`PictureButton`은 이미지 크기를 자동으로 계산하여 화면에 표출하는 아주 똑똑한 위젯입니다)<br/>
+
+<img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
+만약에 네이버 대표 색상이 필요하다면 `naverColor` 색상을 적용해보세요!
+```dart
+  backgroundColor: Theme.of(context).naverColor,
+```
+<br/>
 
 ### NaverLoginButton
 <img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" height="60" />

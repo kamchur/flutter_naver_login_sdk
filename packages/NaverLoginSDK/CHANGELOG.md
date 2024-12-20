@@ -1,3 +1,7 @@
+## 1.0.2
+* Mod Button Widgets borderRadiusInk default value.
+* Added Color property `naverColor`(function type) in ThemeData.
+
 ## 1.0.1
 * Added Login/Logout Button Widgets.
 * Stable.
