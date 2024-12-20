@@ -252,7 +252,14 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ## Widgets
 <a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**ネイバーログインボタン使用ガイド**</a>ご参考ください <br/>
 `NaverLoginButton`と `NaverLogoutButton`ウィジェットは <a href="https://pub.dev/packages/picture_button" target="_blank">**PictureButton**</a>ウィジェットを継承して作られました <br/>
-(`PictureButton`は画像のサイズを自動的に計算して画面に表示するとても賢いウィジェットです)
+(`PictureButton`は画像のサイズを自動的に計算して画面に表示するとても賢いウィジェットです)<br/>
+
+<img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
+ネイバーの代表カラーが必要な場合は、`naver Color`カラーを適用してみましょう！
+```dart
+  backgroundColor: Theme.of(context).naverColor,
+```
+<br/>
 
 ### NaverLoginButton
 <img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" height="60" />

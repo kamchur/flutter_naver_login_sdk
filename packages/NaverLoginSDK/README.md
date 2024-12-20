@@ -243,7 +243,13 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ## Widgets
 <a href="https://developers.naver.com/docs/login/bi/bi.md" target="_blank">**Naver Login Button Guide**</a> Ref. <br/>
 `NaverLoginButton` & `NaverLogoutButton` Widgets extended by <a href="https://pub.dev/packages/picture_button" target="_blank">**PictureButton**</a>Widget. <br/>
-(`PictureButton` was very smart widget. It could calculate image size)
+(`PictureButton` was very smart widget. It could calculate image size)<br/>
+
+<img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
+If you want `naverColor` try it.
+```dart
+  backgroundColor: Theme.of(context).naverColor,
+```
 
 ### NaverLoginButton
 <img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" height="60" />
