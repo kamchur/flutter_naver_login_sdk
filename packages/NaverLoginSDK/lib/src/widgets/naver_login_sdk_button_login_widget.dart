@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'naver_login_sdk_button_asset.dart';
 import 'naver_login_sdk_button_login_style.dart';
 import 'package:picture_button/picture_button.dart';
@@ -28,7 +30,7 @@ class NaverLoginButton extends PictureButton {
       super.opacity,
       super.border,
       super.borderRadius,
-      super.borderRadiusInk,
+      BorderRadius? borderRadiusInk,
       super.paddingInk,
       super.backgroundColor,
       super.splashColor,
@@ -42,5 +44,6 @@ class NaverLoginButton extends PictureButton {
       super.child})
       : super(
           image: NaverLoginButtonAsset(style: style),
+          borderRadiusInk: borderRadiusInk ?? BorderRadius.circular(9.0)
         );
 }

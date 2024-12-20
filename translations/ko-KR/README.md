@@ -22,6 +22,7 @@ iOS와 Android OS만을 지원합니다. 아래의 가이드라인에 따라서 
 - [Login](#login)
 - [Logout](#logout)
 - [User Profile](#profile)
+- [Functions](#functions)
 - [LoginButtonWidget](#naverloginbutton)
 - [LogoutButtonWidget](#naverlogoutbutton)
 - [About](#about)
@@ -56,7 +57,7 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 | 9.0 🔼 | Xcode 9.0 🔼 |
 
 [iOS개발가이드](https://developers.naver.com/docs/login/ios/ios.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다. <br/><br/>
-작업하시려는 ios의 Info.plist파일에 아래와 같이 추가해주세요. <br/>
+작업하시려는 iOS의 Info.plist파일에 아래와 같이 추가해주세요. <br/>
 [URL Scheme]값은 위에서 추가한 URL Scheme과 동일하게 입력하면 되겠습니다.
 #### Info.plist
 ```xml
@@ -121,6 +122,7 @@ Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br
 }
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ## Usage
@@ -164,6 +166,8 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   }
 ));
 ```
+
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Logout
@@ -191,6 +195,7 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 ));
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Profile
@@ -213,6 +218,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ));
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Functions
@@ -230,6 +236,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 | getAccessToken  | 접근 토큰 정보  | :x:  |
 | getRefreshToken  | 갱신 토큰 정보  | :x:  |
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ## Widgets
@@ -264,7 +271,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 |`NaverButtonType.rectangleBar`|<p align="center"><img src="https://github.com/user-attachments/assets/932e778a-a647-41c3-b6f7-791544f772f7" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/22ff9b07-f37a-46e6-b271-c0aaf79016f9" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/3e4e6ce4-3837-4985-b79c-de4593228c47" alt="rectangleBar" height="60" /></p>|
 |`NaverButtonType.rectangleWithNaverBar`|<p align="center"><img src="https://github.com/user-attachments/assets/55e2c16e-a96c-4b8d-9ffe-03c32b9cf79c" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c0b15bf1-d8fb-4497-81e9-70fdc86fd615" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/d07fac1b-865b-41d9-9c37-998d4077115c" alt="rectangleWithNaverBar" height="60" /></p>|
 
-
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### NaverLogoutButton
@@ -286,6 +293,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 |`NaverButtonLanguage.korean`|<p align="center"><img src="https://github.com/user-attachments/assets/99a133de-7927-4670-bf4e-7460e05f1576" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1d99ab93-537f-4511-9f30-b3f1980b28e5" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/08608eda-1a93-4166-9ab4-e1b40842935a" alt="rectangleWithNaverBar" height="60" /></p>|
 |`NaverButtonLanguage.english`|<p align="center"><img src="https://github.com/user-attachments/assets/1f327611-ade0-43ca-b8a2-2901b642888a" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c317f1dd-f9d7-49dd-bab4-64489ec96a5d" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1ca42f53-0610-4c30-a612-2a96ea9b50f6" alt="rectangleWithNaverBar" height="60" /></p>|
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 <br/>
 

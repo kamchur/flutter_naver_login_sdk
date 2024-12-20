@@ -1,4 +1,4 @@
-/// Manager Functinos
+/// Manager Functions
 typedef FunctionEmptySuccess = Function(); // for onSuccess
 typedef FunctionFailure = Function(
     int httpStatus, String message); // for onFailure

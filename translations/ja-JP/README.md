@@ -23,6 +23,7 @@ Naverは韓国を代表するウェブサービスです。ほぼすべての国
 - [Login](#login)
 - [Logout](#logout)
 - [User Profile](#profile)
+- [Functions](#functions)
 - [LoginButtonWidget](#naverloginbutton)
 - [LogoutButtonWidget](#naverlogoutbutton)
 - [About](#about)
@@ -129,6 +130,7 @@ Androidは特別な設定が必要ありません。本当に助かりますよ�
 }
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ## Usage
@@ -173,6 +175,8 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   }
 ));
 ```
+
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Logout
@@ -200,6 +204,7 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 ));
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Profile
@@ -223,6 +228,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 ));
 ```
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### Functions
@@ -240,6 +246,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 | getAccessToken  | Access Token Info  | :x:  |
 | getRefreshToken  | Refresh Token Info  | :x:  |
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ## Widgets
@@ -274,7 +281,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 |`NaverButtonType.rectangleBar`|<p align="center"><img src="https://github.com/user-attachments/assets/932e778a-a647-41c3-b6f7-791544f772f7" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/22ff9b07-f37a-46e6-b271-c0aaf79016f9" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/3e4e6ce4-3837-4985-b79c-de4593228c47" alt="rectangleBar" height="60" /></p>|
 |`NaverButtonType.rectangleWithNaverBar`|<p align="center"><img src="https://github.com/user-attachments/assets/55e2c16e-a96c-4b8d-9ffe-03c32b9cf79c" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c0b15bf1-d8fb-4497-81e9-70fdc86fd615" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/d07fac1b-865b-41d9-9c37-998d4077115c" alt="rectangleWithNaverBar" height="60" /></p>|
 
-
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### NaverLogoutButton
@@ -296,6 +303,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 |`NaverButtonLanguage.korean`|<p align="center"><img src="https://github.com/user-attachments/assets/99a133de-7927-4670-bf4e-7460e05f1576" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1d99ab93-537f-4511-9f30-b3f1980b28e5" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/08608eda-1a93-4166-9ab4-e1b40842935a" alt="rectangleWithNaverBar" height="60" /></p>|
 |`NaverButtonLanguage.english`|<p align="center"><img src="https://github.com/user-attachments/assets/1f327611-ade0-43ca-b8a2-2901b642888a" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c317f1dd-f9d7-49dd-bab4-64489ec96a5d" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1ca42f53-0610-4c30-a612-2a96ea9b50f6" alt="rectangleWithNaverBar" height="60" /></p>|
 
+<p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 <br/>
 
