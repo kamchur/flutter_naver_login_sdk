@@ -31,7 +31,7 @@ Naverは韓国を代表するウェブサービスです。ほぼすべての国
 <br/>
 
 ## Install
-以下のリンクを参考にしてインストールを行ってください。[https://pub.dev/packages/picture_button/install](https://pub.dev/packages/naver_login_sdk/install)
+以下のリンクを参考にしてインストールを行ってください。[https://pub.dev/packages/naver_login_sdk/install](https://pub.dev/packages/naver_login_sdk/install)
 ```shell
 flutter pub add naver_login_sdk
 ```

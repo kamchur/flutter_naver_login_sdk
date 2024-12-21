@@ -30,7 +30,7 @@ iOS와 Android OS만을 지원합니다. 아래의 가이드라인에 따라서 
 <br/>
 
 ## Install
-[https://pub.dev/packages/picture_button/install](https://pub.dev/packages/naver_login_sdk/install)를 참고하여 설치 해주세요.
+[https://pub.dev/packages/naver_login_sdk/install](https://pub.dev/packages/naver_login_sdk/install)를 참고하여 설치 해주세요.
 ```shell
 flutter pub add naver_login_sdk
 ```

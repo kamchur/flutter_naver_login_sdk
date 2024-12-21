@@ -28,7 +28,7 @@ Naver is a leading web service in South Korea. Since almost every citizen uses i
 <br/>
 
 ## Install
-Please refer to this [https://pub.dev/packages/picture_button/install](https://pub.dev/packages/naver_login_sdk/install) for installation instructions.
+Please refer to this [https://pub.dev/packages/naver_login_sdk/install](https://pub.dev/packages/naver_login_sdk/install) for installation instructions.
 ```shell
 flutter pub add naver_login_sdk
 ```
@@ -246,7 +246,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 (`PictureButton` was very smart widget. It could calculate image size)<br/>
 
 <img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
-If you want `naverColor` try it.
+If you want `naverColor`, try it.
 ```dart
   backgroundColor: Theme.of(context).naverColor,
 ```

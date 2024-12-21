@@ -1,3 +1,6 @@
+## 1.0.3
+* Fix lints version 
+
 ## 1.0.2
 * Mod Button Widgets borderRadiusInk default value.
 * Added Color property `naverColor`(function type) in ThemeData.
