@@ -14,6 +14,11 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback
 
   /// onError.. errorCode:-1, message:user_cancel       - Nothing
   /// onError.. errorCode:-1, message:Canceled By User  - LoginScreen > Click ID > Cancel
+  ///
+  /// 2025-01-02-Thu,
+  /// Naver APP not installed return -> errorCode:-1, message:naverapp_not_installed
+  /// Naver App need update return -> errorCode:-1, message:naverapp_need_update
+  ///
   @override
   FunctionError? onError;
 

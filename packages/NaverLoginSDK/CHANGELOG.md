@@ -1,3 +1,7 @@
+## 1.0.5
+* Mod changed NaverApp not installed return message.
+
+
 ## 1.0.4
 * Add return NAVER APP not installed message when execute `authenticate` fucntion.
 

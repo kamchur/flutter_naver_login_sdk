@@ -49,11 +49,20 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
      * Log)
      * E/Crape   (27017): onError code:-1, message:user_cancel
      *
+     *
+     * 2025-01-02-Thu,
+     * - NaverAPP not installed: "기기에 네이버앱이 없습니다."
+     * - NaverAPP need update: "네이버앱 업데이트가 필요합니다."
      * */
     suspend fun authenticate(context: Context, sink: EventChannel.EventSink?) {
         NaverIdLoginSDK.authenticate(context, callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
+                val errorMessage = when (message) {
+                    "기기에 네이버앱이 없습니다." -> "naverapp_not_installed"
+                    "네이버앱 업데이트가 필요합니다." -> "naverapp_need_update"
+                    else -> message
+                }
+                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, errorMessage)))
             }
 
             override fun onFailure(httpStatus: Int, message: String) {

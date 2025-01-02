@@ -176,6 +176,10 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 ));
 ```
 
+<br/>
+
+> [![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)では、ネイバーアプリがインストールされていない場合、継続的に`user_cancel` が返されるバグがありました。これはウェブでログインする際に発生するバグで、現在その内容を確認中のようです。NaverLoginSDK `1.0.5` バージョンから、ログイン時にネイバーアプリがインストールされていない場合、`onError` の`message` パラメーターを通じて`naverapp_not_installed` 値が返されるように修正されました。
+
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
