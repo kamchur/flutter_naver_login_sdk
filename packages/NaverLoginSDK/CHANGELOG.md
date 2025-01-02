@@ -1,3 +1,6 @@
+## 1.0.4
+* Add return NAVER APP not installed message when execute `authenticate` fucntion.
+
 ## 1.0.3
 * Fix lints version 
 

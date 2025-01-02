@@ -257,7 +257,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 <img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
 ネイバーの代表カラーが必要な場合は、`naver Color`カラーを適用してみましょう！
 ```dart
-  backgroundColor: Theme.of(context).naverColor,
+backgroundColor: Theme.of(context).naverColor,
 ```
 <br/>
 

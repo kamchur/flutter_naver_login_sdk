@@ -247,7 +247,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 <img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
 만약에 네이버 대표 색상이 필요하다면 `naverColor` 색상을 적용해보세요!
 ```dart
-  backgroundColor: Theme.of(context).naverColor,
+backgroundColor: Theme.of(context).naverColor,
 ```
 <br/>
 

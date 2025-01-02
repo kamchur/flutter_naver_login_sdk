@@ -5,6 +5,7 @@ import com.google.gson.Gson
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthLogin
 import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.oauth.NidOAuthBehavior
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 import io.flutter.plugin.common.EventChannel
@@ -23,6 +24,19 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
             val clientName: String = params[NaverLoginSdkConstant.Value.clientName]!!
 
             NaverIdLoginSDK.initialize(context, clientId, clientSecret, clientName)
+
+            /**
+             * 2025-01-02-Thu,
+             * Naver 5.10.0 execute only in NAVER APP.
+             *
+             * Web Browser is not stable.
+             *
+             * return: NAVER APP not installed in device message.
+             * you can apply to user show dialog.
+             *
+             * Current [behavior] use only 'NAVERAPP'.
+             * */
+            NaverIdLoginSDK.behavior = NidOAuthBehavior.NAVERAPP;
         }
     }
 
@@ -34,6 +48,7 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
      *
      * Log)
      * E/Crape   (27017): onError code:-1, message:user_cancel
+     *
      * */
     suspend fun authenticate(context: Context, sink: EventChannel.EventSink?) {
         NaverIdLoginSDK.authenticate(context, callback = object : OAuthLoginCallback {
