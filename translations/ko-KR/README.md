@@ -7,7 +7,7 @@
 
 # NaverLoginSDK
 
-Flutter-Naver Login SDK <br/><br/>
+Flutter Naver Login SDK Package<br/><br/>
 대한민국 플러터 유저들이 네이버 로그인을 원활하게 이용하시도록 패키지를 제작하였습니다. <br/>
 iOS와 Android OS만을 지원합니다. 아래의 가이드라인에 따라서 설정하시면 되겠습니다. <br/>
 '좋아요❤'를 눌러주시면 앞으로 다양한 서비스를 제공 드릴때 힘이 날 것 같습니다.
@@ -314,6 +314,6 @@ NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 [Repository(GitHub)](https://github.com/hamhoney)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
-[Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
+[Youtube](https://youtu.be/vlyi1RYkGfg?si=hzyybvANbEKAum7K)  <br/><br/>
 
 감사합니다💙

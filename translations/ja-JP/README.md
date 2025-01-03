@@ -7,7 +7,7 @@
 
 # NaverLoginSDK
 
-Flutter-Naver Login SDK <br/><br/>
+Flutter Naver Login SDK Package<br/><br/>
 Naverは韓国を代表するウェブサービスです。ほぼすべての国民が利用しているため、韓国ユーザーをターゲットにする場合はNaverログインを組み込むことが非常に効果的です。
 このサービスはiOSおよびAndroid OSのみをサポートしています。以下の手順に従ってセットアップを行ってください。
 
@@ -324,6 +324,6 @@ NaverLoginSDKパッケージをご利用いただきありがとうございま�
 [Repository(GitHub)](https://github.com/hamhoney)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(Courses)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
-[Youtube](https://www.youtube.com/watch?v=vKqbUce_JLs&t=238s)  <br/><br/>
+[Youtube](https://youtu.be/vlyi1RYkGfg?si=hzyybvANbEKAum7K)  <br/><br/>
 
 ありがとな💙

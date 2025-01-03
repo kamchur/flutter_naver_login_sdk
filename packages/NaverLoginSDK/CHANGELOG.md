@@ -1,3 +1,6 @@
+## 1.0.6
+* Fixed Closure Error.
+
 ## 1.0.5
 * Mod changed NaverApp not installed return message.
 
