@@ -13,7 +13,8 @@ abstract class NaverLoginSdkBaseCallback {
         // Check 'key' only one
         // Check 'value' only one
         final String key = event.keys.first;
-        final dynamic arguments = event.values.first;
+        final dynamic arguments =
+            _convertArguments(arguments: event.values.first);
 
         final Function? functionEvent = functionEvents[key];
 
@@ -65,4 +66,12 @@ abstract class NaverLoginSdkBaseCallback {
       return 1;
     }
   }
+
+  /// Function arguments need List type.
+  ///
+  /// This problem is when parameter has only one or null.
+  /// so convert function return List type or null.
+  ///
+  dynamic _convertArguments({required dynamic arguments}) =>
+      arguments != null && arguments is! List ? [arguments] : arguments;
 }
