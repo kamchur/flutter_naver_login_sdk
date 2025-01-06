@@ -59,7 +59,10 @@ abstract class NaverLoginSdkBaseCallback {
     // List<dynamic> == List<Object?>
     if (arguments is List<dynamic>) {
       return arguments.length;
+    } else if (arguments == null) {
+      return 0;
+    } else {
+      return 1;
     }
-    return 0;
   }
 }

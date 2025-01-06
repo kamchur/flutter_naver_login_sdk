@@ -22,13 +22,13 @@ class NaverLogoutButton extends PictureButton {
       BorderRadius? borderRadiusInk,
       super.paddingInk,
       super.backgroundColor,
-      super.splashColor,
-      super.highlightColor,
+      super.splashColor = Colors.transparent,
+      super.highlightColor = Colors.transparent,
       super.focusColor,
       super.hoverColor,
       super.enabled,
       super.vibrate,
-      super.useBubbleEffect,
+      super.useBubbleEffect = true,
       super.bubbleEffect,
       super.child})
       : super(
