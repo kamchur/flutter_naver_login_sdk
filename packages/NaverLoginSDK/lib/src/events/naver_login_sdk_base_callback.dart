@@ -51,11 +51,17 @@ abstract class NaverLoginSdkBaseCallback {
         .substring(startBracketIndex + 1, endBracketIndex)
         .replaceAll(' ', '');
     final List<String> params = subFunction.split(',');
+
+    /* If values return Map type. you should use this.
+    params.removeWhere((element) => element.startsWith('Map'),);
+    */
+
     return subFunction.isNotEmpty ? params.length : 0;
   }
 
   /// For matching [_paramsCount].
   ///
+  /// check Null count.
   int _argumentsCount({required dynamic arguments}) {
     // List<dynamic> == List<Object?>
     if (arguments is List<dynamic>) {

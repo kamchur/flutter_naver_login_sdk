@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:naver_login_sdk/naver_login_sdk.dart';
+import '/src/events/naver_login_sdk_callback.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
 
