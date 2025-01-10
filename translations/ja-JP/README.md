@@ -146,6 +146,7 @@ NaverLoginSDKパッケージを使用するには、まず`main()`関数内で�
 ```dart
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   NaverLoginSDK.initialize(
     urlScheme: urlScheme, 
     clientId: clientId, 
@@ -220,6 +221,7 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 NaverLoginSDK.profile(callback: ProfileCallback(
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
+    
     final profile = NaverLoginProfile.fromJson(response: response);
     Log.i("profile:$profile");
   },

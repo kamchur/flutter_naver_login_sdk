@@ -86,8 +86,7 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 ```
 <br/>
 
-AppDelegate에서 `func application(_ app: UIApplication, open url: URL, options:...)`오버라이드 함수를 사용하고 있다면 <br/>
-URL Scheme를 확인하거나 다음과 같이 return해주세요. <br/>
+AppDelegate에서 `func application(_ app: UIApplication, open url: URL, options:...)`오버라이드 함수를 사용하고 있다면 URL Scheme를 확인하거나 다음과 같이 return해주세요. <br/>
 특별한 일이 없다면 URL Scheme을 확인하지 않고 `super.application(...)`으로 return하면 되겠습니다.
 
 #### AppDelegate.swift
@@ -138,6 +137,7 @@ NaverLoginSDK패키지를 사용하기 위해서 가장 먼저 `main()`함수에
 ```dart
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   NaverLoginSDK.initialize(
     urlScheme: urlScheme, 
     clientId: clientId, 
@@ -210,6 +210,7 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 NaverLoginSDK.profile(callback: ProfileCallback(
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
+    
     final profile = NaverLoginProfile.fromJson(response: response);
     Log.i("profile:$profile");
   },

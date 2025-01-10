@@ -137,6 +137,7 @@ The `urlScheme` parameter should be entered if developing for iOS.
 ```dart
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   NaverLoginSDK.initialize(
     urlScheme: urlScheme, 
     clientId: clientId, 
@@ -211,6 +212,7 @@ Use `NaverLoginProfile.fromJson(response:)` to automatically parse and utilize u
 NaverLoginSDK.profile(callback: ProfileCallback(
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
+    
     final profile = NaverLoginProfile.fromJson(response: response);
     Log.i("profile:$profile");
   },
