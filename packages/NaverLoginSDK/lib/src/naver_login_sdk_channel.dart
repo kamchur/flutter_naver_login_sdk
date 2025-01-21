@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -49,7 +48,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
       NaverLoginSdkConstant.value.initialize.clientSecret: clientSecret,
       NaverLoginSdkConstant.value.initialize.clientName: clientName
     };
-    await _methodChannel.invokeMethod<Void>(
+    await _methodChannel.invokeMethod<void>(
         NaverLoginSdkConstant.key.initialize, params);
   }
 
@@ -59,7 +58,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     profileCallback = null;
 
     await _methodChannel
-        .invokeMethod<Void>(NaverLoginSdkConstant.key.authenticate);
+        .invokeMethod<void>(NaverLoginSdkConstant.key.authenticate);
   }
 
   @override
@@ -67,7 +66,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.refresh);
+    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.refresh);
   }
 
   @override
@@ -75,7 +74,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     profileCallback = callback;
     oauthLoginCallback = null;
 
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.profile);
+    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.profile);
   }
 
   @override
@@ -83,7 +82,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = null;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.logout);
+    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.logout);
   }
 
   /// [release] function click continue.
@@ -95,7 +94,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<Void>(NaverLoginSdkConstant.key.release);
+    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.release);
   }
 
   @override

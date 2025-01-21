@@ -9,12 +9,9 @@ const String _requestInitializeMessage =
 const String _requestUrlSchemeMessage =
     'iOS Platform required \'urlScheme\' parameter.';
 
-/// Singleton
+/// Singleton Pattern
 ///
 /// e-mail: b3xlon9@gmail.com(or naver.com)
-/// Call me whenever Naver Team:)
-///
-/// I am ready to go there.
 ///
 ///
 /// The reason I created the Flutter-'NaverLoginSDK' is to make it
