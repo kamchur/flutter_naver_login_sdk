@@ -1,3 +1,7 @@
+## 1.0.7
+* Changed `NaverButtonWidget`s default properties. 
+* Fixed Event arguments codes.
+
 ## 1.0.6
 * Fixed Closure Error.
 
