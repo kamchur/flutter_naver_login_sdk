@@ -1,3 +1,6 @@
+## 1.0.8
+* Fixed NaverApp not installed return message(iOS)
+
 ## 1.0.7
 * Changed `NaverButtonWidget`s default properties. 
 * Fixed Event arguments codes.
