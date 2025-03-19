@@ -52,7 +52,7 @@ For the Download URL, you can enter anything if there is no specific website.<br
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0 🔼 | Xcode 9.0 🔼 |
+| 13.0 🔼 | Xcode 9.0 🔼 |
 
 Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios/ios.md) for better understanding. <br/><br/>
 Add the following code to the Info.plist file of your iOS project. <br/>

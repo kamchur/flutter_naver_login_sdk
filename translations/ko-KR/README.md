@@ -54,7 +54,7 @@ iOS는 Android와 다르게 'URL Scheme'이라는 것을 꼭 추가해주어야 
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0 🔼 | Xcode 9.0 🔼 |
+| 13.0 🔼 | Xcode 9.0 🔼 |
 
 [iOS개발가이드](https://developers.naver.com/docs/login/ios/ios.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다. <br/><br/>
 작업하시려는 iOS의 Info.plist파일에 아래와 같이 추가해주세요. <br/>
