@@ -19,7 +19,7 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
             // NaverLogin into NaverApplication
             self.naverConnection?.isNaverAppOauthEnable = true
             // NaverLogin by SafariViewController
-            self.naverConnection?.isInAppOauthEnable = true
+            // self.naverConnection?.isInAppOauthEnable = true
             // NaverLogin screen direction - default: Portrait
             self.naverConnection?.setOnlyPortraitSupportInIphone(true)
         
@@ -50,13 +50,21 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
     ///
     /// ReCall [authenticate] function when is Login State,
     /// > NaverLoginSdkDelegate.. oauth20Connection 'DidFinishRequest' ACTokenWithAuthCode
+    ///
+    /// Wednesday, March 19 2025
+    /// Use only NaverApplication for Login
+    ///
+    /// If naverapp not installed return error message to user.
     func authenticate() {
         // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
         if self.naverConnection != nil && self.naverConnection!.isPossibleToOpenNaverApp() {
             self.naverConnection?.requestThirdPartyLogin()
         } else {
             // AppStore NaverApp
-            naverConnection?.openAppStoreForNaverApp()
+            // self.naverConnection?.openAppStoreForNaverApp()
+            let errorCode = -1
+            let message = "naverapp_not_installed"
+            self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
         }
     }
     
