@@ -1,3 +1,6 @@
+## 1.0.9
+* Fixed EventSink null check
+
 ## 1.0.8
 * Fixed NaverApp not installed return message(iOS)
 
