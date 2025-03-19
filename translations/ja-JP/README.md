@@ -61,7 +61,7 @@ iOSの場合は、Androidとは異なり**「URLスキーム」** を必ず追�
 ## iOS
 | iOS | IDE |
 |-----|-----|
-| 9.0 🔼 | Xcode 9.0 🔼 |
+| 13.0 🔼 | Xcode 9.0 🔼 |
 
 Refer to [the iOS Development Guide](https://developers.naver.com/docs/login/ios/ios.md) for better understanding. <br/><br/>
 作業するiOSのInfo.plistファイルに、以下のように追記してください。<br/>
