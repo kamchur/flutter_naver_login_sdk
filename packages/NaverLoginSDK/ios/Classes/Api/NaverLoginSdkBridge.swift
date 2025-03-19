@@ -62,9 +62,11 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
         } else {
             // AppStore NaverApp
             // self.naverConnection?.openAppStoreForNaverApp()
-            let errorCode = -1
-            let message = "naverapp_not_installed"
-            self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+            if self.sink != nil {
+                let errorCode = -1
+                let message = "naverapp_not_installed"
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+            }
         }
     }
     
