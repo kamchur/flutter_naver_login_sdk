@@ -54,7 +54,7 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             }
             
         case NaverLoginSdkConstant.Key.authenticate:
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 self.authenticate()
                 result(nil)
             }
@@ -66,19 +66,19 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             result(nil)
             break
         case NaverLoginSdkConstant.Key.release:
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 self.release()
                 result(nil)
             }
             break
         case NaverLoginSdkConstant.Key.profile:
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 self.profile()
                 result(nil)
             }
             break
         case NaverLoginSdkConstant.Key.refresh:
-            DispatchQueue.global().async {
+            DispatchQueue.main.async {
                 self.refresh()
                 result(nil)         // Future<void>
             }

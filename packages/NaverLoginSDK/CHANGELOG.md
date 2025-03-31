@@ -1,3 +1,6 @@
+## 2.0.0
+* iOS return interface listener thread changed background to main. 
+
 ## 1.0.9
 * Fixed EventSink null check
 
