@@ -17,9 +17,15 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
             self.naverConnection?.delegate = self
             
             // NaverLogin into NaverApplication
-            self.naverConnection?.isNaverAppOauthEnable = true
+            // 2025 Wednesday April 16 - check naverapp installed.
+            if self.naverConnection != nil && self.naverConnection!.isPossibleToOpenNaverApp() {
+                self.naverConnection?.isNaverAppOauthEnable = true
+            } else {
+                self.naverConnection?.isNaverAppOauthEnable = false
+            }
+            
             // NaverLogin by SafariViewController
-            // self.naverConnection?.isInAppOauthEnable = true
+            self.naverConnection?.isInAppOauthEnable = true
             // NaverLogin screen direction - default: Portrait
             self.naverConnection?.setOnlyPortraitSupportInIphone(true)
         
@@ -57,17 +63,19 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
     /// If naverapp not installed return error message to user.
     func authenticate() {
         // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
-        if self.naverConnection != nil && self.naverConnection!.isPossibleToOpenNaverApp() {
-            self.naverConnection?.requestThirdPartyLogin()
-        } else {
-            // AppStore NaverApp
-            // self.naverConnection?.openAppStoreForNaverApp()
-            if self.sink != nil {
-                let errorCode = -1
-                let message = "naverapp_not_installed"
-                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
-            }
-        }
+        
+        self.naverConnection?.requestThirdPartyLogin()
+//        if self.naverConnection != nil && self.naverConnection!.isPossibleToOpenNaverApp() {
+//            self.naverConnection?.requestThirdPartyLogin()
+//        } else {
+//            // AppStore NaverApp
+//            // self.naverConnection?.openAppStoreForNaverApp()
+//            if self.sink != nil {
+//                let errorCode = -1
+//                let message = "naverapp_not_installed"
+//                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+//            }
+//        }
     }
     
     /// Success

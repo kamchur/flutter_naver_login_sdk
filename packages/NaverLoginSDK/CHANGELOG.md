@@ -1,3 +1,6 @@
+## 2.1.0
+* iOS changed web login possible.
+
 ## 2.0.0
 * iOS return interface listener thread changed background to main. 
 
