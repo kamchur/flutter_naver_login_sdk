@@ -36,7 +36,7 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
              *
              * Current [behavior] use only 'NAVERAPP'.
              * */
-            NaverIdLoginSDK.behavior = NidOAuthBehavior.NAVERAPP;
+            NaverIdLoginSDK.behavior = NidOAuthBehavior.DEFAULT;
         }
     }
 
