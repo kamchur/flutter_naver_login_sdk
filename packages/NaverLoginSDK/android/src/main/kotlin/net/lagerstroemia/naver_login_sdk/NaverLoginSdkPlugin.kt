@@ -112,6 +112,7 @@ class NaverLoginSdkPlugin: FlutterPlugin, MethodCallHandler, ActivityAware, Even
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     methodChannel.setMethodCallHandler(null)
+    eventChannel.setStreamHandler(null)
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {

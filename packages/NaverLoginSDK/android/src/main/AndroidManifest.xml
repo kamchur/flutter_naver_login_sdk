@@ -1,3 +1,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="net.lagerstroemia.naver_login_sdk">
+    package="net.lagerstroemia.naver_login_sdk">
+    <application>
+        <activity
+            android:name=".NaverLoginSdkWebActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat"
+            android:launchMode="singleInstance"
+            android:configChanges="keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|fontScale|density|uiMode">
+            <intent-filter>
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+    </application>
 </manifest>

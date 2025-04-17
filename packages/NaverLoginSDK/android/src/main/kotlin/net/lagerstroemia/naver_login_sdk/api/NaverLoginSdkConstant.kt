@@ -3,6 +3,7 @@ package net.lagerstroemia.naver_login_sdk
 object NaverLoginSdkConstant {
     const val channelNameMethod: String = "naver_login_sdk_method"
     const val channelNameEvent: String = "naver_login_sdk_event"
+    const val loginBroadcastReceiver: String = "com.lagerstroemia.LOGIN_RESULT"
 
     object Key {
         const val initialize: String = "initialize"
