@@ -74,8 +74,6 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     suspend fun authenticate(activity: Activity, sink: EventChannel.EventSink?) {
         loginEventListener = object: NaverLoginEventListener {
             override fun onReceive(state: NaverLoginState, code: Int?, message: String?) {
-                Log.d("kamchur", "onReceive.. state:$state, code:$code, message:$message")
-
                 when (state) {
                     NaverLoginState.SUCCESS -> {
                         sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
@@ -89,6 +87,8 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
                         val errorMessage = when (message) {
                             "기기에 네이버앱이 없습니다." -> "naverapp_not_installed"
                             "네이버앱 업데이트가 필요합니다." -> "naverapp_need_update"
+                            "커스텀탭을 실행할 수 없습니다." -> "cannot_execute_web_login"
+                            "인증을 진행할 수 있는 앱이 없습니다." -> "authenticate_possible_app_nothing"
                             else -> message
                         }
                         sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(code!!, errorMessage!!)))
