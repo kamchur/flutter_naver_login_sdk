@@ -1,3 +1,6 @@
+## 2.2.0
+* Android changed web login possible.
+
 ## 2.1.0
 * iOS changed web login possible.
 
