@@ -170,6 +170,7 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 <br/>
 
 > [![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)에서 네이버 앱이 설치되어 있지 않은 경우 지속해서 `user_cancel`이 return되는 버그가 있었습니다. 웹으로 로그인하는 경우 발생되는 버그이므로 현재 그 내용을 확인 중인 것 같습니다. NaverLoginSDK `1.0.5`버전부터 로그인시 네이버 앱이 설치되어 있지 않은 경우 `onError`의 `message`파라메터를 통해 `naverapp_not_installed`값이 return되도록 수정하였습니다.
+> `2.2.0` stable version. Android에서 웹 로그인이 가능하도록 수정하였습니다.
 
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
