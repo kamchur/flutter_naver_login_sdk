@@ -172,6 +172,7 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 <br/>
 
 > In version [![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android), there was a bug where `user_cancel` was consistently returned if the Naver app was not installed. This issue occurred when logging in via the web, and it seems to be under investigation. Starting from NaverLoginSDK version `1.0.5`, the issue has been addressed so that if the Naver app is not installed during login, the `onError`'s `message` parameter will return the value `naverapp_not_installed`.
+
 > `2.2.0` stable version. Fixed to enable Android web login.
 
 <p align="right"><a href="#getting-started">🔼</a></p>
