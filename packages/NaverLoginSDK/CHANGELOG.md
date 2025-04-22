@@ -1,3 +1,6 @@
+## 2.3.0
+* Fixed profile parsing.
+
 ## 2.2.0
 * Android changed web login possible.
 
