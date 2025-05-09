@@ -61,6 +61,12 @@ android {
         // Gson (Json is leak)
         implementation("com.google.code.gson:gson:2.10.1")
         // implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
+
+        // error com.google.errorprone.annotations
+        implementation("com.google.errorprone:error_prone_annotations:2.38.0")
+
+        // okhttp(latest)
+        implementation("com.squareup.okhttp3:okhttp:4.12.0")
     }
 
     packagingOptions {
