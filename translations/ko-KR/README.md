@@ -112,6 +112,8 @@ AppDelegate에서 `func application(_ app: UIApplication, open url: URL, options
 [Android개발가이드](https://developers.naver.com/docs/login/android/android.md)를 참고하시면서 내용을 이해하면 더욱 도움이 됩니다.<br/>
 Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br></br>
 만약에 `proguard-rules.pro`를 사용하신다면 다음과 같이 설정해주세요.
+
+`3.0.0`버전 [retrofit pro](https://github.com/square/retrofit/blob/trunk/retrofit/src/main/resources/META-INF/proguard/retrofit2.pro)추가
 ```shell
 -keep public class com.nhn.android.naverlogin.** {
   public protected *;
@@ -119,6 +121,23 @@ Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br
 -keep public class com.navercorp.nid.** {
   public *;
 }
+
+# With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
+# and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
+-if interface * { @retrofit2.http.* <methods>; }
+-keep,allowobfuscation interface <1>
+
+# With R8 full mode generic signatures are stripped for classes that are not
+# kept. Suspend functions are wrapped in continuations where the type argument
+# is used.
+-keep,allowobfuscation,allowshrinking class kotlin.coroutines.Continuation
+
+# R8 full mode strips generic signatures from return types if not kept.
+-if interface * { @retrofit2.http.* public *** *(...); }
+-keep,allowoptimization,allowshrinking,allowobfuscation class <3>
+
+# With R8 full mode generic signatures are stripped for classes that are not kept.
+-keep,allowobfuscation,allowshrinking class retrofit2.Response
 ```
 
 <p align="right"><a href="#getting-started">🔼</a></p>

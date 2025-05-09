@@ -1,3 +1,6 @@
+## 3.0.0
+* Fixed android release mode proguard contents.
+
 ## 2.3.0
 * Fixed profile parsing.
 
