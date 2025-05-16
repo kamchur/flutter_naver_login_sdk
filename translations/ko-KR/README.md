@@ -336,6 +336,6 @@ NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 [Repository(GitHub)](https://github.com/hamhoney)  <br/>
 [LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
 [Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
-[Youtube](https://youtu.be/vlyi1RYkGfg?si=hzyybvANbEKAum7K)  <br/><br/>
+[Youtube](https://www.youtube.com/watch?v=OVd35X7yCro)  <br/><br/>
 
 감사합니다💙
