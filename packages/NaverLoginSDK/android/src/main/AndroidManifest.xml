@@ -1,13 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="net.lagerstroemia.naver_login_sdk">
     <application>
         <activity
             android:name=".NaverLoginSdkWebActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
             android:launchMode="singleInstance"
             android:configChanges="keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|fontScale|density|uiMode">
-            <intent-filter>
+            <intent-filter tools:ignore="AppLinkUrlError">
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>

@@ -1,13 +1,9 @@
 package net.lagerstroemia.naver_login_sdk
 
 import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.OAuthLoginCallback
-import io.flutter.embedding.android.FlutterActivity
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginEventListener
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginState
 
@@ -43,4 +39,10 @@ class NaverLoginSdkWebActivity: Activity() {
             }
         })
     }
+
+//    override fun onDestroy() {
+//        loginEventListener = null
+//
+//        super.onDestroy()
+//    }
 }

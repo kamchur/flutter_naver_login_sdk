@@ -1,13 +1,8 @@
 package net.lagerstroemia.naver_login_sdk
 
 import android.app.Activity
-import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
-import android.content.IntentFilter
-import android.os.Build
-import android.util.Log
 import com.google.gson.Gson
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.oauth.NidOAuthBehavior
@@ -16,12 +11,12 @@ import com.navercorp.nid.oauth.OAuthLoginCallback
 import com.navercorp.nid.profile.NidProfileCallback
 import com.navercorp.nid.profile.data.NidProfileResponse
 import io.flutter.plugin.common.EventChannel
-import net.lagerstroemia.naver_login_sdk.api.NaverLoginSdkProtocol
-import net.lagerstroemia.naver_login_sdk.NaverLoginSdkWebActivity
+import io.flutter.plugin.common.MethodChannel
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginEventListener
+import net.lagerstroemia.naver_login_sdk.api.NaverLoginSdkProtocol
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginState
 
-object NaverLoginSdkBridge: NaverLoginSdkProtocol {
+object NaverLoginSdkBridge : NaverLoginSdkProtocol {
     /**
      * 2025-04-17-Thu
      *
@@ -71,17 +66,30 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
      * - NaverAPP not installed: "기기에 네이버앱이 없습니다."
      * - NaverAPP need update: "네이버앱 업데이트가 필요합니다."
      * */
-    suspend fun authenticate(activity: Activity, sink: EventChannel.EventSink?) {
-        loginEventListener = object: NaverLoginEventListener {
+    suspend fun authenticate(
+        activity: Activity,
+        sink: EventChannel.EventSink?,
+        r: MethodChannel.Result
+    ) {
+        loginEventListener = object : NaverLoginEventListener {
             override fun onReceive(state: NaverLoginState, code: Int?, message: String?) {
                 when (state) {
                     NaverLoginState.SUCCESS -> {
                         sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
                     }
+
                     NaverLoginState.FAILURE -> {
                         // httpState -> code
-                        sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(code!!, message!!)))
+                        sink?.success(
+                            mapOf(
+                                NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(
+                                    code!!,
+                                    message!!
+                                )
+                            )
+                        )
                     }
+
                     NaverLoginState.ERROR -> {
                         // errorCode -> code
                         val errorMessage = when (message) {
@@ -91,9 +99,17 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
                             "인증을 진행할 수 있는 앱이 없습니다." -> "authenticate_possible_app_nothing"
                             else -> message
                         }
-                        sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(code!!, errorMessage!!)))
+                        sink?.success(
+                            mapOf(
+                                NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(
+                                    code!!,
+                                    errorMessage!!
+                                )
+                            )
+                        )
                     }
                 }
+                r.success(null)        // true, false return later.
             }
         }
 
@@ -109,19 +125,36 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     /**
      * Delete TokenAPI
      * */
-    suspend fun release(sink: EventChannel.EventSink?) {
+    suspend fun release(sink: EventChannel.EventSink?, r: MethodChannel.Result) {
         // Log.v("Crape", "release..")
         NidOAuthLogin().callDeleteTokenApi(callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(
+                            errorCode,
+                            message
+                        )
+                    )
+                )
+                r.success(null)
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(
+                            httpStatus,
+                            message
+                        )
+                    )
+                )
+                r.success(null)
             }
 
             override fun onSuccess() {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
+                r.success(null)
             }
         })
     }
@@ -129,25 +162,49 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     /**
      * Getting User Profile
      * */
-    suspend fun profile(sink: EventChannel.EventSink?) {
+    suspend fun profile(sink: EventChannel.EventSink?, r: MethodChannel.Result) {
         // Log.v("Crape", "profile..")
-        NidOAuthLogin().callProfileApi(callback = object: NidProfileCallback<NidProfileResponse> {
+        NidOAuthLogin().callProfileApi(callback = object : NidProfileCallback<NidProfileResponse> {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(
+                            errorCode,
+                            message
+                        )
+                    )
+                )
+
+                r.success(null)
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(
+                            httpStatus,
+                            message
+                        )
+                    )
+                )
+
+                r.success(null)
             }
 
             override fun onSuccess(result: NidProfileResponse) {
                 val gson = Gson()
 
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to arrayListOf<Any>(
-                    result.resultCode.toString(),
-                    result.message.toString(),
-                    gson.toJson(result.profile!!)
-                )))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to arrayListOf<Any>(
+                            result.resultCode.toString(),
+                            result.message.toString(),
+                            gson.toJson(result.profile!!)
+                        )
+                    )
+                )
+
+                r.success(null)
             }
         })
     }
@@ -155,18 +212,38 @@ object NaverLoginSdkBridge: NaverLoginSdkProtocol {
     /**
      * when is not login -> httpStatus:200, message:OK
      * */
-    suspend fun refresh(sink: EventChannel.EventSink?) {
-        NidOAuthLogin().callRefreshAccessTokenApi(callback = object: OAuthLoginCallback {
+    suspend fun refresh(sink: EventChannel.EventSink?, r: MethodChannel.Result) {
+        NidOAuthLogin().callRefreshAccessTokenApi(callback = object : OAuthLoginCallback {
             override fun onError(errorCode: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(errorCode, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError to arrayListOf<Any>(
+                            errorCode,
+                            message
+                        )
+                    )
+                )
+
+                r.success(null)
             }
 
             override fun onFailure(httpStatus: Int, message: String) {
-                sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(httpStatus, message)))
+                sink?.success(
+                    mapOf(
+                        NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure to arrayListOf<Any>(
+                            httpStatus,
+                            message
+                        )
+                    )
+                )
+
+                r.success(null)
             }
 
             override fun onSuccess() {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
+
+                r.success(null)
             }
         })
     }
