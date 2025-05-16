@@ -1,3 +1,6 @@
+## 3.0.1
+* Fixed login functions can asynchronous state.
+
 ## 3.0.0
 * Fixed android release mode proguard contents.
 
