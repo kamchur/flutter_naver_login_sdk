@@ -20,6 +20,10 @@ extension NaverLoginSdkPlugin {
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
             }
         }
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
+        }
     }
     
     /// Get RefreshToken after [getRefreshToken] function
@@ -39,6 +43,10 @@ extension NaverLoginSdkPlugin {
                 break
             }
         }
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
+        }
     }
     
     /// Remove Token only after [release] function
@@ -56,6 +64,10 @@ extension NaverLoginSdkPlugin {
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
             }
         }
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
+        }
     }
     
     
@@ -71,6 +83,10 @@ extension NaverLoginSdkPlugin {
             default:
                 break
             }
+        }
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
         }
     }
     
@@ -101,6 +117,10 @@ extension NaverLoginSdkPlugin {
                 break
             }
         }
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
+        }
     }
     
     /// Login Success
@@ -114,6 +134,11 @@ extension NaverLoginSdkPlugin {
             self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [httpStatus, message]])
         default:
             break
+        }
+        
+        if self.flutterResult != nil {
+            self.flutterResult!(nil)
+            self.flutterResult = nil
         }
     }
 }

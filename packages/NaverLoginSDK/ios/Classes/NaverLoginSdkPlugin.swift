@@ -6,6 +6,7 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
     var sink: FlutterEventSink?
     var naverConnection: NaverThirdPartyLoginConnection?        // instance for Delegate
     var lastCallMethod: String = ""     // for Receive Flag
+    var flutterResult: FlutterResult?   // 2025-05-16-Fri, iOS set Asynchronous return
     
     /// Register iOS Plugin Instance
     public static func register(with registrar: FlutterPluginRegistrar) {
@@ -55,32 +56,42 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
             
         case NaverLoginSdkConstant.Key.authenticate:
             DispatchQueue.main.async {
+                self.flutterResult = result
+                
                 self.authenticate()
-                result(nil)
+                // result(nil)
             }
             break
         // case "getPlatformVersion":
         //  result("iOS " + UIDevice.current.systemVersion)
         case NaverLoginSdkConstant.Key.logout:
-            self.logout()
-            result(nil)
+            DispatchQueue.main.async {
+                self.logout()
+                result(nil)
+            }
             break
         case NaverLoginSdkConstant.Key.release:
             DispatchQueue.main.async {
+                self.flutterResult = result
+                
                 self.release()
-                result(nil)
+                // result(nil)
             }
             break
         case NaverLoginSdkConstant.Key.profile:
             DispatchQueue.main.async {
+                self.flutterResult = result
+                
                 self.profile()
-                result(nil)
+                // result(nil)
             }
             break
         case NaverLoginSdkConstant.Key.refresh:
             DispatchQueue.main.async {
+                self.flutterResult = result
+                
                 self.refresh()
-                result(nil)         // Future<void>
+                // result(nil)         // Future<void>
             }
             break
         case NaverLoginSdkConstant.Key.version:
@@ -116,6 +127,7 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
     public func onCancel(withArguments arguments: Any?) -> FlutterError? {
         self.lastCallMethod = ""
         self.sink = nil
+        self.flutterResult = nil
         return nil
     }
 }
