@@ -1,3 +1,6 @@
+## 3.0.2
+* Fixed login functions can asynchronous state(iOS).
+
 ## 3.0.1
 * Fixed login functions can asynchronous state.
 
