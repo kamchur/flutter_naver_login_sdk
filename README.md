@@ -1,5 +1,17 @@
 # Changelog
 
+- [3.1.2](#3.1.2)
+- [3.0.0](#3.0.0)
+
+<hr/>
+
+### 3.1.2
+Sun Oct 26, 2025
+* Migrate Android-5.11.0
+* Added logout callback listener
+* Deprecated onError listener
+* Changed type int -> String in onFailure
+
 
 ### 3.0.0
 Fri May 9, 2025
