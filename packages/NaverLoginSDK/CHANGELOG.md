@@ -1,4 +1,4 @@
-## 3.1.2
+## 3.1.3
 * Migrate Android-5.11.0
 * Added logout callback listener
 * Deprecated onError listener

@@ -263,7 +263,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 | initialize | API설정 | :x:  |
 | authenticate | 로그인 | OAuthLoginCallback |
 | refresh | 토큰재발급 | OAuthLoginCallback |
-| logout | 로그아웃 | :x: |
+| logout | 로그아웃 | OAuthLogoutCallback |
 | release | 연동해제 | OAuthLoginCallback |
 | profile | 유저정보 | ProfileCallback |
 | getVersion | 라이브러리 버전 정보  | :x:  |

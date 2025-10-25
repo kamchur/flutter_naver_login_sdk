@@ -265,7 +265,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 | initialize | API Settings | :x:  |
 | authenticate | Login | OAuthLoginCallback |
 | refresh | Token Refresh | OAuthLoginCallback |
-| logout | Logout | :x: |
+| logout | Logout | OAuthLogoutCallback |
 | release | Unlink Account | OAuthLoginCallback |
 | profile | User Information | ProfileCallback |
 | getVersion | 	Library Version Info  | :x:  |

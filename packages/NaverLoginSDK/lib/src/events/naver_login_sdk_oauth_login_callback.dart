@@ -30,6 +30,6 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback
         onSuccess;
     functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onFailure] =
         onFailure;
-    functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onError] = onError;
+    // functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onError] = onError;
   }
 }
