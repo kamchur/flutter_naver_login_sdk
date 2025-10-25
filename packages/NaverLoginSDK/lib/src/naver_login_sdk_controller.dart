@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import '/src/events/naver_login_sdk_oauth_logout_callback.dart';
+
 import '/src/events/naver_login_sdk_callback.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
@@ -53,6 +55,7 @@ class NaverLoginSDK {
       String clientName = "Flutter NaverLogin"}) async {
     assert(Platform.isAndroid || (Platform.isIOS && urlScheme != null),
         _requestUrlSchemeMessage);
+
     await _instance.initialize(
         urlScheme: urlScheme,
         clientId: clientId,
@@ -78,6 +81,7 @@ class NaverLoginSDK {
   /// Refresh your accessToken
   ///
   /// expireAt default 3600(s).
+  @Deprecated("not use anymore, It is same 'authenticate' like login.")
   static Future<void> refresh({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
@@ -87,10 +91,10 @@ class NaverLoginSDK {
   /// Logout your local account.
   ///
   /// If you want more clear access that you have to use [release] function.
-  static Future<void> logout() async {
+  static Future<void> logout({OAuthLogoutCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    await _instance.logout();
+    await _instance.logout(callback: callback);
     // _isInitialize = false;
   }
 

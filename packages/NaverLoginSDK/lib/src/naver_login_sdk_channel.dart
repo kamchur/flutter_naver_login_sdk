@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:flutter/services.dart';
+import '/src/events/naver_login_sdk_oauth_logout_callback.dart';
+
 import 'events/naver_login_sdk_callback.dart';
 import 'naver_login_sdk_constant.dart';
 import 'naver_login_sdk_platform_interface.dart';
@@ -20,7 +22,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
   /// Constructor
   NaverLoginSdkChannel() {
-    _eventChannel.receiveBroadcastStream().listen(_onData);
+    _eventChannel.receiveBroadcastStream().listen(_onData,);
   }
 
   // @override
@@ -35,7 +37,7 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  Future<void> initialize(
+  Future<bool> initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,
@@ -48,8 +50,8 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
       NaverLoginSdkConstant.value.initialize.clientSecret: clientSecret,
       NaverLoginSdkConstant.value.initialize.clientName: clientName
     };
-    await _methodChannel.invokeMethod<void>(
-        NaverLoginSdkConstant.key.initialize, params);
+    return await _methodChannel.invokeMethod<bool>(
+        NaverLoginSdkConstant.key.initialize, params) ?? false;
   }
 
   @override
@@ -71,15 +73,15 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
   @override
   Future<void> profile({required ProfileCallback callback}) async {
-    profileCallback = callback;
     oauthLoginCallback = null;
+    profileCallback = callback;
 
     await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.profile);
   }
 
   @override
-  Future<void> logout() async {
-    oauthLoginCallback = null;
+  Future<void> logout({OAuthLogoutCallback? callback}) async {
+    oauthLoginCallback = callback;
     profileCallback = null;
 
     await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.logout);

@@ -22,7 +22,7 @@ object NaverLoginSdkConstant {
         object NaverLoginEventCallback {
             const val onSuccess: String = "onSuccess"
             const val onFailure: String = "onFailure"
-            const val onError: String = "onError"
+            @Deprecated(message = "not use anymore, only use Failure") const val onError: String = "onError"
         }
     }
 

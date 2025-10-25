@@ -5,6 +5,20 @@
 ///   nickname=null,
 ///   name=null, email=null, gender=null, age=null, birthday=null, profileImage=null,
 ///     birthYear=null, mobile=null, ci=null, encId=null)
+/**
+    val id: String,
+    val nickname: String,
+    val name: String,
+    val email: String,
+    val gender: String,
+    val age: String,
+    val birthday: String,
+    val profileImage: String,
+    val birthYear: String,
+    val mobile: String,
+    val ci: String,
+    val encId: String,
+ */
 class NaverLoginSdkConstantProfile {
   NaverLoginSdkConstantProfile._();
 

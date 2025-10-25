@@ -1,6 +1,7 @@
 package net.lagerstroemia.naver_login_sdk
 
 import android.app.Activity
+import com.navercorp.nid.NidOAuth
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -51,8 +52,8 @@ class NaverLoginSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
         activity?.let { otherActivity ->
             when (call.method) {
                 NaverLoginSdkConstant.Key.initialize -> {
-                    NaverLoginSdkBridge.initialize(otherActivity, call.arguments)
-                    result.success(null)
+                    NaverLoginSdkBridge.initialize(otherActivity, call.arguments, r = result)
+                    // result.success(null)
                 }
 
                 NaverLoginSdkConstant.Key.authenticate -> {
@@ -63,7 +64,9 @@ class NaverLoginSdkPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
                 }
 
                 NaverLoginSdkConstant.Key.logout -> {
-                    NaverLoginSdkBridge.logout()
+                    CoroutineScope(Dispatchers.Main).launch {
+                        NaverLoginSdkBridge.logout(sink = sink, r = result)
+                    }
                     // result.success(null)
                 }
 

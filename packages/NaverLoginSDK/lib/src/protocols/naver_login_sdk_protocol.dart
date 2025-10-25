@@ -1,3 +1,5 @@
+import 'package:naver_login_sdk/src/events/naver_login_sdk_oauth_logout_callback.dart';
+
 import '../events/naver_login_sdk_callback.dart';
 
 interface class NaverLoginSdkProtocol {
@@ -14,7 +16,7 @@ interface class NaverLoginSdkProtocol {
       throw UnimplementedError('refresh() has not been implemented');
   Future<void> profile({required ProfileCallback callback}) =>
       throw UnimplementedError('profile() has not been implemented');
-  Future<void> logout() =>
+  Future<void> logout({OAuthLogoutCallback? callback}) =>
       throw UnimplementedError('logout() has not been implemented');
   Future<void> release({OAuthLoginCallback? callback}) =>
       throw UnimplementedError('release() has not been implemented');

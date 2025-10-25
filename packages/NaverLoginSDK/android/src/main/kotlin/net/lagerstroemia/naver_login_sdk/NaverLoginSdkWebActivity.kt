@@ -2,8 +2,8 @@ package net.lagerstroemia.naver_login_sdk
 
 import android.app.Activity
 import android.os.Bundle
-import com.navercorp.nid.NaverIdLoginSDK
-import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.NidOAuth
+import com.navercorp.nid.oauth.util.NidOAuthCallback
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginEventListener
 import net.lagerstroemia.naver_login_sdk.api.NaverLoginState
 
@@ -21,20 +21,14 @@ class NaverLoginSdkWebActivity: Activity() {
         super.onCreate(savedInstanceState)
 
         loginEventListener = NaverLoginSdkBridge.loginEventListener
-
-        NaverIdLoginSDK.authenticate(this, callback = object: OAuthLoginCallback {
-            override fun onError(errorCode: Int, message: String) {
-                loginEventListener?.onReceive(NaverLoginState.ERROR, errorCode, message)
-                finishAffinity()
-            }
-
-            override fun onFailure(httpStatus: Int, message: String) {
-                loginEventListener?.onReceive(NaverLoginState.FAILURE, httpStatus, message)
-                finishAffinity()
-            }
-
+        NidOAuth.requestLogin(this, callback = object: NidOAuthCallback {
             override fun onSuccess() {
                 loginEventListener?.onReceive(NaverLoginState.SUCCESS)
+                finishAffinity()
+            }
+
+            override fun onFailure(errorCode: String, errorDesc: String) {
+                loginEventListener?.onReceive(NaverLoginState.FAILURE, code = errorCode, message = errorDesc)
                 finishAffinity()
             }
         })

@@ -4,7 +4,7 @@ import 'package:naver_login_sdk/naver_login_sdk.dart';
 
 const urlScheme = 'flutterNaverLogin';      // Only iOS, Android was not used.
 const clientId = 'KH4kCq8piNCS57oematF';    // iOS - consumerKey
-const clientSecret = 'dn5kOT07i7';          // iOS - consumerSecret
+const clientSecret = 'sXQTGsyP39';          // iOS - consumerSecret
 const clientName = "Flutter NaverLogin";    // iOS - appName
 
 /// ISSUE]
@@ -14,7 +14,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Init - Change your API Key.
-  NaverLoginSDK.initialize(
+  await NaverLoginSDK.initialize(
     urlScheme: urlScheme,
     clientId: clientId,
     clientSecret: clientSecret,
@@ -145,7 +145,14 @@ class _MyAppState extends State<MyApp> {
                   ),
                   ElevatedButton(
                     onPressed: () {
-                      NaverLoginSDK.logout();
+                      NaverLoginSDK.logout(callback: OAuthLogoutCallback(
+                        onSuccess: () {
+                          Log.d("onSuccess..");
+                        },
+                        onFailure: (httpStatus, message) {
+                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+                        },
+                      ));
                     },
                     child: Text("Logout"),
                   ),
