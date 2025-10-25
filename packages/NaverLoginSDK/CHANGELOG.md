@@ -1,3 +1,9 @@
+## 3.1.2
+* Migrate Android-5.11.0
+* Added logout callback listener
+* Deprecated onError listener
+* Changed type int -> String in onFailure 
+
 ## 3.0.2
 * Fixed login functions can asynchronous state(iOS).
 

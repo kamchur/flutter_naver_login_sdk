@@ -175,7 +175,7 @@ class _MyAppState extends State<MyApp> {
                   ElevatedButton(
                     onPressed: () async {
                       final String version = await NaverLoginSDK.getVersion();
-                      Log.i("getVersion():$version");
+                      Log.i("getVersion:$version");
                     },
                     child: Text("Version"),
                   ),

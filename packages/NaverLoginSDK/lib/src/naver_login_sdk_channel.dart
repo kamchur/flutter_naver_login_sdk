@@ -22,7 +22,9 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
 
   /// Constructor
   NaverLoginSdkChannel() {
-    _eventChannel.receiveBroadcastStream().listen(_onData,);
+    _eventChannel.receiveBroadcastStream().listen(
+          _onData,
+        );
   }
 
   // @override
@@ -51,7 +53,8 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
       NaverLoginSdkConstant.value.initialize.clientName: clientName
     };
     return await _methodChannel.invokeMethod<bool>(
-        NaverLoginSdkConstant.key.initialize, params) ?? false;
+            NaverLoginSdkConstant.key.initialize, params) ??
+        false;
   }
 
   @override

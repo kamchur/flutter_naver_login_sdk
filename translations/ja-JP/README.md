@@ -2,7 +2,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/naver_login_sdk?color=blue)](https://pub.dev/packages/naver_login_sdk)
 [![Static Badge](https://img.shields.io/badge/ios-v4.2.3-darkorange)](https://github.com/naver/naveridlogin-sdk-ios)
-[![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)
+[![Static Badge](https://img.shields.io/badge/android-v5.11.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)
 
 
 # NaverLoginSDK
@@ -116,7 +116,7 @@ URL Schemeを確認するか、次のようにreturnしてください。  <br/>
 ## Android
 | Target SDK | JDK |
 |------------|-----|
-| API 21 🔼  | 11 🔼 |
+| API 35 🔼  | 11 🔼 |
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 Androidは特別な設定が必要ありません。本当に助かりますよね？ 😊 </br></br>
@@ -215,6 +215,16 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 ```dart
 // logout
 NaverLoginSDK.logout();
+
+// + 3.1.2 : Added OAuthLogoutCallback listener.
+NaverLoginSDK.logout(callback: OAuthLogoutCallback(
+  onSuccess: () {
+    Log.d("onSuccess..");
+  },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+  },
+));
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(

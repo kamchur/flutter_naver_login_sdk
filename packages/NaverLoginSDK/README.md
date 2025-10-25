@@ -2,7 +2,7 @@
 
 [![Pub Version](https://img.shields.io/pub/v/naver_login_sdk?color=blue)](https://pub.dev/packages/naver_login_sdk)
 [![Static Badge](https://img.shields.io/badge/ios-v4.2.3-darkorange)](https://github.com/naver/naveridlogin-sdk-ios)
-[![Static Badge](https://img.shields.io/badge/android-v5.10.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)
+[![Static Badge](https://img.shields.io/badge/android-v5.11.0-deepgreen)](https://github.com/naver/naveridlogin-sdk-android)
 
 
 # NaverLoginSDK
@@ -107,7 +107,7 @@ If there are no special conditions, simply return with `super.application(...)` 
 ## Android
 | Target SDK | JDK |
 |------------|-----|
-| API 21 🔼  | 11 🔼 |
+| API 35 🔼  | 11 🔼 |
 
 Refer to [the Android Development Guide](https://developers.naver.com/docs/login/android/android.md) for better understanding. <br/>
 For Android, no additional settings are required. Isn't that great? </br></br>
@@ -207,6 +207,16 @@ The `logout()` function does not have a callback listener, but the `release()` f
 ```dart
 // logout
 NaverLoginSDK.logout();
+
+// + 3.1.2 : Added OAuthLogoutCallback listener.
+NaverLoginSDK.logout(callback: OAuthLogoutCallback(
+  onSuccess: () {
+    Log.d("onSuccess..");
+  },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+  },
+));
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(
