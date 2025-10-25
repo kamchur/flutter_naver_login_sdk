@@ -1,11 +1,11 @@
 # Changelog
 
-- [3.1.2](#3.1.2)
+- [3.1.3](#3.1.3)
 - [3.0.0](#3.0.0)
 
 <hr/>
 
-### 3.1.2
+### 3.1.3
 Sun Oct 26, 2025
 * Migrate Android-5.11.0
 * Added logout callback listener
