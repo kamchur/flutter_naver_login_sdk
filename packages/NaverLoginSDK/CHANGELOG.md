@@ -1,3 +1,6 @@
+## 3.1.4
+* Fixed iOS onFailure return type by Android-5.11.0
+
 ## 3.1.3
 * Migrate Android-5.11.0
 * Added logout callback listener
