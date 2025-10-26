@@ -19,7 +19,7 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback
   /// Naver APP not installed return -> errorCode:-1, message:naverapp_not_installed
   /// Naver App need update return -> errorCode:-1, message:naverapp_need_update
   ///
-  @Deprecated("not use anymore")
+  /// Android not used
   @override
   FunctionError? onError;
 
@@ -30,6 +30,6 @@ class OAuthLoginCallback extends NaverLoginSdkBaseCallback
         onSuccess;
     functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onFailure] =
         onFailure;
-    // functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onError] = onError;
+    functionEvents[NaverLoginSdkConstantOAuthLoginCallback.onError] = onError;
   }
 }

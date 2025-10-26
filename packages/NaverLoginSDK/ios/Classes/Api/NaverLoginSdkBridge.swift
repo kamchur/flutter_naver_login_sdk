@@ -154,16 +154,16 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
                             self.sink?([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: [resultCode, message, jsonString]])
                         }
                     } catch {
-                        self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [error.asAFError?.responseCode ?? 201, "\(error.localizedDescription)"]])
+                        self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [String(error.asAFError?.responseCode ?? 201), "\(error.localizedDescription)"]])
                     }
                 case .failure(let error) :
-                    self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [error.responseCode ?? 201, "\(error.localizedDescription)"]])
+                    self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [String(error.responseCode ?? 201), "\(error.localizedDescription)"]])
                 }
             }
             
         } else {
             if self.sink != nil {
-                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [401, "Unauthorized"]])
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: ["401", "Unauthorized"]])
             }
         }
     }

@@ -76,7 +76,7 @@ extension NaverLoginSdkPlugin {
         if self.sink != nil {
             switch self.lastCallMethod {
             case NaverLoginSdkConstant.Key.refresh:
-                let httpStatus = error.asAFError?.responseCode ?? 401
+                let httpStatus = String(error.asAFError?.responseCode ?? 401)
                 let message = error.localizedDescription
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [httpStatus, message]])
                 break
