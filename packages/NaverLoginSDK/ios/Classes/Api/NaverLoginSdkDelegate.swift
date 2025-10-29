@@ -75,10 +75,18 @@ extension NaverLoginSdkPlugin {
         // print("NaverLoginSdkDelegate.. oauth20Connection 'didFailWithError' : \(String(describing: error))")
         if self.sink != nil {
             switch self.lastCallMethod {
-            case NaverLoginSdkConstant.Key.refresh:
-                let httpStatus = String(error.asAFError?.responseCode ?? 401)
+            case NaverLoginSdkConstant.Key.authenticate:
+                // (error as NSError).code
+                let errorCode = (error as NSError).code
                 let message = error.localizedDescription
-                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [httpStatus, message]])
+                
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                break
+            case NaverLoginSdkConstant.Key.refresh:
+                // let httpStatus = String(error.asAFError?.responseCode ?? 401)
+                let errorCode = (error as NSError).code
+                let message = error.localizedDescription
+                self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
                 break
             default:
                 break
