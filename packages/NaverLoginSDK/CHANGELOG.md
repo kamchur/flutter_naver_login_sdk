@@ -1,3 +1,6 @@
+## 3.1.5
+* Fixed iOS return cancel alert after login(authenticate)
+
 ## 3.1.4
 * Fixed iOS onFailure return type by Android-5.11.0
 
