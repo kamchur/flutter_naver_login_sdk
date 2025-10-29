@@ -1,8 +1,14 @@
 # Changelog
+- [3.1.5](#3.1.5)
 - [3.1.4](#3.1.4)
 - [3.0.0](#3.0.0)
 
 <hr/>
+
+### 3.1.5
+Wed Oct 29, 2025
+* Fixed iOS return error message after login(authenticate)
+
 
 ### 3.1.4
 Sun Oct 26, 2025
