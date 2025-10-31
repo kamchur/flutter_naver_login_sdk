@@ -298,6 +298,7 @@ object NidOAuth {
         oauthLoginCallback = callback
 
         val intent = NidOAuthBridgeActivity.getIntent(context)
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         context.startActivity(intent)
     }
 
