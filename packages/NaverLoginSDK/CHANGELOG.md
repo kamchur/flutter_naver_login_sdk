@@ -1,3 +1,6 @@
+## 3.1.6
+* Add AOS NaverActivity Bridge's intent task
+
 ## 3.1.5
 * Fixed iOS return cancel alert after login(authenticate)
 
