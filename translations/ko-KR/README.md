@@ -122,6 +122,11 @@ Android는 따로 설정이 필요하지 않습니다. 정말 다행이죠? </br
   public *;
 }
 
+# NidProfileDetail 클래스의 필드명 보존 (Gson 직렬화)
+-keep class com.navercorp.nid.profile.domain.vo.NidProfileDetail {
+    <fields>;
+}
+
 # With R8 full mode, it sees no subtypes of Retrofit interfaces since they are created with a Proxy
 # and replaces all potential values with null. Explicitly keeping the interfaces prevents this.
 -if interface * { @retrofit2.http.* <methods>; }
