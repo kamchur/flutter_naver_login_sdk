@@ -29,8 +29,8 @@ class NaverLoginSdkConstantProfile {
   static const String gender = "gender";
   static const String age = "age";
   static const String birthDay = "birthday";
-  static const String profileImage = "profile_image";
-  static const String birthYear = "birthyear";
+  static const String profileImage = "profileImage";
+  static const String birthYear = "birthYear";
   static const String mobile = "mobile";
   static const String ci = "ci";
   static const String encId = "encId";

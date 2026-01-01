@@ -7,50 +7,63 @@ import '/src/consts/naver_login_sdk_constant_profile.dart';
 /// Maybe you will come here to get [id].
 ///
 class NaverLoginProfile {
-  final String? _id;
-  final String? _nickName;
-  final String? _name;
-  final String? _email;
-  final String? _gender;
-  final String? _age;
-  final String? _birthDay;
-  final String? _profileImage;
-  final String? _birthYear;
-  final String? _mobile;
-  final String? _ci;
-  final String? _encId;
+  String? _id;
+  String? _nickName;
+  String? _name;
+  String? _email;
+  String? _gender;
+  String? _age;
+  String? _birthDay;
+  String? _profileImage;
+  String? _birthYear;
+  String? _mobile;
+  String? _ci;
+  String? _encId;
 
-  NaverLoginProfile._(
-      this._id,
-      this._nickName,
-      this._name,
-      this._email,
-      this._gender,
-      this._age,
-      this._birthDay,
-      this._profileImage,
-      this._birthYear,
-      this._mobile,
-      this._ci,
-      this._encId);
+  NaverLoginProfile._({
+      String? id,
+      String? nickName,
+      String? name,
+      String? email,
+      String? gender,
+      String? age,
+      String? birthDay,
+      String? profileImage,
+      String? birthYear,
+      String? mobile,
+      String? ci,
+      String? encId}) {
+    this._id = id;
+    this._nickName = nickName;
+    this._name = name;
+    this._email = email;
+    this._gender = gender;
+    this._age = age;
+    this._birthDay = birthDay;
+    this._birthYear = birthYear;
+    this._profileImage = profileImage;
+    this._mobile = mobile;
+    this._ci = ci;
+    this._encId = encId;
+  }
 
   /// [response] : Android= NidProfile
   factory NaverLoginProfile.fromJson({required dynamic response}) {
     final json = jsonDecode(response);
 
     return NaverLoginProfile._(
-      json[NaverLoginSdkConstantProfile.id],
-      json[NaverLoginSdkConstantProfile.nickName],
-      json[NaverLoginSdkConstantProfile.name],
-      json[NaverLoginSdkConstantProfile.email],
-      json[NaverLoginSdkConstantProfile.gender],
-      json[NaverLoginSdkConstantProfile.age],
-      json[NaverLoginSdkConstantProfile.birthDay],
-      json[NaverLoginSdkConstantProfile.profileImage],
-      json[NaverLoginSdkConstantProfile.birthYear],
-      json[NaverLoginSdkConstantProfile.mobile],
-      json[NaverLoginSdkConstantProfile.ci],
-      json[NaverLoginSdkConstantProfile.encId],
+      id: json[NaverLoginSdkConstantProfile.id],
+      nickName: json[NaverLoginSdkConstantProfile.nickName],
+      name: json[NaverLoginSdkConstantProfile.name],
+      email: json[NaverLoginSdkConstantProfile.email],
+      gender: json[NaverLoginSdkConstantProfile.gender],
+      age: json[NaverLoginSdkConstantProfile.age],
+      birthDay: json[NaverLoginSdkConstantProfile.birthDay],
+      profileImage: json[NaverLoginSdkConstantProfile.profileImage],
+      birthYear: json[NaverLoginSdkConstantProfile.birthYear],
+      mobile: json[NaverLoginSdkConstantProfile.mobile],
+      ci: json[NaverLoginSdkConstantProfile.ci],
+      encId: json[NaverLoginSdkConstantProfile.encId],
     );
   }
 

@@ -8,7 +8,7 @@ const clientSecret = 'sXQTGsyP39';          // iOS - consumerSecret
 const clientName = "Flutter NaverLogin";    // iOS - appName
 
 /// ISSUE]
-/// e-mail: b3xlon9@gmail.com
+/// e-mail: noccippuca@gmail.com
 ///
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
