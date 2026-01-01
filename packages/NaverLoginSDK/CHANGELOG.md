@@ -1,3 +1,6 @@
+## 3.1.7
+* Fixed AOS Profile parsing parameter names(birthday, birthyear)
+
 ## 3.1.6
 * Add AOS NaverActivity Bridge's intent task
 

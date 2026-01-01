@@ -20,8 +20,8 @@ class NaverLoginProfile {
   String? _ci;
   String? _encId;
 
-  NaverLoginProfile._({
-      String? id,
+  NaverLoginProfile._(
+      {String? id,
       String? nickName,
       String? name,
       String? email,
