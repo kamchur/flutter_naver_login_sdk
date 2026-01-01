@@ -22,7 +22,7 @@ data class NidProfileDetailResponse(
     @SerializedName("profile_image")
     val profileImage: String?,
     @SerializedName("birthyear")
-    val birthYear: String?,
+    val birthyear: String?,
     @SerializedName("mobile")
     val mobile: String?,
     @SerializedName("ci")

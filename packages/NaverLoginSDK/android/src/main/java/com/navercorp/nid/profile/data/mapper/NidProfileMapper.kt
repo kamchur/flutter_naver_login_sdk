@@ -51,7 +51,7 @@ internal object NidProfileMapper {
         age = response.age.orEmpty(),
         birthday = response.birthday.orEmpty(),
         profileImage = response.profileImage.orEmpty(),
-        birthYear = response.birthYear.orEmpty(),
+        birthyear = response.birthyear.orEmpty(),
         mobile = response.mobile.orEmpty(),
         ci = response.ci.orEmpty(),
         encId = response.encId.orEmpty(),
