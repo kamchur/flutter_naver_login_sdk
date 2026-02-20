@@ -136,7 +136,7 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
     
     /// resultCode, message, response
     func profile() {
-        if self.naverConnection != nil && self.naverConnection!.isValidAccessTokenExpireTimeNow(){
+        if self.naverConnection != nil && self.naverConnection!.isValidAccessTokenExpireTimeNow() {
             guard let tokenType: String = naverConnection!.tokenType,
                   let accessToken: String = naverConnection!.accessToken else { return }
             guard let url = URL(string: "https://openapi.naver.com/v1/nid/me") else { return }
@@ -171,19 +171,39 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
                         // print("jsonData:\(jsonData)")
                         if let jsonString = String(data: jsonData, encoding: .utf8) {
                             self.sink?([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: [resultCode, message, jsonString]])
+                            
+                            // 2026-02-20-Fri, profile function return response data, when it called onSuccess event.
+                            self.flutterResult?(jsonString)
                         }
                     } catch {
                         self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [String(error.asAFError?.responseCode ?? 201), "\(error.localizedDescription)"]])
+                        
+                        // 2026-02-20-Fri, profile return nil value, when it called Exception event.
+                        self.flutterResult?(nil)
+                        
                     }
                 case .failure(let error) :
                     self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [String(error.responseCode ?? 201), "\(error.localizedDescription)"]])
+                    
+                    // 2026-02-20-Fri, profile function return nil value. when it called onFailure.
+                    self.flutterResult?(nil)
+                    
                 }
+                
+                // 2026-02-20-Fri, Clear the result callback after execution
+                self.flutterResult = nil
             }
             
         } else {
             if self.sink != nil {
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: ["401", "Unauthorized"]])
+                
+                // 2026-02-20-Fri, profile function return nil value, when it called onFailure event.
+                self.flutterResult?(nil)
             }
+            
+            // 2026-02-20-Fri, flutterResult clear
+            self.flutterResult = nil
         }
     }
     
