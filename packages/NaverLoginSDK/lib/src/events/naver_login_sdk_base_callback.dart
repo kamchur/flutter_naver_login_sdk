@@ -4,7 +4,7 @@ abstract class NaverLoginSdkBaseCallback {
   /// Managing Functions.
   Map<String, Function?> functionEvents = {};
 
-  /// Connection to EventChannel StreambroadcastrReceiver
+  /// Connection to EventChannel Stream broadcast Receiver
   ///
   /// I/flutter (13565): listen.. event:{onError: {errorCode: -1, message: user_cancel}}
   void listen<T>(T event) async {
@@ -30,7 +30,7 @@ abstract class NaverLoginSdkBaseCallback {
   }
 
   /// 2025-01-03-Fri, resolved for Closure Problem.
-  /// Matching arugments count.
+  /// Matching arguments count.
   ///
   /// ```dart
   /// function.runtimeType;

@@ -3,7 +3,7 @@ import 'package:naver_login_sdk/src/events/naver_login_sdk_oauth_logout_callback
 import '../events/naver_login_sdk_callback.dart';
 
 interface class NaverLoginSdkProtocol {
-  Future<void> initialize(
+  Future<bool> initialize(
           {String? urlScheme,
           required String clientId,
           required String clientSecret,
