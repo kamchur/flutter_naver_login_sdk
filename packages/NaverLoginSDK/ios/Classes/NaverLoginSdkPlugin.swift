@@ -48,11 +48,17 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
         
         switch self.lastCallMethod {
         case NaverLoginSdkConstant.Key.initialize:
-            if let params = call.arguments as? [String: String] {
-                // print("NaverLoginSdkPlugin handle.. params:\(params)")
-                self.initialize(args: params)
-                result(nil)
+            DispatchQueue.main.async {
+                if let params = call.arguments as? [String: String] {
+                    self.flutterResult = result
+                    // print("NaverLoginSdkPlugin handle.. params:\(params)")
+                    self.initialize(args: params)
+                    // result(nil) -> 2026-02-20-Fri, initialize function has return boolean value.
+                } else {
+                    result(false)   // 2026-02-20-Fri, if this channel has not anything, return false value.
+                }
             }
+            break
             
         case NaverLoginSdkConstant.Key.authenticate:
             DispatchQueue.main.async {

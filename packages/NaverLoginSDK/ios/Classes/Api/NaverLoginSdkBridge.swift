@@ -36,7 +36,20 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
             self.naverConnection?.consumerKey = arguments![NaverLoginSdkConstant.Value.clientId]
             self.naverConnection?.consumerSecret = arguments![NaverLoginSdkConstant.Value.clientSecret]
             self.naverConnection?.appName = arguments![NaverLoginSdkConstant.Value.clientName]
+            
+            // 2026-02-20-Fri, initialize function return true value.
+            if self.flutterResult != nil {
+                self.flutterResult!(true)
+            }
+        } else {
+            // 2026-02-20-Fri, initialize function return false value.
+            if self.flutterResult != nil {
+                self.flutterResult!(false)
+            }
         }
+        
+        // 2026-02-20-Fri, flutterResult function clear
+        self.flutterResult = nil
     }
     
     /// Login and get AccessToken
