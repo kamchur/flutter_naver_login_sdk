@@ -47,8 +47,8 @@ class NaverLoginSDK {
   ///   ...
   /// }
   /// ```
-  ///
-  static Future<void> initialize(
+  /// 2026-02-20-Fri, instead return parameter `void` -> `bool`.
+  static Future<bool> initialize(
       {String? urlScheme,
       required String clientId,
       required String clientSecret,
@@ -56,13 +56,13 @@ class NaverLoginSDK {
     assert(Platform.isAndroid || (Platform.isIOS && urlScheme != null),
         _requestUrlSchemeMessage);
 
-    await _instance.initialize(
+    _isInitialize = await _instance.initialize(
         urlScheme: urlScheme,
         clientId: clientId,
         clientSecret: clientSecret,
         clientName: clientName);
 
-    _isInitialize = true;
+    return _isInitialize;
   }
 
   /// Request 'Login'
