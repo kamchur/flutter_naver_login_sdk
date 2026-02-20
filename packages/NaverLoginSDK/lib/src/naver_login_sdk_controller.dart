@@ -72,10 +72,22 @@ class NaverLoginSDK {
   /// -
   ///
   /// Required execute after [initialize] function.
+  @Deprecated('This will not be used anymore, Use `login()` instead')
   static Future<void> authenticate({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
     await _instance.authenticate(callback: callback);
+  }
+
+
+  /// Created 2026-02-20-Fri
+  ///
+  /// more simple and looks easy.
+  /// asynchronous
+  static Future<bool> login({OAuthLoginCallback? callback}) async {
+    assert(_isInitialize, _requestInitializeMessage);
+
+    return await _instance.authenticate(callback: callback);
   }
 
   /// Refresh your accessToken

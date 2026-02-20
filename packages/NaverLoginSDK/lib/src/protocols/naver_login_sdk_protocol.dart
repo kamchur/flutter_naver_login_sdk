@@ -8,9 +8,9 @@ interface class NaverLoginSdkProtocol {
           required String clientId,
           required String clientSecret,
           String clientName = "Flutter NaverLogin"}) =>
-      throw UnimplementedError('iniitialize() has not been implemented');
+      throw UnimplementedError('initialize() has not been implemented');
 
-  Future<void> authenticate({OAuthLoginCallback? callback}) =>
+  Future<bool> authenticate({OAuthLoginCallback? callback}) =>
       throw UnimplementedError('authenticate() has not been implemented');
   Future<void> refresh({OAuthLoginCallback? callback}) =>
       throw UnimplementedError('refresh() has not been implemented');

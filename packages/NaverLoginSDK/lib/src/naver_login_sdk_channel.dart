@@ -58,12 +58,12 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  Future<void> authenticate({OAuthLoginCallback? callback}) async {
+  Future<bool> authenticate({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel
-        .invokeMethod<void>(NaverLoginSdkConstant.key.authenticate);
+    return await _methodChannel
+        .invokeMethod<bool>(NaverLoginSdkConstant.key.authenticate) ?? false;
   }
 
   @override

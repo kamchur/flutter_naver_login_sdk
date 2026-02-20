@@ -88,6 +88,9 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
      *
      * 2025-10-24-Fri,
      * Deprecated authenticate > requestLogin
+     *
+     * 2026-02-20-Fri,
+     * return asynchronous, because shrink naver sdk functions.
      * */
     suspend fun authenticate(
         activity: Activity,
@@ -99,6 +102,8 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                 when (state) {
                     NaverLoginState.SUCCESS -> {
                         sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
+                        // 2026-02-20-Fri, for asynchronous logic SUCCESS return 'true'
+                        r.success(true)
                     }
 
                     NaverLoginState.FAILURE -> {
@@ -111,6 +116,8 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                                 )
                             )
                         )
+                        // 2026-02-20-Fri, for asynchronous logic FAILURE return 'false'
+                        r.success(false)
                     }
 
                     NaverLoginState.ERROR -> {
@@ -132,12 +139,12 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                         )
                     }
                 }
-                r.success(null)        // true, false return later.
+                // r.success(null)        // true, false return later.
             }
         }
 
         val intent = Intent(activity, NaverLoginSdkWebActivity::class.java)
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
     }
 
