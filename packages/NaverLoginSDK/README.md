@@ -162,7 +162,7 @@ The `urlScheme` parameter should be entered if developing for iOS.
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  NaverLoginSDK.initialize(
+  await NaverLoginSDK.initialize(
     urlScheme: urlScheme, 
     clientId: clientId, 
     clientSecret: clientSecret,
@@ -179,7 +179,9 @@ void main() async {
 ### Login
 Congratulations 🎉! You are now at the stage where you can execute 'Login.'
 Use the `authenticate()` function to log in, and the `OAuthLoginCallback` listener to check whether the login was successful.
-```dart
+
+
+<del>
 NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   onSuccess: () {
     Log.d("onSuccess..");
@@ -187,11 +189,30 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   onFailure: (httpStatus, message) {
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
-  onError: (errorCode, message) {
-    Log.e("onError.. errorCode:$errorCode, message:$message");
-  }
-));
+</del>
+
+```dart
+final isLogin = await NaverLoginSDK.login();
+
+if (isLogin) {
+  Log.d("isLogin!");
+
+  // if you want to know userProfile
+  final userProfile = await NaverLoginSDK.profile();
+}
 ```
+
+```dart
+// use callback
+NaverLoginSDK.login(callback: OAuthLoginCallback(
+  onSuccess: () {
+    Log.d("onSuccess..");
+  },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+  },
+```
+
 
 <br/>
 
@@ -209,10 +230,17 @@ You should also know how to 'logout' after logging in. There are two ways to do 
 2. The `release()` function deletes tokens on both the client and server sides, resetting everything.
 
 The `logout()` function does not have a callback listener, but the `release()` function can use the `OAuthLoginCallback` listener.
-```dart
-// logout
-NaverLoginSDK.logout();
 
+
+```dart
+final isLogout = await NaverLoginSDK.logout();
+
+// or remove cache, like before `release` function.
+final isLogout = await NaverLoginSDK.logout(isForced: true);
+```
+
+```dart
+// logout callback
 // + 3.1.2 : Added OAuthLogoutCallback listener.
 NaverLoginSDK.logout(callback: OAuthLogoutCallback(
   onSuccess: () {
@@ -222,6 +250,9 @@ NaverLoginSDK.logout(callback: OAuthLogoutCallback(
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
 ));
+```
+
+<del>
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(
@@ -235,16 +266,27 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
     Log.e("onError.. errorCode:$errorCode, message:$message");
   }
 ));
-```
+
+</del>
+
 
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
+
 
 ### Profile
 To retrieve the user's information after logging in, use the `profile()` function. <br/>
 User information is delivered via the `ProfileCallback` listener, and you can use the `NaverLoginProfile` data model class to obtain the details. <br/>
 Use `NaverLoginProfile.fromJson(response:)` to automatically parse and utilize user data.
+
+
 ```dart
+final userProfile = await NaverLoginSDK.profile();
+```
+
+
+```dart
+// use callback
 NaverLoginSDK.profile(callback: ProfileCallback(
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
@@ -259,6 +301,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
     Log.e("onError.. message:$message");
   }
 ));
+
 ```
 
 <p align="right"><a href="#getting-started">🔼</a></p>

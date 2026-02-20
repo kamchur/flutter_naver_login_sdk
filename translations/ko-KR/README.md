@@ -162,7 +162,7 @@ NaverLoginSDK패키지를 사용하기 위해서 가장 먼저 `main()`함수에
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  NaverLoginSDK.initialize(
+  await NaverLoginSDK.initialize(
     urlScheme: urlScheme, 
     clientId: clientId, 
     clientSecret: clientSecret,
@@ -177,7 +177,7 @@ void main() async {
 ### Login
 드디어 우리가 실행하고 싶었던 '로그인'을 할 수 있는 단계에 왔습니다. 축하드립니다🎉 </br>
 `authenticate()`라는 함수로 로그인을 하며 `OAuthLoginCallback`콜백 리스너로 로그인이 잘되었는지 확인할 수 있습니다.</br>
-```dart
+<del>
 NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   onSuccess: () {
     Log.d("onSuccess..");
@@ -185,10 +185,28 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
   onFailure: (httpStatus, message) {
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
-  onError: (errorCode, message) {
-    Log.e("onError.. errorCode:$errorCode, message:$message");
-  }
-));
+</del>
+
+```dart
+final isLogin = await NaverLoginSDK.login();
+
+if (isLogin) {
+  Log.d("isLogin!");
+
+  // if you want to know userProfile
+  final userProfile = await NaverLoginSDK.profile();
+}
+```
+
+```dart
+// use callback
+NaverLoginSDK.login(callback: OAuthLoginCallback(
+  onSuccess: () {
+    Log.d("onSuccess..");
+  },
+  onFailure: (httpStatus, message) {
+    Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
+  },
 ```
 
 <br/>
@@ -208,9 +226,14 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 `logout()`함수는 따로 콜백 리스너가 없지만, `release()`함수는 `OAuthLoginCallback`콜백 리스너를 사용할 수 있습니다.
 
 ```dart
-// logout
-NaverLoginSDK.logout();
+final isLogout = await NaverLoginSDK.logout();
 
+// or remove cache, like before `release` function.
+final isLogout = await NaverLoginSDK.logout(isForced: true);
+```
+
+```dart
+// logout callback
 // + 3.1.2 : Added OAuthLogoutCallback listener.
 NaverLoginSDK.logout(callback: OAuthLogoutCallback(
   onSuccess: () {
@@ -220,6 +243,9 @@ NaverLoginSDK.logout(callback: OAuthLogoutCallback(
     Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
   },
 ));
+```
+
+<del>
 
 // release
 NaverLoginSDK.release(callback: OAuthLoginCallback(
@@ -233,7 +259,8 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
     Log.e("onError.. errorCode:$errorCode, message:$message");
   }
 ));
-```
+
+</del>
 
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
@@ -243,6 +270,12 @@ NaverLoginSDK.release(callback: OAuthLoginCallback(
 유저정보는 `ProfileCallback`콜백 리스너를 통해서 전달받고 `NaverLoginProfile`데이터 모델 클래스를 이용해서 정보를 획득하시면 됩니다. </br>
 획득은 `NaverLoginProfile.fromJson(response: )`형태로 받으시면 자동으로 파싱되어 유저 데이터를 활용할 수 있도록 하였습니다. <br/>
 ```dart
+final userProfile = await NaverLoginSDK.profile();
+```
+
+
+```dart
+// use callback
 NaverLoginSDK.profile(callback: ProfileCallback(
   onSuccess: (resultCode, message, response) {
     Log.i("onSuccess.. resultCode:$resultCode, message:$message, profile:$response");
