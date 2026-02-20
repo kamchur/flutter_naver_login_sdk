@@ -14,7 +14,7 @@ interface class NaverLoginSdkProtocol {
       throw UnimplementedError('authenticate() has not been implemented');
   Future<void> refresh({OAuthLoginCallback? callback}) =>
       throw UnimplementedError('refresh() has not been implemented');
-  Future<void> profile({required ProfileCallback callback}) =>
+  Future<dynamic> profile({ProfileCallback? callback}) =>
       throw UnimplementedError('profile() has not been implemented');
   Future<bool> logout({OAuthLogoutCallback? callback}) =>
       throw UnimplementedError('logout() has not been implemented');

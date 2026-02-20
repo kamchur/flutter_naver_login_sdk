@@ -218,7 +218,7 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                         )
                     )
                 )
-                r.success(null)
+                r.success(gson.toJson(result.profile))
             }
 
             override fun onFailure(errorCode: String, errorDesc: String) {

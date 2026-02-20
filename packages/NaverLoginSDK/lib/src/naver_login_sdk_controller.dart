@@ -181,10 +181,18 @@ class NaverLoginSDK {
   ///     ...
   ///     ..
   /// ```
-  static Future<void> profile({required ProfileCallback callback}) async {
+  ///
+  /// 2026-02-20-Fri, instead return value, `void` -> `NaverUserProfile`
+  static Future<NaverLoginProfile?> profile({ProfileCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    await _instance.profile(callback: callback);
+    final response = await _instance.profile(callback: callback);
+
+    if (response == null) {
+      return null;
+    } else {
+      return NaverLoginProfile.fromJson(response: response);
+    }
   }
 
   /// Library Version

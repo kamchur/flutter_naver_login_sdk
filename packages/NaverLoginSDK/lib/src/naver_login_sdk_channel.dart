@@ -75,11 +75,11 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  Future<void> profile({required ProfileCallback callback}) async {
+  Future<dynamic> profile({ProfileCallback? callback}) async {
     oauthLoginCallback = null;
     profileCallback = callback;
 
-    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.profile);
+    return await _methodChannel.invokeMethod<dynamic>(NaverLoginSdkConstant.key.profile);
   }
 
   @override
