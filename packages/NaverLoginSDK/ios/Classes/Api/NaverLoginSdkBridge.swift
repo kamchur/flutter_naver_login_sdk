@@ -111,6 +111,12 @@ extension NaverLoginSdkPlugin: NaverLoginSdkProtocol {
     func logout() {
         // naverConnection = NaverThirdPartyLoginConnection.getSharedInstance()
         self.naverConnection?.resetToken()
+        
+        if self.flutterResult != nil {
+            self.flutterResult!(true)
+        }
+        
+        self.flutterResult = nil
     }
     
     /// Remove Token client and server. (All of)

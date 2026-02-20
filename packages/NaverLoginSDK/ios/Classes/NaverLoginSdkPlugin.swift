@@ -72,8 +72,10 @@ public class NaverLoginSdkPlugin: NSObject, FlutterPlugin, FlutterStreamHandler,
         //  result("iOS " + UIDevice.current.systemVersion)
         case NaverLoginSdkConstant.Key.logout:
             DispatchQueue.main.async {
+                self.flutterResult = result
+                
                 self.logout()
-                result(nil)
+                // result(nil)
             }
             break
         case NaverLoginSdkConstant.Key.release:

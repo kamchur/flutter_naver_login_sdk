@@ -77,12 +77,16 @@ extension NaverLoginSdkPlugin {
         if self.sink != nil {
             if lastCallMethod == NaverLoginSdkConstant.Key.release {
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+                
+                // 2026-02-20-Fri, release function return true value, when it called onSuccess event.
+                if self.flutterResult != nil {
+                    self.flutterResult!(true)
+                }
             }
         }
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        
+        // 2026-02-20-Fri, flutterResult clear
+        self.flutterResult = nil
     }
     
     
@@ -157,6 +161,12 @@ extension NaverLoginSdkPlugin {
                 let errorCode = receiveType.rawValue
                 let message = receiveLoginTypeConvert(rawValue: receiveType.rawValue)
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                
+                // 2026-02-20-Fri, release function return false value, when it called onError event.
+                if self.flutterResult != nil {
+                    self.flutterResult!(false)
+                }
+                break
             default:
                 break
             }
