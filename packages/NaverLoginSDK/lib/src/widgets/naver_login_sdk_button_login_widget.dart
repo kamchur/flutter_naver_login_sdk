@@ -28,8 +28,7 @@ class NaverLoginButton extends PictureButton {
       NaverLoginButtonStyle style = const NaverLoginButtonStyle(
           language: NaverButtonLanguage.english,
           mode: NaverButtonMode.green,
-          type: NaverButtonType.rectangleBar
-      ),
+          type: NaverButtonType.rectangleBar),
       super.imagePressed,
       super.imageSelected,
       super.width,

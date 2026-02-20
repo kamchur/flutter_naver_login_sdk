@@ -81,7 +81,6 @@ class NaverLoginSDK {
     await _instance.authenticate(callback: callback);
   }
 
-
   /// Created 2026-02-20-Fri
   ///
   /// more simple and looks easy.
@@ -110,7 +109,8 @@ class NaverLoginSDK {
   /// It is able to remove token client and server.
   ///
   /// 2026-02-20-Fri, instead return value, `void` -> `bool`
-  static Future<bool> logout({bool isForced = false, OAuthLogoutCallback? callback}) async {
+  static Future<bool> logout(
+      {bool isForced = false, OAuthLogoutCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
     if (isForced) {
@@ -122,7 +122,8 @@ class NaverLoginSDK {
   }
 
   /// Break Off, remove token client and server.
-  @Deprecated('This will not be used anymore, Use `logout()` function and isForced parameter.')
+  @Deprecated(
+      'This will not be used anymore, Use `logout()` function and isForced parameter.')
   static Future<void> release({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 

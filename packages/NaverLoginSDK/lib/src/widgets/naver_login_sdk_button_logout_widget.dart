@@ -14,9 +14,7 @@ class NaverLogoutButton extends PictureButton {
       super.onLongPressed,
       super.onSelectChanged,
       NaverLogoutButtonStyle style = const NaverLogoutButtonStyle(
-        language: NaverButtonLanguage.english,
-        mode: NaverButtonMode.green
-      ),
+          language: NaverButtonLanguage.english, mode: NaverButtonMode.green),
       super.imagePressed,
       super.imageSelected,
       super.width,

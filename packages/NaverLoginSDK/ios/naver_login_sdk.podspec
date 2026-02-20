@@ -4,7 +4,7 @@
 #
 Pod::Spec.new do |s|
   s.name             = 'naver_login_sdk'
-  s.version          = '0.0.1'
+  s.version          = '3.2.0'
   s.summary          = 'Flutter-Naver Login SDK'
   s.description      = <<-DESC
 Flutter-Naver Login SDK
@@ -13,7 +13,7 @@ Flutter-Naver Login SDK
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Your Company' => 'b3xlon9@gmail.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'naver_login_sdk/Sources/naver_login_sdk/**/*.swift'
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'
 

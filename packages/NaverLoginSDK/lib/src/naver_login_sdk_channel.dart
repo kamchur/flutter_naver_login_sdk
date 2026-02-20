@@ -63,7 +63,8 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     profileCallback = null;
 
     return await _methodChannel
-        .invokeMethod<bool>(NaverLoginSdkConstant.key.authenticate) ?? false;
+            .invokeMethod<bool>(NaverLoginSdkConstant.key.authenticate) ??
+        false;
   }
 
   @override
@@ -79,7 +80,8 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = null;
     profileCallback = callback;
 
-    return await _methodChannel.invokeMethod<dynamic>(NaverLoginSdkConstant.key.profile);
+    return await _methodChannel
+        .invokeMethod<dynamic>(NaverLoginSdkConstant.key.profile);
   }
 
   @override
@@ -87,7 +89,9 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    return await _methodChannel.invokeMethod<bool>(NaverLoginSdkConstant.key.logout) ?? false;
+    return await _methodChannel
+            .invokeMethod<bool>(NaverLoginSdkConstant.key.logout) ??
+        false;
   }
 
   /// [release] function click continue.
@@ -99,7 +103,9 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    return await _methodChannel.invokeMethod<bool>(NaverLoginSdkConstant.key.release) ?? false;
+    return await _methodChannel
+            .invokeMethod<bool>(NaverLoginSdkConstant.key.release) ??
+        false;
   }
 
   @override

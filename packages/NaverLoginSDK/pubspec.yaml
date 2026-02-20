@@ -40,4 +40,3 @@ flutter:
         pluginClass: NaverLoginSdkPlugin
       ios:
         pluginClass: NaverLoginSdkPlugin
-        sharedDarwinSource: true
