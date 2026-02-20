@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   NaverLoginButton(
-                    onPressed: () {
+                    onPressed: (userProfile) {
                       NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
                         onSuccess: () {
                           Log.d("onSuccess..");
@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   SizedBox(height: 9.0,),
                   NaverLogoutButton(
-                    onPressed: () => NaverLoginSDK.logout(),
+                    onPressed: (isLogout) => NaverLoginSDK.logout(),
                     style: NaverLogoutButtonStyle(
                         language: NaverButtonLanguage.english,
                         mode: NaverButtonMode.green
