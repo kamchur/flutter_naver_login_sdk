@@ -49,6 +49,11 @@ extension NaverLoginSdkPlugin {
                 break
             case NaverLoginSdkConstant.Key.refresh:
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+                
+                // 2026-02-20-Fri, refresh return true value,
+                if self.flutterResult != nil {
+                    self.flutterResult!(true)
+                }
                 break
             default:
                 break
@@ -102,6 +107,11 @@ extension NaverLoginSdkPlugin {
                 let errorCode = (error as NSError).code
                 let message = error.localizedDescription
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                
+                // 2026-02-20-Fri, refresh function return false value, when it called onError.
+                if self.flutterResult != nil {
+                    self.flutterResult!(false)
+                }
                 break
             default:
                 break
@@ -135,6 +145,11 @@ extension NaverLoginSdkPlugin {
                 let message = receiveLoginTypeConvert(rawValue: receiveType.rawValue)
                 
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                
+                // 2026-02-20-Fri, refresh function return false value, when it called onError event.
+                if self.flutterResult != nil {
+                    self.flutterResult!(false)
+                }
                 break
             case NaverLoginSdkConstant.Key.release:
                 // errorCode, message,
@@ -160,13 +175,17 @@ extension NaverLoginSdkPlugin {
             let httpStatus: String = String(receiveType.rawValue)
             let message: String = receiveLoginTypeConvert(rawValue: receiveType.rawValue)
             self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onFailure: [httpStatus, message]])
+            
+            // 2026-02-20-Fri, refreash function return false value, when it called onFailure event.
+            if self.flutterResult != nil {
+                self.flutterResult!(false)
+            }
+            break
         default:
             break
         }
         
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        // 2026-02-20-Fri, flutterResult clear
+        self.flutterResult = nil
     }
 }
