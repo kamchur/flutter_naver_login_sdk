@@ -14,7 +14,7 @@ class NaverLogoutButtonStyle {
 
   /// [NaverLogoutButtonStyle] has only type RectangleBar
   ///
-  NaverLogoutButtonStyle({
+  const NaverLogoutButtonStyle({
     this.language = NaverButtonLanguage.korean,
     required this.mode,
   });

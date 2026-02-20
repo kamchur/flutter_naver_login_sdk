@@ -16,7 +16,7 @@ class NaverLoginButtonStyle {
   final NaverButtonMode mode;
   final NaverButtonType type;
 
-  NaverLoginButtonStyle({
+  const NaverLoginButtonStyle({
     this.language = NaverButtonLanguage.korean,
     required this.mode,
     required this.type,
