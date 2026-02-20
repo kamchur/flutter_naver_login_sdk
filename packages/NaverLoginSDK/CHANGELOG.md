@@ -1,3 +1,8 @@
+## 3.2.0
+* Update login, logout function return value as asynchronous
+* Fixed NaverLogin, Logout ButtonAsset Image use possible
+* Update NaverLogin, Logout Button onPressed return NaverLoginProfile and isLogout boolean value
+
 ## 3.1.7
 * Fixed AOS Profile parsing parameter names(birthday, birthyear)
 
