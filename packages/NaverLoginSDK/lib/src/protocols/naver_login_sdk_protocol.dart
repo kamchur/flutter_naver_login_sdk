@@ -16,9 +16,9 @@ interface class NaverLoginSdkProtocol {
       throw UnimplementedError('refresh() has not been implemented');
   Future<void> profile({required ProfileCallback callback}) =>
       throw UnimplementedError('profile() has not been implemented');
-  Future<void> logout({OAuthLogoutCallback? callback}) =>
+  Future<bool> logout({OAuthLogoutCallback? callback}) =>
       throw UnimplementedError('logout() has not been implemented');
-  Future<void> release({OAuthLoginCallback? callback}) =>
+  Future<bool> release({OAuthLoginCallback? callback}) =>
       throw UnimplementedError('release() has not been implemented');
 
   Future<String> getVersion() =>

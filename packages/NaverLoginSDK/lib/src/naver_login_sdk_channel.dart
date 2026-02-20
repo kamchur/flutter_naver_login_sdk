@@ -83,11 +83,11 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   }
 
   @override
-  Future<void> logout({OAuthLogoutCallback? callback}) async {
+  Future<bool> logout({OAuthLogoutCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.logout);
+    return await _methodChannel.invokeMethod<bool>(NaverLoginSdkConstant.key.logout) ?? false;
   }
 
   /// [release] function click continue.
@@ -95,11 +95,11 @@ class NaverLoginSdkChannel extends NaverLoginSdkPlatform {
   /// Android -> onFailure.. httpStatus:200, message:OK
   /// iOS -> onError.. errorCode:1, message:PARAMETERNOTSET
   @override
-  Future<void> release({OAuthLoginCallback? callback}) async {
+  Future<bool> release({OAuthLoginCallback? callback}) async {
     oauthLoginCallback = callback;
     profileCallback = null;
 
-    await _methodChannel.invokeMethod<void>(NaverLoginSdkConstant.key.release);
+    return await _methodChannel.invokeMethod<bool>(NaverLoginSdkConstant.key.release) ?? false;
   }
 
   @override

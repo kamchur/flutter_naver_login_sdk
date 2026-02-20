@@ -160,7 +160,7 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
         NidOAuth.logout(callback = object: NidOAuthCallback {
             override fun onSuccess() {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
-                r.success(null)
+                r.success(true)
             }
 
             override fun onFailure(errorCode: String, errorDesc: String) {
@@ -172,7 +172,7 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                         )
                     )
                 )
-                r.success(null)
+                r.success(false)
             }
         })
     }
@@ -185,7 +185,7 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
         NidOAuth.disconnect(callback = object : NidOAuthCallback {
             override fun onSuccess() {
                 sink?.success(mapOf(NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess to null))
-                r.success(null)
+                r.success(true)
             }
 
             override fun onFailure(errorCode: String, errorDesc: String) {
@@ -197,7 +197,7 @@ object NaverLoginSdkBridge : NaverLoginSdkProtocol {
                         )
                     )
                 )
-                r.success(null)
+                r.success(false)
             }
         })
     }

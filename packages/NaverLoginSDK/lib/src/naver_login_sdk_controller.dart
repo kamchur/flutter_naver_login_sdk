@@ -6,6 +6,8 @@ import '/src/events/naver_login_sdk_callback.dart';
 
 import 'naver_login_sdk_platform_interface.dart';
 
+import '/src/naver_login_sdk_profile.dart';
+
 const String _requestInitializeMessage =
     'Please execute NaverLoginSDK.initialize() function at first.';
 const String _requestUrlSchemeMessage =
@@ -103,14 +105,24 @@ class NaverLoginSDK {
   /// Logout your local account.
   ///
   /// If you want more clear access that you have to use [release] function.
-  static Future<void> logout({OAuthLogoutCallback? callback}) async {
+  ///
+  /// 2026-02-20-Fri, ♻️refactor: added [isForced] parameter,
+  /// It is able to remove token client and server.
+  ///
+  /// 2026-02-20-Fri, instead return value, `void` -> `bool`
+  static Future<bool> logout({bool isForced = false, OAuthLogoutCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
-    await _instance.logout(callback: callback);
+    if (isForced) {
+      return await _instance.release(callback: callback);
+    } else {
+      return await _instance.logout(callback: callback);
+    }
     // _isInitialize = false;
   }
 
   /// Break Off, remove token client and server.
+  @Deprecated('This will not be used anymore, Use `logout()` function and isForced parameter.')
   static Future<void> release({OAuthLoginCallback? callback}) async {
     assert(_isInitialize, _requestInitializeMessage);
 
