@@ -18,12 +18,16 @@ extension NaverLoginSdkPlugin {
         if self.sink != nil {
             if lastCallMethod == NaverLoginSdkConstant.Key.authenticate {
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+                
+                // 2026-02-20-Fri, flutterResult return true value when called onSuccess event.
+                if self.flutterResult != nil {
+                    self.flutterResult!(true)
+                    
+                }
             }
         }
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        // 2026-02-20-Fri, flutterResult clear.
+        self.flutterResult = nil
     }
     
     /// Get RefreshToken after [getRefreshToken] function
@@ -37,16 +41,22 @@ extension NaverLoginSdkPlugin {
             switch self.lastCallMethod {
             case NaverLoginSdkConstant.Key.authenticate:
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+                
+                // 2026-02-20-Fri, authenticate return true value.
+                if self.flutterResult != nil {
+                    self.flutterResult!(true)
+                }
+                break
             case NaverLoginSdkConstant.Key.refresh:
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onSuccess: nil])
+                break
             default:
                 break
             }
         }
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        
+        // 2026-02-20-Fri, flutterResult clear.
+        self.flutterResult = nil
     }
     
     /// Remove Token only after [release] function
@@ -81,6 +91,11 @@ extension NaverLoginSdkPlugin {
                 let message = error.localizedDescription
                 
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                
+                // 2026-02-20-Fri, authenticate return false value when it called onError event.
+                if self.flutterResult != nil {
+                    flutterResult!(false)
+                }
                 break
             case NaverLoginSdkConstant.Key.refresh:
                 // let httpStatus = String(error.asAFError?.responseCode ?? 401)
@@ -92,10 +107,9 @@ extension NaverLoginSdkPlugin {
                 break
             }
         }
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        
+        // 2026-02-20-Fri, flutterResult clear
+        self.flutterResult = nil
     }
     
     /// Login Fail Handler
@@ -109,12 +123,19 @@ extension NaverLoginSdkPlugin {
                 let message = receiveLoginTypeConvert(rawValue: receiveType.rawValue)
                 
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                
+                // 2026-02-20-Fri, authenticate return false value, when it called onError event.
+                if self.flutterResult != nil {
+                    self.flutterResult!(false)
+                }
+                break
             case NaverLoginSdkConstant.Key.refresh:
                 // errorCode, message
                 let errorCode = receiveType.rawValue
                 let message = receiveLoginTypeConvert(rawValue: receiveType.rawValue)
                 
                 self.sink!([NaverLoginSdkConstant.Key.NaverLoginEventCallback.onError: [errorCode, message]])
+                break
             case NaverLoginSdkConstant.Key.release:
                 // errorCode, message,
                 // Android - onFailure
@@ -125,10 +146,9 @@ extension NaverLoginSdkPlugin {
                 break
             }
         }
-        if self.flutterResult != nil {
-            self.flutterResult!(nil)
-            self.flutterResult = nil
-        }
+        
+        // 2026-02-20-Fri, flutterResult clear
+        self.flutterResult = nil
     }
     
     /// Login Success
