@@ -51,41 +51,16 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   NaverLoginButton(
                     onPressed: (userProfile) {
-                      NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
-                        onSuccess: () {
-                          Log.d("onSuccess..");
-                        },
-                        onFailure: (httpStatus, message) {
-                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
-                        },
-                        onError: (errorCode, message) {
-                          Log.e("onError.. errorCode:$errorCode, message:$message");
-
-                          if (message == 'naverapp_not_installed') {
-                            showDialog(context: context, builder: (context) => AlertDialog(
-                              title: Text('Alarm'),
-                              content: Text('NaverApp not installed'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text('ok', style: TextStyle(color: Colors.blueAccent),),
-                                )
-                              ],
-                            ),);
-                          }
-                        },
-                      ));
+                      Log.d('naver login button userProfile:$userProfile');
                     },
-                    style: NaverLoginButtonStyle(
-                        language: NaverButtonLanguage.english,
-                        mode: NaverButtonMode.green,
-                        type: NaverButtonType.rectangleBar
-                    ),
                     width: 200,
                   ),
                   SizedBox(height: 9.0,),
                   NaverLogoutButton(
-                    onPressed: (isLogout) => NaverLoginSDK.logout(),
+                    onPressed: (isLogout) {
+                      Log.d('naver logout button isLogout:$isLogout');
+                    },
+                    // custom
                     style: NaverLogoutButtonStyle(
                         language: NaverButtonLanguage.english,
                         mode: NaverButtonMode.green
@@ -94,18 +69,12 @@ class _MyAppState extends State<MyApp> {
                   ),
                   SizedBox(height: 12.0,),
                   ElevatedButton(
-                    onPressed: () {
-                      NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
-                        onSuccess: () {
-                          Log.d("onSuccess..");
-                        },
-                        onFailure: (httpStatus, message) {
-                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
-                        },
-                        onError: (errorCode, message) {
-                          Log.e("onError.. errorCode:$errorCode, message:$message");
-                        },
-                      ));
+                    onPressed: () async {
+                      final bool isLogin = await NaverLoginSDK.login();
+                      Log.d('isLogin:$isLogin');
+
+                      final userProfile = await NaverLoginSDK.profile();
+                      Log.i('userProfile:$userProfile');
                     },
                     child: Text("Login"),
                   ),
@@ -157,18 +126,9 @@ class _MyAppState extends State<MyApp> {
                     child: Text("Logout"),
                   ),
                   ElevatedButton(
-                    onPressed: () {
-                      NaverLoginSDK.release(callback: OAuthLoginCallback(
-                        onError: (errorCode, message) {
-                          Log.e("onError.. errorCode:$errorCode, message:$message");
-                        },
-                        onFailure: (httpStatus, message) {
-                          Log.w("onFailure.. httpStatus:$httpStatus, message:$message");
-                        },
-                        onSuccess: () {
-                          Log.d("onSuccess..");
-                        },
-                      ));
+                    onPressed: () async {
+                      final bool isLogoutRelease = await NaverLoginSDK.logout(isForced: true);
+                      Log.d('isLogoutRelease:$isLogoutRelease');
                     },
                     child: Text("Release"),
                   ),
