@@ -16,9 +16,9 @@ dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-screenshots:
-  - description: Naver Open Resource
-    path: screenshots/naver_rectangle_icon.png
+#screenshots:
+#  - description: Naver Open Resource
+#    path: screenshots/naver_rectangle_icon.png
 
 # The following section is specific to Flutter packages.
 flutter:
