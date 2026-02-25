@@ -188,7 +188,7 @@ NaverLoginSDK.authenticate(callback: OAuthLoginCallback(
 </del>
 
 ```dart
-final isLogin = await NaverLoginSDK.login();
+final bool isLogin = await NaverLoginSDK.login();
 
 if (isLogin) {
   Log.d("isLogin!");
@@ -226,10 +226,10 @@ NaverLoginSDK.login(callback: OAuthLoginCallback(
 `logout()`함수는 따로 콜백 리스너가 없지만, `release()`함수는 `OAuthLoginCallback`콜백 리스너를 사용할 수 있습니다.
 
 ```dart
-final isLogout = await NaverLoginSDK.logout();
+final bool isLogout = await NaverLoginSDK.logout();
 
 // or remove cache, like before `release` function.
-final isLogout = await NaverLoginSDK.logout(isForced: true);
+final bool isLogout = await NaverLoginSDK.logout(isForced: true);
 ```
 
 ```dart
@@ -299,10 +299,11 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 | Name | Feature | Listener | 
 |------|---------|----------|
 | initialize | API설정 | :x:  |
-| authenticate | 로그인 | OAuthLoginCallback |
-| refresh | 토큰재발급 | OAuthLoginCallback |
+| ~~authenticate~~ | 로그인 | OAuthLoginCallback |
+| login | 로그인 | OAuthLoginCallback |
+| ~~refresh~~ | 토큰재발급 | OAuthLoginCallback |
 | logout | 로그아웃 | OAuthLogoutCallback |
-| release | 연동해제 | OAuthLoginCallback |
+| ~~release~~ | 연동해제 | OAuthLoginCallback |
 | profile | 유저정보 | ProfileCallback |
 | getVersion | 라이브러리 버전 정보  | :x:  |
 | getTokenType | 토큰 타입 정보  | :x:    |
@@ -381,9 +382,6 @@ backgroundColor: Theme.of(context).naverColor,
 ## About
 NaverLoginSDK패키지를 이용해주셔서 감사합니다. <br/>
 만들면서 정말 행복했습니다. 추가적으로 저의 소소한 활동 링크를 남기고 마무리 하려고 합니다.<br/><br/>
-[Repository(GitHub)](https://github.com/hamhoney)  <br/>
-[LinkedIn](https://www.linkedin.com/in/lagerstroemia)  <br/>
-[Inflearn(인프런강의)](https://www.inflearn.com/course/%EA%B1%B8%EC%9D%8C%EB%A7%88-%EC%BD%94%EB%94%A9-%EC%95%B1%EA%B0%9C%EB%B0%9C)  <br/>
-[Youtube](https://www.youtube.com/watch?v=OVd35X7yCro)  <br/><br/>
+[Repository(GitHub)](https://github.com/kamchur)  <br/>
 
 감사합니다💙
