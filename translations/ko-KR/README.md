@@ -319,7 +319,7 @@ NaverLoginSDK.profile(callback: ProfileCallback(
 `NaverLoginButton`과 `NaverLogoutButton`위젯은 <a href="https://pub.dev/packages/picture_button" target="_blank">**PictureButton**</a>위젯을 상속하여 만들어졌습니다. <br/>
 (`PictureButton`은 이미지 크기를 자동으로 계산하여 화면에 표출하는 아주 똑똑한 위젯입니다)<br/>
 
-<img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" height="56"><br/>
+<img src="https://github.com/user-attachments/assets/3e07ee87-1246-4172-9acc-9f668c9292f5" alt="NaverButton Resource Guide" width="300"><br/>
 만약에 네이버 대표 색상이 필요하다면 `naverColor` 색상을 적용해보세요!
 ```dart
 backgroundColor: Theme.of(context).naverColor,
@@ -327,11 +327,17 @@ backgroundColor: Theme.of(context).naverColor,
 <br/>
 
 ### NaverLoginButton
-<img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" height="60" />
+<img src="https://github.com/user-attachments/assets/a1274544-d5fa-40a3-b7f5-e78bcadaf589" alt="login" width="200" />
 
 ```dart
  NaverLoginButton(
-    onPressed: () => NaverLoginSDK.authenticate(),
+    onPressed: (userProfile) {
+      if (userProfile != null) {
+        Log.d("로그인 성공! $userProfile");
+      } else {
+        Log.w("로그인 실패..");
+      }
+    },
     style: NaverLoginButtonStyle(
         language: NaverButtonLanguage.english,
         mode: NaverButtonMode.green,
@@ -342,26 +348,32 @@ backgroundColor: Theme.of(context).naverColor,
 ```
 |`NaverButtonLanguage`|Output|
 |--------|------|
-|`korean`|<p align="center"><img src="https://github.com/user-attachments/assets/573625bb-d869-440d-aa05-015db058ccde" alt="ko" height="60"></p>|
-|`english`|<p align="center"><img src="https://github.com/user-attachments/assets/11e42f7f-4b9c-476b-8feb-c1dd538b9a11" alt="ko" height="60"></p>|
+|`korean`|<p align="center"><img src="https://github.com/user-attachments/assets/573625bb-d869-440d-aa05-015db058ccde" alt="ko" width="200"></p>|
+|`english`|<p align="center"><img src="https://github.com/user-attachments/assets/11e42f7f-4b9c-476b-8feb-c1dd538b9a11" alt="ko" width="200"></p>|
 
 
 |`NaverButtonStyle`|`NaverButtonMode.green`|`NaverButtonMode.white`|`NaverButtonMode.dark`|
 |------------------|-----------------------|------------------|-----------------------|
 |`NaverButtonType.circleIcon`|<p align="center"><img src="https://github.com/user-attachments/assets/9211c72a-8d68-4328-ad48-99b78244d625" alt="circle" width="60"/></p>|<p align="center"><img src="https://github.com/user-attachments/assets/90a7da1a-1e85-491e-82b3-45a6e5ac927d" alt="circle" width="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1fa3d1e8-38ed-4d83-b593-4a078d3de1c8" alt="circle" width="60"/></p>|
 |`NaverButtonType.rectangleIcon`|<p align="center"><img src="https://github.com/user-attachments/assets/612dfcfb-a62a-4992-a62f-42583328e057" alt="rectangle" width="60"/></p>|<p align="center"><img src="https://github.com/user-attachments/assets/f183f041-095f-428d-9b88-d7dcbf333daf" alt="rectangle" width="60"/></p>|<p align="center"><img src="https://github.com/user-attachments/assets/686df457-d93c-4890-a45b-79016abe1bc6" alt="rectangle" width="60"/></p>|
-|`NaverButtonType.rectangleBar`|<p align="center"><img src="https://github.com/user-attachments/assets/932e778a-a647-41c3-b6f7-791544f772f7" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/22ff9b07-f37a-46e6-b271-c0aaf79016f9" alt="rectangleBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/3e4e6ce4-3837-4985-b79c-de4593228c47" alt="rectangleBar" height="60" /></p>|
-|`NaverButtonType.rectangleWithNaverBar`|<p align="center"><img src="https://github.com/user-attachments/assets/55e2c16e-a96c-4b8d-9ffe-03c32b9cf79c" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c0b15bf1-d8fb-4497-81e9-70fdc86fd615" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/d07fac1b-865b-41d9-9c37-998d4077115c" alt="rectangleWithNaverBar" height="60" /></p>|
+|`NaverButtonType.rectangleBar`|<p align="center"><img src="https://github.com/user-attachments/assets/932e778a-a647-41c3-b6f7-791544f772f7" alt="rectangleBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/22ff9b07-f37a-46e6-b271-c0aaf79016f9" alt="rectangleBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/3e4e6ce4-3837-4985-b79c-de4593228c47" alt="rectangleBar" width="200" /></p>|
+|`NaverButtonType.rectangleWithNaverBar`|<p align="center"><img src="https://github.com/user-attachments/assets/55e2c16e-a96c-4b8d-9ffe-03c32b9cf79c" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c0b15bf1-d8fb-4497-81e9-70fdc86fd615" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/d07fac1b-865b-41d9-9c37-998d4077115c" alt="rectangleWithNaverBar" width="200" /></p>|
 
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
 
 ### NaverLogoutButton
-<img src="https://github.com/user-attachments/assets/3512d0b9-f361-4897-8a8a-e94bca413cd0" alt="login" height="60" />
+<img src="https://github.com/user-attachments/assets/3512d0b9-f361-4897-8a8a-e94bca413cd0" alt="login" width="200" />
 
 ```dart
   NaverLogoutButton(
-    onPressed: () => NaverLoginSDK.logout(),
+    onPressed: (isLogout) {
+      if (isLogout) {
+        Log.d("로그아웃 성공!");
+      } else {
+        Log.w("로그아웃 실패..");
+      }
+    },
     style: NaverLogoutButtonStyle(
       language: NaverButtonLanguage.english,
       mode: NaverButtonMode.green
@@ -372,8 +384,8 @@ backgroundColor: Theme.of(context).naverColor,
 
 |`NaverButtonStyle`|`NaverButtonMode.green`|`NaverButtonMode.white`|`NaverButtonMode.dark`|
 |------------------|-----------------------|------------------|-----------------------|
-|`NaverButtonLanguage.korean`|<p align="center"><img src="https://github.com/user-attachments/assets/99a133de-7927-4670-bf4e-7460e05f1576" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1d99ab93-537f-4511-9f30-b3f1980b28e5" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/08608eda-1a93-4166-9ab4-e1b40842935a" alt="rectangleWithNaverBar" height="60" /></p>|
-|`NaverButtonLanguage.english`|<p align="center"><img src="https://github.com/user-attachments/assets/1f327611-ade0-43ca-b8a2-2901b642888a" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c317f1dd-f9d7-49dd-bab4-64489ec96a5d" alt="rectangleWithNaverBar" height="60" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1ca42f53-0610-4c30-a612-2a96ea9b50f6" alt="rectangleWithNaverBar" height="60" /></p>|
+|`NaverButtonLanguage.korean`|<p align="center"><img src="https://github.com/user-attachments/assets/99a133de-7927-4670-bf4e-7460e05f1576" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1d99ab93-537f-4511-9f30-b3f1980b28e5" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/08608eda-1a93-4166-9ab4-e1b40842935a" alt="rectangleWithNaverBar" width="200" /></p>|
+|`NaverButtonLanguage.english`|<p align="center"><img src="https://github.com/user-attachments/assets/1f327611-ade0-43ca-b8a2-2901b642888a" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/c317f1dd-f9d7-49dd-bab4-64489ec96a5d" alt="rectangleWithNaverBar" width="200" /></p>|<p align="center"><img src="https://github.com/user-attachments/assets/1ca42f53-0610-4c30-a612-2a96ea9b50f6" alt="rectangleWithNaverBar" width="200" /></p>|
 
 <p align="right"><a href="#getting-started">🔼</a></p>
 <br/>
